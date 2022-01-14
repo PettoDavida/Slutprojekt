@@ -8,7 +8,9 @@ class spaceship{
         this.image = image
         this.position = position
     }
-    public draw(){}
+    public draw(){
+        
+    }
     public update(){}
     private fly(){}
     private changeSpaceship(){}
