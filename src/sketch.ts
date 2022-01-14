@@ -1,6 +1,9 @@
 //---- GLOBAL VARIABLES ----//
-// let game: Game;
+//let game: Game;
 // let sound: p5.SoundFile
+let spaceShipImg: p5.Image
+let obstacleImg: p5.Image
+let backgroundImg: p5.Image
 
 /**
  * Built in preload function in P5
@@ -9,6 +12,10 @@
  */
 function preload() {
     // sound: p5.SoundFile = loadSound('../assets/mySound.wav');
+    spaceShipImg = loadImage('./documents/assets/spaceship.png');
+    obstacleImg = loadImage('./documents/assets/obstacle.png')
+    backgroundImg = loadImage('./documents/assets/background.png')
+
 }
 
 /**
@@ -21,8 +28,10 @@ function setup() {
     createCanvas(windowWidth, windowHeight);
     frameRate(60);
     // noCursor();
+
+   
     
-    // game = new Game();
+    //game = new Game();
 }
 
 /**
@@ -31,12 +40,12 @@ function setup() {
  * you created in the setup function above
  */
 function draw() {
-    background('blue');
-    fill('green');
-    stroke('white');
-    strokeWeight(10);
-    circle(width * .5, height * .5, width * 0.2);
-
+    image(backgroundImg, 0, 0);
+    image(obstacleImg, 600, 400, 200, 200);
+    image(obstacleImg, 400, 700, 100, 100);
+    image(spaceShipImg, 50, 400, 130, 100);
+    
+    
     // game.update();
     // game.draw();
 }

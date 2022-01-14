@@ -11,7 +11,9 @@ class obstacle{
         this.speed = speed
     }
 
-    public draw(){}
+    public draw(){
+        
+    }
     public update(){}
     private obstacleSize(){}
     private obstaclePosition(){}
