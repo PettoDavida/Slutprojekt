@@ -14,6 +14,9 @@ class Game {
         this.spaceship = new Spaceship(size, position, spaceShipImg);
         this.menu = new Menu(this.startGame.bind(this), this.controls.bind(this), this.highScore.bind(this));
         this.menu.setup();
+        this.obstacles = [];
+        this.obstacles.push(new Obstacle(obstacleImg, createVector(600, 400), createVector(200, 200), createVector(1, 1)));
+        this.obstacles.push(new Obstacle(obstacleImg, createVector(400, 700), createVector(100, 100), createVector(1, 1)));
     }
     draw() {
         image(backgroundImg, 0, 0);
@@ -21,8 +24,9 @@ class Game {
             case GameState.start:
                 break;
             case GameState.running:
-                image(obstacleImg, 600, 400, 200, 200);
-                image(obstacleImg, 400, 700, 100, 100);
+                for (const obstacle of this.obstacles) {
+                    obstacle.draw();
+                }
                 this.spaceship.draw();
                 break;
             case GameState.over:
@@ -71,13 +75,14 @@ var GameState;
     GameState[GameState["over"] = 2] = "over";
 })(GameState || (GameState = {}));
 class Obstacle {
-    constructor(size, position, image, speed) {
+    constructor(image, position, size, speed) {
         this.size = size;
         this.image = image;
         this.position = position;
         this.speed = speed;
     }
     draw() {
+        image(this.image, this.position.x, this.position.y, this.size.x, this.size.y);
     }
     update() { }
     obstacleSize() { }
