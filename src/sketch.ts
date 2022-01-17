@@ -25,7 +25,7 @@ function preload() {
  * in the draw function below
  */
 function setup() {
-    createCanvas(windowWidth, windowHeight);
+    createCanvas(windowWidth, 600);
     frameRate(60);
     //noCursor();
 
@@ -46,8 +46,6 @@ function draw() {
 
     game.update();
     game.draw();
-
-
 }
 
 
