@@ -1,10 +1,12 @@
-class gameovermenu{
+class GameOverMenu {
     private background: string
     private text: string
     private size: p5.Vector
-    public gameState: "start" | "running" | "over"
+    public gameState: GameState
 
-    public draw(){}
+    public draw(){
+        this.gameState = GameState.start
+    }
     public update(){}
     private newGame(){}
     private checkHighScore(){}
