@@ -18,7 +18,10 @@ class Spaceship {
     }
 
     private fly() {
-        if(mouseIsPressed){
+        if(mouseIsPressed 
+           || keyIsDown(38) 
+           || keyIsDown(87) 
+           || keyIsDown(32)){
             if(this.position.y >= 0){
                 this.position.y -= 4
             } 
