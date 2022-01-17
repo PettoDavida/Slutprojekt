@@ -94,7 +94,7 @@ function preload() {
     backgroundImg = loadImage('./documents/assets/background.png');
 }
 function setup() {
-    createCanvas(windowWidth, windowHeight);
+    createCanvas(windowWidth, 600);
     frameRate(60);
     game = new Game();
 }
@@ -118,7 +118,22 @@ class Spaceship {
         this.fly();
     }
     fly() {
-        this.position.x += 1;
+        if (mouseIsPressed
+            || keyIsDown(38)
+            || keyIsDown(87)
+            || keyIsDown(32)) {
+            if (this.position.y >= 0) {
+                this.position.y -= 4;
+            }
+        }
+        else {
+            if (this.position.y <= 600) {
+                this.position.y += 4;
+            }
+            else {
+                this.position.y += 0;
+            }
+        }
     }
     changeSpaceship() {
     }
