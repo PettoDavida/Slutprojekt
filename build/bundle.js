@@ -121,17 +121,14 @@ class Spaceship {
         if (mouseIsPressed) {
             if (this.position.y >= 0) {
                 this.position.y -= 4;
-                console.log(this.position.y);
             }
         }
         else {
             if (this.position.y <= 600) {
                 this.position.y += 4;
-                console.log(this.position.y);
             }
             else {
                 this.position.y += 0;
-                console.log(this.position.y);
             }
         }
     }
