@@ -1,4 +1,4 @@
-class obstacle{
+class Obstacle {
     private size: p5.Vector
     private speed: p5.Vector
     private position: p5.Vector

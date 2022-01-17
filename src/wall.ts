@@ -1,4 +1,4 @@
-class wall{
+class Wall {
      private position: p5.Vector
 
     private changeImage(){}

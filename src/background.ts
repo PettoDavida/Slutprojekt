@@ -1,4 +1,4 @@
-class gameBackground{
+class Background {
 private image: p5.Image
 private distance: number
 
