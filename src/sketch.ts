@@ -25,7 +25,7 @@ function preload() {
  * in the draw function below
  */
 function setup() {
-    createCanvas(windowWidth, 600);
+    createCanvas(windowWidth, windowHeight);
     frameRate(60);
     //noCursor();
 
@@ -42,7 +42,6 @@ function draw() {
     // image(obstacleImg, 600, 400, 200, 200);
     // image(obstacleImg, 400, 700, 100, 100);
     // image(spaceShipImg, 50, 400, 130, 100);
-
 
     game.update();
     game.draw();
