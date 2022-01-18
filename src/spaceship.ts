@@ -27,6 +27,7 @@ class Spaceship {
             } 
         }
         else{
+
             if(this.position.y <= 520){
                 this.position.y += 6
              
