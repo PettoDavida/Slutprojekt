@@ -12,8 +12,8 @@ class Game {
         this.menu = new Menu(this.startGame.bind(this), this.controls.bind(this), this.highScore.bind(this))
         this.menu.setup()
         this.obstacles = []
-        this.obstacles.push(new Obstacle(obstacleImg, createVector(600, 400), createVector(200, 200), createVector(1, 1)))
-        this.obstacles.push(new Obstacle(obstacleImg, createVector(400, 700), createVector(100, 100), createVector(1, 1)))
+        this.obstacles.push(new Obstacle(obstacleImg, createVector(random(100, 1000), random(height)), createVector(random(100, 200), random(100, 200)), createVector(1, 1)))
+        this.obstacles.push(new Obstacle(obstacleImg, createVector(random(100, 1000), random(height)), createVector(random(100, 200), random(100, 200)), createVector(1, 1)))
     }
 
     public draw() {

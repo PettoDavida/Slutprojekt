@@ -12,9 +12,15 @@ class Menu {
     private highScoreButton: any
     private clickForHighScore: () => any
 
-    private controlsDiv: any
+    private controlsTitle: any
     private highScoreMenu: any
     private highScoreList: any
+    private spaceKey: any
+    private wKey: any
+    private arrowKey: any
+    private leftMouseClick: any
+    private pauseKey: any
+    private muteKey: any
 
     constructor(clickStartGame: () => any, clickForControls: () => any, clickForHighScore: () => any) {
         this.clickStartGame = clickStartGame
@@ -57,23 +63,41 @@ class Menu {
     public update(){
 
     }
+
     public checkControls(){
         this.gameIsRunning()
 
-        this.controlsDiv = createElement('div')
-        this.controlsDiv.position(600, 300)
+       this.controlsTitle = createElement('h2', 'Game Controls')
+        this.controlsTitle.position(600, 50)
 
+        this.leftMouseClick = createElement('p', 'Left Mouse Button')
+        this.leftMouseClick.position(550, 150)
 
+        this.spaceKey = createElement('p', 'Space')
+        this.spaceKey.position(600, 220)
 
+        this.wKey = createElement('p', 'W')
+        this.wKey.position(620, 290)
+
+        this.arrowKey = createElement('p', '')
+        this.arrowKey.position(630, 350)
+
+        this.pauseKey = createElement('p', 'Pause')
+        this.pauseKey.position(800, 150)
+
+        this.muteKey = createElement('p', 'Mute')
+        this.muteKey.position(800, 220)
     }
+
     public checkHighScore(){
         this.gameIsRunning()
 
         this.highScoreMenu = createElement('ol', 'Highscore')
-        this.highScoreMenu.position(550, 200)
+        this.highScoreMenu.position(550, 150)
         this.highScoreList = createElement('li','Anna')
         this.highScoreList.position(600,270)
     }
+
     private newGame(){
 
     }
