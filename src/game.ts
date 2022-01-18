@@ -14,6 +14,7 @@ class Game {
         this.upperWall = new Wall(createVector(0,0))
         this.lowerWall = new Wall(createVector(0,height - 50))
         this.background = new Background(backgroundImg)
+
         this.menu = new Menu(this.startGame.bind(this), this.controls.bind(this), this.highScore.bind(this))
         this.menu.setup()
         this.obstacles = []
