@@ -20,8 +20,9 @@ class Game {
             case GameState.start:
                 break
             case GameState.running:
-                image(obstacleImg, 600, 400, 200, 200);
-                image(obstacleImg, 400, 700, 100, 100);
+                // for(const obstacle of this.obstacles){
+                    // obstacle.draw()
+                // }
                 this.spaceship.draw()
                 break
             case GameState.over:
