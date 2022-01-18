@@ -9,8 +9,8 @@ class Background {
 class Game {
     constructor() {
         this.gameState = GameState.start;
-        const position = createVector(50, 400);
-        const size = createVector(130, 100);
+        const position = createVector(50, 10);
+        const size = createVector(110, 80);
         this.spaceship = new Spaceship(size, position, spaceShipImg);
         this.menu = new Menu(this.startGame.bind(this), this.controls.bind(this), this.highScore.bind(this));
         this.menu.setup();
@@ -99,7 +99,7 @@ function preload() {
     backgroundImg = loadImage('./documents/assets/background.png');
 }
 function setup() {
-    createCanvas(windowWidth, 600);
+    createCanvas(1200, 600);
     frameRate(60);
     game = new Game();
 }
@@ -108,7 +108,7 @@ function draw() {
     game.draw();
 }
 function windowResized() {
-    resizeCanvas(windowWidth, windowHeight);
+    resizeCanvas(1200, 600);
 }
 class Spaceship {
     constructor(size, position, image) {
@@ -128,12 +128,12 @@ class Spaceship {
             || keyIsDown(87)
             || keyIsDown(32)) {
             if (this.position.y >= 0) {
-                this.position.y -= 4;
+                this.position.y -= 6;
             }
         }
         else {
-            if (this.position.y <= 600) {
-                this.position.y += 4;
+            if (this.position.y <= 520) {
+                this.position.y += 6;
             }
             else {
                 this.position.y += 0;
