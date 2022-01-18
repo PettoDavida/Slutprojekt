@@ -6,8 +6,8 @@ class Game {
     public gameState: GameState = GameState.start
 
     constructor() {
-        const position = createVector(50, 400)
-        const size = createVector(130, 100)
+        const position = createVector(50, 10)
+        const size = createVector(110, 80)
         this.spaceship = new Spaceship(size, position, spaceShipImg)
         this.menu = new Menu(this.startGame.bind(this), this.controls.bind(this), this.highScore.bind(this))
         this.menu.setup()
