@@ -38,5 +38,6 @@ class Spaceship {
     }
 
     private changeSpaceship() {
+        
     }
 }

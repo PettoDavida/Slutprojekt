@@ -1,5 +1,5 @@
 class Game {
-    public obstacle: Obstacle[]
+    public obstacles: Obstacle[]
     public spaceship: Spaceship
     public menu: Menu
     public background: Background
@@ -11,6 +11,9 @@ class Game {
         this.spaceship = new Spaceship(size, position, spaceShipImg)
         this.menu = new Menu(this.startGame.bind(this), this.controls.bind(this), this.highScore.bind(this))
         this.menu.setup()
+        this.obstacles = []
+        this.obstacles.push(new Obstacle(obstacleImg, createVector(600, 400), createVector(200, 200), createVector(1, 1)))
+        this.obstacles.push(new Obstacle(obstacleImg, createVector(400, 700), createVector(100, 100), createVector(1, 1)))
     }
 
     public draw() {
@@ -20,9 +23,9 @@ class Game {
             case GameState.start:
                 break
             case GameState.running:
-                 for(const obstacle of this.obstacles){
-                     obstacle.draw()
-                 }
+                for(const obstacle of this.obstacles){
+                    obstacle.draw()
+                }
                 this.spaceship.draw()
                 break
             case GameState.over:
@@ -50,6 +53,7 @@ class Game {
     }
 
     private spawnObstacle() {
+
     }
 
     private changeBackgroundImage() {
