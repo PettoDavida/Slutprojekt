@@ -47,7 +47,6 @@ function draw() {
     // image(obstacleImg, 400, 700, 100, 100);
     // image(spaceShipImg, 50, 400, 130, 100);
 
-
     game.update();
     game.draw();
 }
