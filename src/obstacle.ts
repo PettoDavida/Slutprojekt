@@ -12,7 +12,7 @@ class Obstacle {
 
     public update(horizontalGameSpeed: number) {
         // fart i px per sekund
-        this.position.x -= horizontalGameSpeed * (deltaTime / 1000)
+        this.position.x -= horizontalGameSpeed * (deltaTime / 700)
     }
 
     public draw(){

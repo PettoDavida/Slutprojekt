@@ -15,7 +15,11 @@ class Game {
         const position = createVector(50, 0)
         const size = createVector(130, 100)
         this.obstacles = [
-            new Obstacle(obstacleImg, createVector(windowWidth - 200, random(windowHeight)), createVector(random(200, 500), random(100, 500))),
+            new Obstacle(obstacleImg, createVector(random(width), random(height)), createVector(random(100, 300), random(100, 200))),
+            new Obstacle(obstacleImg, createVector(random(width), random(height)), createVector(random(100, 300), random(100, 200))),
+            new Obstacle(obstacleImg, createVector(random(width), random(height)), createVector(random(100, 300), random(100, 200))),
+            new Obstacle(obstacleImg, createVector(random(width), random(height)), createVector(random(100, 300), random(100, 200))),
+            new Obstacle(obstacleImg, createVector(random(width), random(height)), createVector(random(100, 300), random(100, 200)))
         ];
         this.spaceship = new Spaceship(size, position, betterSpaceShipImg)
         this.upperWall = new Wall(createVector(0,0))
@@ -23,7 +27,7 @@ class Game {
         this.background = new Background(backgroundImg)
         this.menu = new Menu(this.startGame.bind(this), this.controls.bind(this), this.highScore.bind(this))
         this.menu.setup() 
-        this.spawnDelay = 1000;
+        this.spawnDelay = 2000;
         this.spawnTime = 0;
         this.horizontalGameSpeed = 50;
     }
@@ -82,7 +86,7 @@ class Game {
         this.spawnTime += deltaTime;
         // För varje 50e frameRate skapa ett hinder
        if (this.spawnTime > this.spawnDelay) {
-        //    this.obstacles.push(new)
+           this.obstacles.push(new Obstacle(obstacleImg, createVector(1200, random(height)), createVector(random(100, 200), random(100, 200))))
            this.spawnTime = 0;
            this.spawnDelay *= 0.99
         
