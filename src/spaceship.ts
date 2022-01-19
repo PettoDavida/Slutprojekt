@@ -18,22 +18,22 @@ class Spaceship {
     }
 
     private fly() {
-        if(mouseIsPressed 
-           || keyIsDown(38) 
-           || keyIsDown(87) 
-           || keyIsDown(32)){
-            if(this.position.y >= 0){
+        if (mouseIsPressed
+            || keyIsDown(38)
+            || keyIsDown(87)
+            || keyIsDown(32)) {
+            if (this.position.y >= 0) {
                 this.position.y -= 4
-            } 
-        }
-        else{
-            if(this.position.y <= 600){
+            }
+        } else {
+            if (this.position.y <= gameSize.height - this.size.y) {
                 this.position.y += 4
-             
-            } else{
+            } else if (this.position.y < 0) {
+                this.position.y = 0
+            } else {
                 this.position.y += 0
             }
-               
+
         }
     }
 

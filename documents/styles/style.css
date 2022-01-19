@@ -1,0 +1,32 @@
+html, body, canvas {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    background: black;
+}
+
+h1, h2, ol {
+    color: white;
+    font-size: 50px;
+
+}
+
+li {
+    color: white;
+    font-size: 30px;
+
+}
+
+p {
+    color: white;
+
+}
+
+.gameKeys {
+    border: solid 2px black;
+    padding: 15px 20px 15px 20px;
+    background: white;
+    color: black;
+    border-radius: 10px;
+
+}

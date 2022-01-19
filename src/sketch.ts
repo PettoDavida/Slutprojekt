@@ -1,5 +1,6 @@
 //---- GLOBAL VARIABLES ----//
 let game: Game;
+let gameSize = { width: 1584, height: 850}
 // let sound: p5.SoundFile
 let spaceShipImg: p5.Image
 let obstacleImg: p5.Image
@@ -25,7 +26,7 @@ function preload() {
  * in the draw function below
  */
 function setup() {
-    createCanvas(windowWidth, 600);
+    createCanvas(gameSize.width, gameSize.height)
     frameRate(60);
     //noCursor();
 
