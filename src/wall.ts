@@ -1,12 +1,12 @@
 class Wall {
      private position: p5.Vector
      private wall: { image: p5.Image, offset: p5.Vector }[]
-     private timer: number
+     public collisionBox: Box
 
     constructor(position: p5.Vector){
         this.position = position
         this.wall = []
-        this.timer = 0
+        this.collisionBox = new Box(position, createVector(width, 75))
         for (let i = 0; i < 36; i++) {
             this.wall.push({image:spaceRockImg, offset: createVector(i*50, random(0,30))})
         }

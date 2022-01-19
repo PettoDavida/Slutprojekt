@@ -1,6 +1,6 @@
 class Spaceship {
-    private size: p5.Vector
-    private position: p5.Vector
+    public size: p5.Vector
+    public position: p5.Vector
     private image: p5.Image
     private spaceShipSpeedUp: number;
     private spaceShipSpeedDown: number;
@@ -25,11 +25,12 @@ class Spaceship {
     }
 
     private fly() {
-        if(mouseIsPressed 
-           || keyIsDown(38) 
-           || keyIsDown(87) 
-           || keyIsDown(32)){
+        if( mouseIsPressed
+            ||keyIsDown(38) 
+            || keyIsDown(87) 
+            || keyIsDown(32)){
             if(this.position.y >= 0){
+
                 this.position.y -= this.spaceShipSpeedUp;
             } 
         }
@@ -40,8 +41,7 @@ class Spaceship {
              
             } else{
                 this.position.y += 0
-            }
-               
+            }     
         }
     }
 

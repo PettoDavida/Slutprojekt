@@ -27,7 +27,6 @@ class Game {
         this.horizontalGameSpeed = 100;
         this.lastObstacle = 0;
         this.obstacleSize = 0;
-        
     }
 
     public draw() {
@@ -44,6 +43,7 @@ class Game {
                 this.upperWall.draw()
                 this.lowerWall.draw()
                 this.spaceship.draw()
+                
                 break
             case GameState.over:
                 // Game over menu
@@ -63,7 +63,14 @@ class Game {
             
                 for (const obstacle of this.obstacles) {
                     obstacle.update(this.horizontalGameSpeed)
+                    if (obstacle.collisionCircle.collide(this.spaceship.position, this.spaceship.size)) {
+                        
+                    }// vad som ska hända när spaceship nuddar ett hinder
                 }
+                if (this.upperWall.collisionBox.collide(this.spaceship.position, this.spaceship.size) ||
+                    this.lowerWall.collisionBox.collide(this.spaceship.position, this.spaceship.size)) {
+
+                } // vad som ska hända när spaceship nuddar en kant
                 this.spaceship.update()
                 this.updateWorldSpeed()
                 break
