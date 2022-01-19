@@ -1,4 +1,3 @@
-
 class Game {
     public obstacles: Obstacle[]
     public spaceship: Spaceship
@@ -10,17 +9,13 @@ class Game {
     private spawnDelay: number;
     private spawnTime: number;
     private horizontalGameSpeed: number;
+    private obstacleSize: number;
+    
 
     constructor() {
         const position = createVector(50, 0)
         const size = createVector(130, 100)
-        this.obstacles = [
-            new Obstacle(obstacleImg, createVector(random(width), random(height)), createVector(random(100, 300), random(100, 200))),
-            new Obstacle(obstacleImg, createVector(random(width), random(height)), createVector(random(100, 300), random(100, 200))),
-            new Obstacle(obstacleImg, createVector(random(width), random(height)), createVector(random(100, 300), random(100, 200))),
-            new Obstacle(obstacleImg, createVector(random(width), random(height)), createVector(random(100, 300), random(100, 200))),
-            new Obstacle(obstacleImg, createVector(random(width), random(height)), createVector(random(100, 300), random(100, 200)))
-        ];
+        this.obstacles = []
         this.spaceship = new Spaceship(size, position, betterSpaceShipImg)
         this.upperWall = new Wall(createVector(0,0))
         this.lowerWall = new Wall(createVector(0,height - 50))
@@ -29,7 +24,10 @@ class Game {
         this.menu.setup() 
         this.spawnDelay = 2000;
         this.spawnTime = 0;
-        this.horizontalGameSpeed = 50;
+        this.horizontalGameSpeed = 100;
+        this.lastObstacle = 0;
+        this.obstacleSize = 0;
+        
     }
 
     public draw() {
@@ -53,27 +51,30 @@ class Game {
     }
 
     public update() {
-        this.spawnObstacle();
+        
         this.checkCollision();
         // this.checkOutOfBounds();
         switch (this.gameState) {
             case GameState.start:
-
+            break
                 // Menu stuff
             case GameState.running:
+            this.spawnObstacle();
+            
                 for (const obstacle of this.obstacles) {
                     obstacle.update(this.horizontalGameSpeed)
                 }
                 this.spaceship.update()
                 this.updateWorldSpeed()
                 break
+
             case GameState.over:
                 // Game over stuff
         }
     }
 
     private updateWorldSpeed() {
-        this.horizontalGameSpeed += 0.0001
+        this.horizontalGameSpeed += 0.1
     }
 
     private startGame() {
@@ -84,17 +85,20 @@ class Game {
 
     private spawnObstacle() {
         this.spawnTime += deltaTime;
-        // För varje 50e frameRate skapa ett hinder
+        this.obstacleSize = random(100, 400);
        if (this.spawnTime > this.spawnDelay) {
-           this.obstacles.push(new Obstacle(obstacleImg, createVector(1200, random(height)), createVector(random(100, 200), random(100, 200))))
+           this.obstacles.push(new Obstacle(obstacleImg, createVector(1200, random(height)), createVector(this.obstacleSize, this.obstacleSize)))
            this.spawnTime = 0;
-           this.spawnDelay *= 0.99
-        
-           // skapa ett hinder med position.x = speed. 
-        //loop: när xSpeed > 0 ta bort hinder.
-        // för varje hinder som skapas = pusha till []
+
+           if (this.spawnDelay > 1000) {
+               this.spawnDelay *= 0.99
+           } else {
+               this.spawnDelay *= 0.995;
+           }
+        // obstacle: size: x.400 y.400 nya: lastObstacle.y + eller - 50.
         }
-    // speed -= 1;
+      
+
     }
 
     private changeBackgroundImage() {
@@ -111,12 +115,5 @@ class Game {
     private showDistanceOnScreen() {
     }
 
-    private checkCollision() {
-    }
-}
+    private checkCollision() {}
 
-
-// if (this.position.x <= 0){
-//     // När hinders x-position är =< windowWidth ta bort första hinder från []
-
-// }
