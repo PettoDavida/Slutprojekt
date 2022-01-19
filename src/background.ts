@@ -2,9 +2,12 @@ class Background {
 private image: p5.Image
 private distance: number
 
-public draw(){
-    
+constructor(image:p5.Image){
+    this.image = image
+}
 
+public draw(){
+    image(this.image, 0, 0)
 }
 public update(){}
 private mute(){}

@@ -79,7 +79,7 @@ class Menu {
         this.wKey = createElement('p', 'W')
         this.wKey.position(620, 290)
 
-        this.arrowKey = createElement('p', '')
+        this.arrowKey = createElement('p', '\u02C4')
         this.arrowKey.position(630, 350)
 
         this.pauseKey = createElement('p', 'Pause')
