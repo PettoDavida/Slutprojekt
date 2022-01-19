@@ -1,10 +1,11 @@
 //---- GLOBAL VARIABLES ----//
 let game: Game;
-let gameSize = { width: 1584, height: 850}
 // let sound: p5.SoundFile
 let spaceShipImg: p5.Image
+let betterSpaceShipImg: p5.Image
 let obstacleImg: p5.Image
 let backgroundImg: p5.Image
+let spaceRockImg: p5.Image
 
 /**
  * Built in preload function in P5
@@ -13,9 +14,11 @@ let backgroundImg: p5.Image
  */
 function preload() {
     // sound: p5.SoundFile = loadSound('../assets/mySound.wav');
+    betterSpaceShipImg = loadImage('./assets/images/betterspaceship.png')
     spaceShipImg = loadImage('./documents/assets/spaceship.png');
     obstacleImg = loadImage('./documents/assets/obstacle.png')
     backgroundImg = loadImage('./documents/assets/background.png')
+    spaceRockImg = loadImage('./assets/images/spacerock.png')
 
 }
 
@@ -26,7 +29,7 @@ function preload() {
  * in the draw function below
  */
 function setup() {
-    createCanvas(gameSize.width, gameSize.height)
+    createCanvas(1200, 600)
     frameRate(60);
     //noCursor();
 
@@ -44,7 +47,6 @@ function draw() {
     // image(obstacleImg, 400, 700, 100, 100);
     // image(spaceShipImg, 50, 400, 130, 100);
 
-
     game.update();
     game.draw();
 }
@@ -54,5 +56,5 @@ function draw() {
  *  Built in windowResize listener function in P5
  */
 function windowResized() {
-    resizeCanvas(windowWidth, windowHeight);
+    resizeCanvas(1200, 600);
 }

@@ -1,21 +1,40 @@
 class Obstacle {
     private size: p5.Vector
-    private speed: p5.Vector
     private position: p5.Vector
     private image: p5.Image
+    public collisionCircle: Circle
 
-    constructor(size:p5.Vector, position:p5.Vector, image:p5.Image, speed:p5.Vector){
+    constructor(image: p5.Image, position:p5.Vector, size:p5.Vector) {
         this.size = size
-        this.image = image
         this.position = position
-        this.speed = speed
+        this.image = obstacleImg  
+        this.collisionCircle = new Circle(createVector(position.x + size.x/2, position.y + size.y/2), size.y/2)
+
+    }
+
+    public update(horizontalGameSpeed: number) {
+        // fart i px per sekund
+        this.position.x -= horizontalGameSpeed * (deltaTime / 1000)
+        this.collisionCircle.position.x -= horizontalGameSpeed * (deltaTime / 1000)
+
     }
 
     public draw(){
-        
+       image(this.image, this.position.x, this.position.y, this.size.x, this.size.y);
     }
-    public update(){}
+
+
     private obstacleSize(){}
     private obstaclePosition(){}
     private obstacleType(){}
+    
 }
+
+// när nytt hinder ska spawnas ska den utgå från sista hindret i arrayen för att få fram 
+//dens aktuella x-position och y-position och alltid spawna minst ett spaceshipe-size 
+//från det föregående hindret
+
+// checkLastObjPosition() 
+// sparar x-position i en variabel
+// 
+

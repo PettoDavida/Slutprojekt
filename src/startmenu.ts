@@ -13,7 +13,7 @@ class Menu {
     private static createMenuContainer(): p5.Element {
         return createDiv()
             .position(0, 0)
-            .size(gameSize.width, gameSize.height)
+            .size(width, height)
             .parent(document.querySelector('main') as Element)
     }
 
@@ -85,7 +85,7 @@ class Menu {
             .addClass('gameKeys')
             .parent(this.menuContainer)
 
-        createElement('p', '')
+        createElement('p', '\u02C4')
             .position(630, 390)
             .addClass('gameKeys')
             .parent(this.menuContainer)
