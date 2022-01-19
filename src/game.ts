@@ -15,7 +15,7 @@ class Game {
         const position = createVector(50, 0)
         const size = createVector(130, 100)
         this.obstacles = [
-            new Obstacle(obstacleImg, createVector(windowWidth - 200, random(windowHeight)), createVector(random(200, 500), random(100, 500))),
+            new Obstacle(obstacleImg, createVector(width - 200, random(height - 200)), createVector(200, 200)),
         ];
         this.spaceship = new Spaceship(size, position, betterSpaceShipImg)
         this.upperWall = new Wall(createVector(0,0))
@@ -25,7 +25,7 @@ class Game {
         this.menu.setup() 
         this.spawnDelay = 1000;
         this.spawnTime = 0;
-        this.horizontalGameSpeed = 50;
+        this.horizontalGameSpeed = 100;
     }
 
     public draw() {
@@ -42,6 +42,7 @@ class Game {
                 this.upperWall.draw()
                 this.lowerWall.draw()
                 this.spaceship.draw()
+                
                 break
             case GameState.over:
                 // Game over menu
@@ -59,7 +60,14 @@ class Game {
             case GameState.running:
                 for (const obstacle of this.obstacles) {
                     obstacle.update(this.horizontalGameSpeed)
+                    if (obstacle.collisionCircle.collide(this.spaceship.position, this.spaceship.size)) {
+                        
+                    }// vad som ska hända när spaceship nuddar ett hinder
                 }
+                if (this.upperWall.collisionBox.collide(this.spaceship.position, this.spaceship.size) ||
+                    this.lowerWall.collisionBox.collide(this.spaceship.position, this.spaceship.size)) {
+
+                } // vad som ska hända när spaceship nuddar en kant
                 this.spaceship.update()
                 this.updateWorldSpeed()
                 break
