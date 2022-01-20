@@ -16,7 +16,12 @@ class Obstacle {
     }
 
     public draw(){
-       image(this.image, this.position.x, this.position.y, this.size.x, this.size.y);
+        push();
+        fill('red');
+        textSize(40);
+        text('HEEEEJ', this.position.x, this.position.y);
+        image(this.image, this.position.x, this.position.y, this.size.x, this.size.y);
+        pop();
     }
 
 
