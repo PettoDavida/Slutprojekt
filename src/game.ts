@@ -1,4 +1,3 @@
-
 class Game {
     public obstacles: Obstacle[]
     public spaceship: Spaceship
@@ -62,6 +61,19 @@ class Game {
             this.updateWorldSpeed()
             break
 
+            this.spawnObstacle();
+
+            for (const obstacle of this.obstacles) {
+                obstacle.update(this.horizontalGameSpeed)
+                if (obstacle.collisionCircle.collide(this.spaceship.position, this.spaceship.size)) {
+
+                }// vad som ska hända när spaceship nuddar ett hinder
+            }
+            if (this.upperWall.collisionBox.collide(this.spaceship.position, this.spaceship.size) ||
+                this.lowerWall.collisionBox.collide(this.spaceship.position, this.spaceship.size)) {
+
+            } // vad som ska hända när spaceship nuddar en kant
+
             case GameState.over:
                 // Game over stuff
         }
@@ -92,23 +104,16 @@ class Game {
             this.spawnTime = 0;
             // obstacle: size: x.400 y.400 nya: lastObstacle.y + eller - 50.
         }
+      
 
     }
 
     private changeBackgroundImage() {
     }
 
-    public controls() {
-        this.menu.checkControls()
-    }
-
-    public highScore() {
-        this.menu.checkHighScore()
-    }
-
     private showDistanceOnScreen() {
     }
 
-    private checkCollision() {
-    }
+    private checkCollision() {}
+
 }
