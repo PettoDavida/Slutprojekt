@@ -17,6 +17,14 @@ class Obstacle {
         this.position.x -= horizontalGameSpeed * (deltaTime / 1000)
         this.collisionCircle.position.x -= horizontalGameSpeed * (deltaTime / 1000)
 
+        /** 
+         * Removes obstacles from its array when out of screen
+         */
+        if (game.obstacles[0].position.x < 0 - game.obstacles[0].size.x) {
+            game.obstacles.shift()
+            console.log(game.obstacles);
+        }
+
     }
 
     public draw(){
