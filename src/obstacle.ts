@@ -17,22 +17,21 @@ class Obstacle {
         this.position.x -= horizontalGameSpeed * (deltaTime / 1000)
         this.collisionCircle.position.x -= horizontalGameSpeed * (deltaTime / 1000)
 
-        /** 
-         * Removes obstacles from its array when out of screen
-         */
-        if (game.obstacles[0].position.x < 0 - game.obstacles[0].size.x) {
-            game.obstacles.shift()
-            console.log(game.obstacles);
-        }
-
+        this.removesObstaclesFromArray();
     }
 
     public draw(){
         image(this.image, this.position.x, this.position.y, this.size.x, this.size.y);
     }
 
-
-    private obstacleSize(){}
+    /** 
+    * Removes obstacles from its array when out of screen
+    */
+    private removesObstaclesFromArray(){
+        if (game.obstacles[0].position.x < 0 - game.obstacles[0].size.x) {
+            game.obstacles.shift()
+        }
+    }
     private obstaclePosition(){}
     private obstacleType(){}
     
