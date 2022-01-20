@@ -1,12 +1,16 @@
 class highscore {
     private score: number
+    public flooredScore: number
 
     constructor() {
         this.score = 0
+        this.flooredScore = 0
     }
     
     public update() {
-        this.score += (deltaTime / 1000) // +1 km for each second
+        this.flooredScore = floor(this.score)
+        this.score += (deltaTime / 1000) // +1 km for each second 
+       
     }
     
     public draw() {

@@ -58,16 +58,17 @@ class Game {
             case GameState.running:
             this.spawnObstacle();
             this.highscore.update();
-
+            this.background.update();
+            
             for (const obstacle of this.obstacles) {
                 obstacle.update(this.horizontalGameSpeed)
                 if (obstacle.collisionCircle.collide(this.spaceship.position, this.spaceship.size)) {
-           console.log('test')
+           //console.log('test')
                 }// vad som ska hända när spaceship nuddar ett hinder
             }
             if (this.upperWall.collisionBox.collide(this.spaceship.position, this.spaceship.size) ||
                 this.lowerWall.collisionBox.collide(this.spaceship.position, this.spaceship.size)) {
-                    console.log('test2')
+                    //console.log('test2')
 
             } // vad som ska hända när spaceship nuddar en kant
             this.spaceship.update()
