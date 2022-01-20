@@ -93,7 +93,6 @@ class Game {
             this.spawnTime = 0;
             // obstacle: size: x.400 y.400 nya: lastObstacle.y + eller - 50.
         }
-      
 
     }
 
@@ -111,5 +110,6 @@ class Game {
     private showDistanceOnScreen() {
     }
 
-    private checkCollision() {}
-
+    private checkCollision() {
+    }
+}
