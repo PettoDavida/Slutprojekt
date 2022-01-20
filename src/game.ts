@@ -5,6 +5,7 @@ class Game {
     public lowerWall: Wall
     public menu: Menu
     public background: Background
+    public highscore: highscore
     public gameState: GameState = GameState.start
     private spawnTime: number;
     private horizontalGameSpeed: number;
@@ -21,6 +22,7 @@ class Game {
         this.menu.setup() 
         this.spawnTime = 0;
         this.horizontalGameSpeed = 100;
+        this.highscore = new highscore()
     }
 
     public draw() {
@@ -37,6 +39,8 @@ class Game {
                 this.upperWall.draw()
                 this.lowerWall.draw()
                 this.spaceship.draw()
+                this.highscore.draw()
+                
                 break
             case GameState.over:
                 // Game over menu
@@ -53,6 +57,7 @@ class Game {
                 // Menu stuff
             case GameState.running:
             this.spawnObstacle();
+            this.highscore.update();
 
             for (const obstacle of this.obstacles) {
                 obstacle.update(this.horizontalGameSpeed)
@@ -98,7 +103,7 @@ class Game {
             this.spawnTime = 0;
         }
     }
- 
+
     private changeBackgroundImage() {
     }
 
