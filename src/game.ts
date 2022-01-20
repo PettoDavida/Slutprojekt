@@ -58,27 +58,21 @@ class Game {
             case GameState.running:
             this.spawnObstacle();
             this.highscore.update();
-            
-            for (const obstacle of this.obstacles) {
-                obstacle.update(this.horizontalGameSpeed)
-            }
-            this.spaceship.update()
-            this.updateWorldSpeed()
-            break
-
-            this.spawnObstacle();
 
             for (const obstacle of this.obstacles) {
                 obstacle.update(this.horizontalGameSpeed)
                 if (obstacle.collisionCircle.collide(this.spaceship.position, this.spaceship.size)) {
-
+           console.log('test')
                 }// vad som ska hända när spaceship nuddar ett hinder
             }
             if (this.upperWall.collisionBox.collide(this.spaceship.position, this.spaceship.size) ||
                 this.lowerWall.collisionBox.collide(this.spaceship.position, this.spaceship.size)) {
+                    console.log('test2')
 
             } // vad som ska hända när spaceship nuddar en kant
-
+            this.spaceship.update()
+            this.updateWorldSpeed()
+            break
             case GameState.over:
                 // Game over stuff
         }
@@ -107,12 +101,7 @@ class Game {
             const newObstacle = new Obstacle(obstacleImg, position, size)
             this.obstacles.push(newObstacle)
             this.spawnTime = 0;
-            
-            
-            // obstacle: size: x.400 y.400 nya: lastObstacle.y + eller - 50.
         }
-    }
-    private removeObstacleFromArray() {
     }
 
     private changeBackgroundImage() {
