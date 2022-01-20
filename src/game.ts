@@ -102,15 +102,9 @@ class Game {
             const newObstacle = new Obstacle(obstacleImg, position, size)
             this.obstacles.push(newObstacle)
             this.spawnTime = 0;
-            
-            
-            // obstacle: size: x.400 y.400 nya: lastObstacle.y + eller - 50.
         }
     }
-    private removeObstacleFromArray() {
-       
-    }
-
+ 
     private changeBackgroundImage() {
     }
 
