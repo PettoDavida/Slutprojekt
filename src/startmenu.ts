@@ -1,104 +1,164 @@
-
 class Menu {
-    private background: string
-    private text: string
-    private size: p5.Vector
+    private menuContainer?: p5.Element
+    private readonly clickStartGame: () => any
 
-    public gameTitle: any
-    private startButton: any
-    private clickStartGame: () => any
-    private controlsButton: any
-    private clickForControls: () => any
-    private highScoreButton: any
-    private clickForHighScore: () => any
-
-    private controlsTitle: any
-    private highScoreMenu: any
-    private highScoreList: any
-    private spaceKey: any
-    private wKey: any
-    private arrowKey: any
-    private leftMouseClick: any
-    private pauseKey: any
-    private muteKey: any
-
-    constructor(clickStartGame: () => any, clickForControls: () => any, clickForHighScore: () => any) {
+    constructor(clickStartGame: () => any) {
         this.clickStartGame = clickStartGame
-        this.clickForControls = clickForControls
-        this.clickForHighScore = clickForHighScore
     }
 
+    private clearMenuContainer() {
+        this.menuContainer?.remove()
+    }
+
+    private static createMenuContainer(): p5.Element {
+        return createDiv()
+            .position(350, 50)
+            .size(500, 500)
+            .addClass('startContainer')
+            .parent(document.querySelector('main') as Element)
+    }
 
     public setup() {
+        this.clearMenuContainer()
 
-        this.gameTitle = createElement('h1', 'Space Jam 3.0')
-        this.gameTitle.position(600, 300)
+        this.menuContainer = Menu.createMenuContainer()
 
-        this.startButton = createButton('Start Game')
-        this.startButton.position(700, 420)
-        this.startButton.size(200, 60)
-        this.startButton.mousePressed(this.clickStartGame)
+        createElement('h1', 'Space Jam 3.0')
+            .position(40, 5)
+            .parent(this.menuContainer)
 
-        this.controlsButton = createButton('Controls')
-        this.controlsButton.position(500, 520)
-        this.controlsButton.size(200, 60)
-        this.controlsButton.mousePressed(this.clickForControls)
+        createButton('Start Game')
+            .position(150, 140)
+            .size(200, 60)
+            .mousePressed(this.startGame.bind(this))
+            .parent(this.menuContainer)
 
-        this.highScoreButton = createButton('HighScore')
-        this.highScoreButton.position(900, 520)
-        this.highScoreButton.size(200, 60)
-        this.highScoreButton.mousePressed(this.clickForHighScore)
+        createButton('Controls')
+            .position(0, 240)
+            .size(200, 60)
+            .mousePressed(this.checkControls.bind(this))
+            .parent(this.menuContainer)
+
+        createButton('HighScore')
+            .position(300, 240)
+            .size(200, 60)
+            .mousePressed(this.checkHighScore.bind(this))
+            .parent(this.menuContainer)
     }
 
-    public gameIsRunning() {
-        this.startButton.remove()
-        this.gameTitle.remove()
-        this.controlsButton.remove()
-        this.highScoreButton.remove()
+    public startGame() {
+        this.clearMenuContainer()
+        this.clickStartGame()
     }
 
-    public draw(){
+    public draw() {
     }
 
-    public update(){
+    public update() {
 
     }
 
-    public checkControls(){
-        this.gameIsRunning()
+    public checkControls() {
+        this.clearMenuContainer()
 
-       this.controlsTitle = createElement('h2', 'Game Controls')
-        this.controlsTitle.position(600, 50)
+        this.menuContainer = Menu.createMenuContainer()
 
-        this.leftMouseClick = createElement('p', 'Left Mouse Button')
-        this.leftMouseClick.position(550, 150)
+        createElement('h2', 'Game Controls')
+            .position(40, 5)
+            .parent(this.menuContainer)
 
-        this.spaceKey = createElement('p', 'Space')
-        this.spaceKey.position(600, 220)
+        createElement('p', 'Fly')
+            .position(80, 100)
+            .parent(this.menuContainer)
 
-        this.wKey = createElement('p', 'W')
-        this.wKey.position(620, 290)
+        createElement('p', 'Left Mouse Button')
+            .position(0, 150)
+            .addClass('gameKeys')
+            .parent(this.menuContainer)
 
-        this.arrowKey = createElement('p', '\u02C4')
-        this.arrowKey.position(630, 350)
+        createElement('p', 'Space')
+            .position(40, 220)
+            .addClass('gameKeys')
+            .parent(this.menuContainer)
 
-        this.pauseKey = createElement('p', 'Pause')
-        this.pauseKey.position(800, 150)
+        createElement('p', 'W')
+            .position(60, 290)
+            .addClass('gameKeys')
+            .parent(this.menuContainer)
 
-        this.muteKey = createElement('p', 'Mute')
-        this.muteKey.position(800, 220)
+        createElement('p', '\u02C4')
+            .position(60, 360)
+            .addClass('gameKeys')
+            .parent(this.menuContainer)
+
+        createElement('p', 'Pause')
+            .position(430, 170)
+            .parent(this.menuContainer)
+
+        createElement('p', 'P')
+            .position(350, 150)
+            .addClass('gameKeys')
+            .parent(this.menuContainer)
+
+        createElement('p', 'Mute')
+            .position(430, 240)
+            .parent(this.menuContainer)
+
+        createElement('p', 'M')
+            .position(350, 220)
+            .addClass('gameKeys')
+            .parent(this.menuContainer)
+
+        createButton('Back')
+            .position(200, 450)
+            .size(80, 30)
+            .mousePressed(this.setup.bind(this))
+            .parent(this.menuContainer)
     }
 
-    public checkHighScore(){
-        this.gameIsRunning()
+    public checkHighScore() {
+        this.clearMenuContainer()
 
-        this.highScoreMenu = createElement('ol', 'Highscore')
-        this.highScoreMenu.position(550, 150)
-        this.highScoreList = createElement('li','Anna')
-        this.highScoreList.position(600,270)
+        this.menuContainer = Menu.createMenuContainer()
+
+        const ol = createElement('ol', 'Highscore')
+            .position(40, 5)
+            .parent(this.menuContainer)
+
+        createElement('li', 'Anna')
+            .position(100, 70)
+            .parent(ol)
+
+        createElement('li', 'Ella')
+            .position(100, 110)
+            .parent(ol)
+
+        createElement('li', 'Maximilian')
+            .position(100, 150)
+            .parent(ol)
+
+        createElement('li', 'Linnea')
+            .position(100, 190)
+            .parent(ol)
+
+        createElement('li', 'Erik')
+            .position(100, 240)
+            .parent(ol)
+
+        createButton('Back')
+            .position(200, 450)
+            .size(80, 30)
+            .mousePressed(this.setup.bind(this))
+            .parent(this.menuContainer)
     }
 
-    private newGame(){
+    //public startPage() {
+    //   setup()
 
-    }
+
+    //}
+
 }
+
+
+
