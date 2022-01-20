@@ -1,0 +1,39 @@
+html, body, canvas {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    background: black;
+}
+
+.startContainer {
+    background: rgba(255, 255, 255, 0.3);
+
+}
+
+h1, h2, ol {
+    color: black;
+    font-size: 50px;
+}
+
+li {
+    color: black;
+    font-size: 30px;
+}
+
+p {
+    color: black;
+}
+
+button {
+   opacity: 1;
+
+}
+
+.gameKeys {
+    border: solid 2px black;
+    padding: 15px 20px 15px 20px;
+    background: white;
+    color: black;
+    border-radius: 10px;
+
+}
