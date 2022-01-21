@@ -20,8 +20,8 @@ private mute(){}
 
 private changeImage(){
     console.log('bild');
-    switch (game.highscore.flooredScore === 5 || 10 || 20) {
-        case game.highscore.flooredScore === 5:
+    switch (game.highscore.flooredScore === 20 || 30 || 40) {
+        case game.highscore.flooredScore === 20:
             game.background = new Background(backgroundImg2)
         break
         case game.highscore.flooredScore === 10:

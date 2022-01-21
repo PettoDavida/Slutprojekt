@@ -4,8 +4,10 @@ class Game {
     public upperWall: Wall
     public lowerWall: Wall
     public menu: Menu
+    public gameovermenu: GameOverMenu
     public background: Background
-    public highscore: highscore
+    public highscore: Highscore
+    public scores: Score[]
     public gameState: GameState = GameState.start
     private spawnTime: number;
     private horizontalGameSpeed: number;
@@ -19,10 +21,12 @@ class Game {
         this.lowerWall = new Wall(createVector(0,height - 50))
         this.background = new Background(backgroundImg)
         this.menu = new Menu(this.startGame.bind(this))
-        this.menu.setup() 
+        this.menu.setup()
+        this.gameovermenu = new GameOverMenu()
         this.spawnTime = 0;
         this.horizontalGameSpeed = 100;
-        this.highscore = new highscore()
+        this.highscore = new Highscore()
+        this.scores = []
     }
 
     public draw() {
@@ -48,39 +52,36 @@ class Game {
     }
 
     public update() {
-        
-        this.checkCollision();
+
         // this.checkOutOfBounds();
+        console.log(this.gameState)
         switch (this.gameState) {
             case GameState.start:
             break
                 // Menu stuff
             case GameState.running:
-            this.spawnObstacle();
-            this.highscore.update();
-            this.background.update();
-            
-            for (const obstacle of this.obstacles) {
-                obstacle.update(this.horizontalGameSpeed)
-                if (obstacle.collisionCircle.collide(this.spaceship.position, this.spaceship.size)) {
-           //console.log('test')
-                }// vad som ska hända när spaceship nuddar ett hinder
-            }
-            if (this.upperWall.collisionBox.collide(this.spaceship.position, this.spaceship.size) ||
-                this.lowerWall.collisionBox.collide(this.spaceship.position, this.spaceship.size)) {
-                    //console.log('test2')
-
-            } // vad som ska hända när spaceship nuddar en kant
-            this.spaceship.update()
-            this.updateWorldSpeed()
+                this.spawnObstacle();
+                this.highscore.update();
+                this.background.update();
+                for (const obstacle of this.obstacles) {
+                    obstacle.update(this.horizontalGameSpeed)
+                    this.checkCollision();
+                }
+                this.spaceship.update();
+                this.updateWorldSpeed();
             break
             case GameState.over:
-                // Game over stuff
+                this.highscore.update();
+                // stoppa score-counter 
+                // spara floored score till en array
+                
+                console.log('game Over')
         }
     }
 
     private updateWorldSpeed() {
         this.horizontalGameSpeed += 0.1
+
     }
 
     private startGame() {
@@ -111,6 +112,19 @@ class Game {
     private showDistanceOnScreen() {
     }
 
-    private checkCollision() {}
+    private checkCollision() {
+        for (const obstacle of this.obstacles) {
+            if (obstacle.collisionCircle.collide(this.spaceship.position, this.spaceship.size)) {
+            
+
+            }// vad som ska hända när spaceship nuddar ett hinder
+        }
+        if (this.upperWall.collisionBox.collide(this.spaceship.position, this.spaceship.size) ||
+            this.lowerWall.collisionBox.collide(this.spaceship.position, this.spaceship.size)) {
+            this.gameovermenu.draw()
+            this.gameState = GameState.over
+
+        } // vad som ska hända när spaceship nuddar en kant
+    }
 
 }
