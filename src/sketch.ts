@@ -5,7 +5,9 @@ let spaceShipImg: p5.Image
 let betterSpaceShipImg: p5.Image
 let obstacleImg: p5.Image
 let backgroundImg: p5.Image
+let backgroundImg2: p5.Image
 let spaceRockImg: p5.Image
+
 
 /**
  * Built in preload function in P5
@@ -18,6 +20,7 @@ function preload() {
     spaceShipImg = loadImage('./documents/assets/spaceship.png');
     obstacleImg = loadImage('./documents/assets/obstacle.png')
     backgroundImg = loadImage('./documents/assets/background.png')
+    backgroundImg2 = loadImage('./assets/images/backgroundImg2.jpg')
     spaceRockImg = loadImage('./assets/images/spacerock.png')
 
 }
