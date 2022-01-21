@@ -13,7 +13,7 @@ class Game {
     private horizontalGameSpeed: number;
     
     constructor() {
-        const position = createVector(50, 0)
+        const position = createVector(50, 200)
         const size = createVector(130, 100)
         this.obstacles = []
         this.spaceship = new Spaceship(size, position, betterSpaceShipImg)
@@ -52,20 +52,21 @@ class Game {
     }
 
     public update() {
-
+   
+  
         // this.checkOutOfBounds();
-        console.log(this.gameState)
+        //console.log(this.gameState)
         switch (this.gameState) {
             case GameState.start:
             break
                 // Menu stuff
             case GameState.running:
+                this.checkCollision();
                 this.spawnObstacle();
                 this.highscore.update();
                 this.background.update();
                 for (const obstacle of this.obstacles) {
-                    obstacle.update(this.horizontalGameSpeed)
-                    this.checkCollision();
+                    obstacle.update(this.horizontalGameSpeed)          
                 }
                 this.spaceship.update();
                 this.updateWorldSpeed();
@@ -115,14 +116,18 @@ class Game {
     private checkCollision() {
         for (const obstacle of this.obstacles) {
             if (obstacle.collisionCircle.collide(this.spaceship.position, this.spaceship.size)) {
-            
+                console.log('skepp+hinder')
+                
+                this.gameovermenu.draw()
+                this.gameState = GameState.over
 
             }// vad som ska hända när spaceship nuddar ett hinder
         }
         if (this.upperWall.collisionBox.collide(this.spaceship.position, this.spaceship.size) ||
             this.lowerWall.collisionBox.collide(this.spaceship.position, this.spaceship.size)) {
-            this.gameovermenu.draw()
-            this.gameState = GameState.over
+                console.log(this.spaceship.position, this.spaceship.size)
+                this.gameovermenu.draw()
+                this.gameState = GameState.over
 
         } // vad som ska hända när spaceship nuddar en kant
     }
