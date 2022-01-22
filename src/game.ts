@@ -26,7 +26,6 @@ class Game {
         this.gameovermenu = new GameOverMenu(this.menu)
         this.menu.setup()
 
-        //this.gameovermenu = new GameOverMenu()
         this.spawnTime = 0;
         this.horizontalGameSpeed = 100;
         this.highscore = new Highscore()
@@ -58,7 +57,8 @@ class Game {
     }
 
     public update() {
-
+   
+  
         // this.checkOutOfBounds();
         //console.log(this.gameState)
         switch (this.gameState) {
@@ -66,6 +66,7 @@ class Game {
                 break
             // Menu stuff
             case GameState.running:
+                this.checkCollision();
                 this.spawnObstacle();
                 this.highscore.update();
                 this.background.update();
@@ -134,7 +135,6 @@ class Game {
             this.gameovermenu.draw()
             this.gameState = GameState.over
             return
-
         } // vad som ska hända när spaceship nuddar en kant
     }
 

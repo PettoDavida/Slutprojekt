@@ -5,6 +5,7 @@ class GameOverMenu {
     private size: p5.Vector;
 
 
+
     constructor(startMenu: Menu) {
         this.menu = startMenu
     }
@@ -48,4 +49,7 @@ class GameOverMenu {
     private checkHighScore() {
     }
 
-}
+   
+
+  
+
