@@ -4,6 +4,7 @@ class Spaceship {
     private image: p5.Image
     private spaceShipSpeedUp: number;
     private spaceShipSpeedDown: number;
+    private collisionShape: Triangle
 
 
     constructor(size: p5.Vector, position: p5.Vector, image: p5.Image) {
@@ -12,10 +13,19 @@ class Spaceship {
         this.position = position
         this.spaceShipSpeedUp = 3.5
         this.spaceShipSpeedDown = 4.5
+        this.collisionShape = new Triangle(createVector(this.position.x, this.position.y), createVector(this.size.x, this.size.y))
     }
 
     public draw() {
         image(this.image, this.position.x, this.position.y, this.size.x, this.size.y);
+        fill(255, 0, 0)
+        triangle(
+            this.position.x, this.position.y,
+            this.position.x + this.size.x, this.position.y + (this.size.y * .5), 
+            this.position.x, this.position.y + this.size.y)
+            
+        
+    
     }
 
     public update() {

@@ -125,7 +125,6 @@ class Game {
             this.gameovermenu.draw()
             this.gameState = GameState.over
             return
-
         } // vad som ska hända när spaceship nuddar en kant
     }
 
