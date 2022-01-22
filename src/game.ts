@@ -21,12 +21,10 @@ class Game {
         this.lowerWall = new Wall(createVector(0, height - 50))
         this.background = new Background(backgroundImg)
 
-
         this.menu = new Menu(this.startGame.bind(this))
         this.gameovermenu = new GameOverMenu(this.menu)
         this.menu.setup()
 
-        //this.gameovermenu = new GameOverMenu()
         this.spawnTime = 0;
         this.horizontalGameSpeed = 100;
         this.highscore = new Highscore()
@@ -51,16 +49,12 @@ class Game {
 
                 break
             case GameState.over:
-
                 // Game over menu
                 break
         }
     }
 
     public update() {
-
-        // this.checkOutOfBounds();
-        //console.log(this.gameState)
         switch (this.gameState) {
             case GameState.start:
                 break
@@ -80,15 +74,12 @@ class Game {
                 this.highscore.update();
                 // stoppa score-counter 
                 // spara floored score till en array
-
-                //console.log('game Over')
                 break
         }
     }
 
     private updateWorldSpeed() {
         this.horizontalGameSpeed += 0.1
-
     }
 
     public startGame() {

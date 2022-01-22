@@ -2,13 +2,11 @@ class Background {
     private state = 0
     private image: p5.Image
 
-
     constructor(image: p5.Image) {
         this.image = image
     }
 
     public update() {
-
         if (game.highscore.flooredScore === 5 || game.highscore.flooredScore === 10 || game.highscore.flooredScore === 20) {
             this.changeImage();
         }

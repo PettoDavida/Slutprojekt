@@ -4,11 +4,9 @@ class GameOverMenu {
     private text: string;
     private size: p5.Vector;
 
-
     constructor(startMenu: Menu) {
         this.menu = startMenu
     }
-
 
     public draw() {
         this.menu.clearMenuContainer()
@@ -38,7 +36,6 @@ class GameOverMenu {
         this.menu.startGame()
     }
 
-
     public update() {
     }
 
@@ -47,5 +44,4 @@ class GameOverMenu {
 
     private checkHighScore() {
     }
-
 }
