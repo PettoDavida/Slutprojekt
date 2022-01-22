@@ -1,34 +1,51 @@
 class GameOverMenu {
-
+    public menu: Menu
     private background: string;
     private text: string;
     private size: p5.Vector;
-    
-        constructor() {
-        
-        }
-    
-    
-    
+
+
+    constructor(startMenu: Menu) {
+        this.menu = startMenu
+    }
+
+
     public draw() {
-        
-        this.gameState = GameState.start;
-        let h2 = createElement("h2", "Game Over");
-        h2.style("color", "white");
-        h2.position(500, 200);
-        let button;
-        button = createButton('Restart');
-        button.position(600, 400);
-        button.mousePressed();
-    
+        this.menu.clearMenuContainer()
+        this.menu.menuContainer = Menu.createMenuContainer()
+
+        createElement("h2", "Game Over")
+            .style("color", "white")
+            .position(40, 5)
+            .parent(this.menu.menuContainer)
+
+        createButton('Restart')
+            .position(200, 450)
+            .mousePressed(this.restartGame.bind(this))
+            .parent(this.menu.menuContainer)
+
+        createButton('Menu')
+            .position(200, 350)
+            .mousePressed(this.backToMenu.bind(this))
+            .parent(this.menu.menuContainer)
     }
-    
-    
-    
-    public update() {}
-    
-    private newGame() {}
-    
-    private checkHighScore() {}
-    
+
+    public backToMenu() {
+        this.menu.setup()
     }
+
+    public restartGame() {
+        this.menu.startGame()
+    }
+
+
+    public update() {
+    }
+
+    private newGame() {
+    }
+
+    private checkHighScore() {
+    }
+
+}

@@ -1,16 +1,16 @@
 class Menu {
-    private menuContainer?: p5.Element
-    private readonly clickStartGame: () => any
+    public menuContainer?: p5.Element
+    public readonly clickStartGame: () => any
 
     constructor(clickStartGame: () => any) {
         this.clickStartGame = clickStartGame
     }
 
-    private clearMenuContainer() {
+    public clearMenuContainer() {
         this.menuContainer?.remove()
     }
 
-    private static createMenuContainer(): p5.Element {
+    public static createMenuContainer(): p5.Element {
         return createDiv()
             .position(350, 50)
             .size(500, 500)
@@ -20,7 +20,6 @@ class Menu {
 
     public setup() {
         this.clearMenuContainer()
-
         this.menuContainer = Menu.createMenuContainer()
 
         createElement('h1', 'Space Jam 3.0')
@@ -151,13 +150,6 @@ class Menu {
             .mousePressed(this.setup.bind(this))
             .parent(this.menuContainer)
     }
-
-    //public startPage() {
-    //   setup()
-
-
-    //}
-
 }
 
 
