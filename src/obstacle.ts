@@ -30,7 +30,7 @@ class Obstacle {
        
 
     }
-
+ 
     public draw(){
         
        push()      
@@ -39,10 +39,8 @@ class Obstacle {
         ellipseMode(CENTER)
         translate(this.position.x + (this.size.x * .5), this.position.y + (this.size.y * .5))
        rotate(- this.rotationSpeed)
-       
-       image(this.image, 0,0, this.size.x, this.size.y);
+      image(this.image, 0,0, this.size.x, this.size.y);
        //För att se vart centrumpunkten befinner sig
-        
         fill(255)
         ellipse(0,0, 10,10)
         pop()
