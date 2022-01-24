@@ -1,37 +1,42 @@
 class Background {
-private image: p5.Image
+    private state = 0
+    private image: p5.Image
 
-
-constructor(image:p5.Image){
-    this.image = image
-}
-public update(){
-
-   if (game.highscore.flooredScore === 5 || 10 || 20) {
-       this.changeImage();
+    constructor(image: p5.Image) {
+        this.image = image
     }
-    
-}
-public draw(){
-    image(this.image, 0, 0)
-}
 
-private mute(){}
+    public update() {
+        if (game.highscore.flooredScore === 5 || game.highscore.flooredScore === 10 || game.highscore.flooredScore === 20) {
+            this.changeImage();
+        }
 
-private changeImage(){
-    console.log('bild');
-    switch (game.highscore.flooredScore === 20 || 30 || 40) {
-        case game.highscore.flooredScore === 20:
-            game.background = new Background(backgroundImg2)
-        break
-        case game.highscore.flooredScore === 10:
-        // ändra bakgrundsbild
-        break
-        case game.highscore.flooredScore === 20:
-        // ändra bakgrundsbild
-        break
     }
-    
-}
+
+    public draw() {
+        image(this.image, 0, 0)
+    }
+
+    private mute() {
+    }
+
+    private changeImage() {
+        console.log('bild');
+        switch (game.highscore.flooredScore) {
+            case 5:
+                if (this.state === 5) {
+                    return
+                }
+                game.background = new Background(backgroundImg2)
+                break
+            case 10:
+                // ändra bakgrundsbild
+                break
+            case 20:
+                // ändra bakgrundsbild
+                break
+        }
+        this.state = game.highscore.flooredScore
+    }
 }
 
