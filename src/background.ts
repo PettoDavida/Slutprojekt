@@ -7,8 +7,8 @@ class Background {
     }
 
     public update() {
-        if (game.highscore.flooredScore === 5 || game.highscore.flooredScore === 10 || game.highscore.flooredScore === 20) {
-            this.changeImage();
+        if (game.highscore.flooredScore === 10 || game.highscore.flooredScore === 20 || game.highscore.flooredScore === 30) {
+            this.changeImages();
         }
 
     }
@@ -20,14 +20,15 @@ class Background {
     private mute() {
     }
 
-    private changeImage() {
-        console.log('bild');
+    private changeImages() {
+        
         switch (game.highscore.flooredScore) {
-            case 5:
-                if (this.state === 5) {
+            case 10:
+                if (this.state === 10) {
                     return
                 }
                 game.background = new Background(backgroundImg2)
+                obstacleImg = obstacleImg2
                 break
             case 10:
                 // ändra bakgrundsbild
