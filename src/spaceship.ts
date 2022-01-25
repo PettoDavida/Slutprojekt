@@ -37,10 +37,7 @@ class Spaceship {
             const element = this.collisionShape[index];
             rect(element.position.x + this.position.x, element.position.y + this.position.y, element.size.x, element.size.y)
         }
-        // triangle(
-        //     this.position.x, this.position.y,
-        //     this.position.x + this.size.x, this.position.y + (this.size.y * .5), 
-        //     this.position.x, this.position.y + this.size.y)
+       
             
     }
 
