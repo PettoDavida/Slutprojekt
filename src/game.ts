@@ -82,6 +82,9 @@ class Game {
         this.horizontalGameSpeed += 0.1
     }
 
+    /**
+     * Changes the gamestate to running and changes the position of the spaceship
+     */
     public startGame() {
         this.spaceship.position.y = 300
         this.gameState = GameState.running
@@ -105,12 +108,6 @@ class Game {
             this.spawnTime = 0;
             console.log(rotationSpeed)
         }
-    }
-
-    private changeBackgroundImage() {
-    }
-
-    private showDistanceOnScreen() {
     }
 
     private checkCollision() {
