@@ -1,6 +1,6 @@
 class Obstacle {
-    public size: p5.Vector
-    public position: p5.Vector
+    private size: p5.Vector
+    private position: p5.Vector
     private image: p5.Image
     public collisionCircle: Circle
     //public collisionEllipse: Ellipse
