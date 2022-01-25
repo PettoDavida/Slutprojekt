@@ -96,12 +96,14 @@ class Game {
         const spawnDelay = 800000 / this.horizontalGameSpeed;
 
         if (this.spawnTime > spawnDelay) {
-            const diameter = random(100, 400)
+            const diameter = random(70, 200)
             const size = createVector(diameter, diameter)
             const position = createVector(1200, random(height - size.y))
-            const newObstacle = new Obstacle(obstacleImg, position, size)
+            const rotationSpeed = random(0, 50)
+            const newObstacle = new Obstacle(obstacleImg, position, size, rotationSpeed)
             this.obstacles.push(newObstacle)
             this.spawnTime = 0;
+            console.log(rotationSpeed)
         }
     }
 

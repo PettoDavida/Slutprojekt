@@ -5,6 +5,7 @@ class Spaceship {
     private spaceShipSpeedUp: number;
     private spaceShipSpeedDown: number;
     private collisionShape: Triangle
+    private angle: number
 
 
     constructor(size: p5.Vector, position: p5.Vector, image: p5.Image) {
@@ -14,23 +15,32 @@ class Spaceship {
         this.spaceShipSpeedUp = 3.5
         this.spaceShipSpeedDown = 4.5
         this.collisionShape = new Triangle(createVector(this.position.x, this.position.y), createVector(this.size.x, this.size.y))
+        this.angle = 0
     }
 
     public draw() {
-        image(this.image, this.position.x, this.position.y, this.size.x, this.size.y);
-        fill(255, 0, 0)
-        triangle(
-            this.position.x, this.position.y,
-            this.position.x + this.size.x, this.position.y + (this.size.y * .5), 
-            this.position.x, this.position.y + this.size.y)
-            
-        
     
+        // push()
+        // translate(this.position.x + 50, this.position.y)
+        // rotate(this.angle)
+        // angleMode(DEGREES)
+        // imageMode(CENTER)
+        // rectMode(CENTER)
+        image(this.image, this.position.x, this.position.y, this.size.x, this.size.y);
+        // rect(0, 0, 10, 10)
+        // pop()
+
+        // fill(255, 0, 0)
+        // triangle(
+        //     this.position.x, this.position.y,
+        //     this.position.x + this.size.x, this.position.y + (this.size.y * .5), 
+        //     this.position.x, this.position.y + this.size.y)
+            
     }
 
     public update() {
         this.fly()
-        this.spaceShipSpeedUp *= 1.00005
+        this.spaceShipSpeedUp *= 1.0005;
         this.spaceShipSpeedDown *= 1.00005;
     }
 
@@ -39,11 +49,20 @@ class Spaceship {
             || keyIsDown(38)
             || keyIsDown(87)
             || keyIsDown(32)) {
+            
+                if(this.angle >= -20) {
+                    this.angle -= 2;
+                }
+                
             if (this.position.y >= 0) {
-
                 this.position.y -= this.spaceShipSpeedUp;
             }
+          
         } else {
+            
+            if(this.angle <= 0){
+                this.angle++;
+            }
 
             if (this.position.y <= height - this.size.y) {
                 this.position.y += this.spaceShipSpeedDown;
@@ -55,7 +74,8 @@ class Spaceship {
         }
     }
 
-    private changeSpaceship() {
+    // private changeAngle() {
+    //     if 
+    // }
 
-    }
 }

@@ -1,16 +1,22 @@
 class Obstacle {
-    private size: p5.Vector
-    private position: p5.Vector
+    public size: p5.Vector
+    public position: p5.Vector
     private image: p5.Image
     public collisionCircle: Circle
-    private bgColor: string
+    //public collisionEllipse: Ellipse
+    private rotationSpeed: number
+    //private rotationDegree: number
 
-    constructor(image: p5.Image, position:p5.Vector, size:p5.Vector) {
+    constructor(image: p5.Image, position:p5.Vector, size:p5.Vector, rotationSpeed:number) {
         this.size = size
         this.position = position
         this.image = obstacleImg  
         this.collisionCircle = new Circle(createVector(position.x + size.x/2, position.y + size.y/2), size.y/2)
-        this.bgColor = "red";
+        //this.rotationDegree = 1
+        this.rotationSpeed = rotationSpeed
+   
+
+        //his.collisionEllipse = new Ellipse(ellipse(obstacleMidPointX, obstacleMidPointY, obstacleWidth, obstacleHeight))
 
     }
 
@@ -19,14 +25,28 @@ class Obstacle {
         this.position.x -= horizontalGameSpeed * (deltaTime / 1000)
         this.collisionCircle.position.x -= horizontalGameSpeed * (deltaTime / 1000)
 
+        this.rotationSpeed++;
         this.removesObstaclesFromArray();
+       
+
     }
 
     public draw(){
-        image(this.image, this.position.x, this.position.y, this.size.x, this.size.y);
-        fill(255,0,0)
-        rect(this.position.x, this.position.y, this.size.x, this.size.y)
         
+       push()      
+       angleMode(DEGREES) 
+       imageMode(CENTER)
+        ellipseMode(CENTER)
+        translate(this.position.x + (this.size.x * .5), this.position.y + (this.size.y * .5))
+       rotate(- this.rotationSpeed)
+       
+       image(this.image, 0,0, this.size.x, this.size.y);
+       //För att se vart centrumpunkten befinner sig
+        
+        fill(255)
+        ellipse(0,0, 10,10)
+        pop()
+ 
     }
 
     /** 
@@ -42,11 +62,6 @@ class Obstacle {
     
 }
 
-// när nytt hinder ska spawnas ska den utgå från sista hindret i arrayen för att få fram 
-//dens aktuella x-position och y-position och alltid spawna minst ett spaceshipe-size 
-//från det föregående hindret
 
-// checkLastObjPosition() 
-// sparar x-position i en variabel
-// 
-
+// alla hinder snurrar olika mycket fps
+// nummer mellan 0 - 4
