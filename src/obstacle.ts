@@ -10,7 +10,7 @@ class Obstacle {
     constructor(image: p5.Image, position:p5.Vector, size:p5.Vector, rotationSpeed:number) {
         this.size = size
         this.position = position
-        this.image = obstacleImg  
+        this.image = image 
         this.collisionCircle = new Circle(createVector(position.x + size.x/2, position.y + size.y/2), size.y/2)
         //this.rotationDegree = 1
         this.rotationSpeed = rotationSpeed
@@ -30,7 +30,7 @@ class Obstacle {
        
 
     }
-
+ 
     public draw(){
         
        push()      
@@ -39,10 +39,8 @@ class Obstacle {
         ellipseMode(CENTER)
         translate(this.position.x + (this.size.x * .5), this.position.y + (this.size.y * .5))
        rotate(- this.rotationSpeed)
-       
        image(this.image, 0,0, this.size.x, this.size.y);
        //För att se vart centrumpunkten befinner sig
-        
         fill(255)
         ellipse(0,0, 10,10)
         pop()
