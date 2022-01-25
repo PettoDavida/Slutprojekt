@@ -2,7 +2,7 @@ class Obstacle {
     public size: p5.Vector
     public position: p5.Vector
     private image: p5.Image
-    public collisionCircle: Circle
+    private collisionCircle: Circle
     //public collisionEllipse: Ellipse
     private rotationSpeed: number
     //private rotationDegree: number
@@ -11,7 +11,7 @@ class Obstacle {
         this.size = size
         this.position = position
         this.image = obstacleImg  
-        this.collisionCircle = new Circle(createVector(position.x + size.x/2, position.y + size.y/2), size.y/2)
+        this.collisionCircle = new Circle(createVector(0 + size.x/2, 0 + size.y/2), size.y/2)
         //this.rotationDegree = 1
         this.rotationSpeed = rotationSpeed
    
@@ -23,7 +23,7 @@ class Obstacle {
     public update(horizontalGameSpeed: number) {
         // fart i px per sekund
         this.position.x -= horizontalGameSpeed * (deltaTime / 1000)
-        this.collisionCircle.position.x -= horizontalGameSpeed * (deltaTime / 1000)
+        
 
         this.rotationSpeed++;
         this.removesObstaclesFromArray();
@@ -46,6 +46,10 @@ class Obstacle {
         fill(255)
         ellipse(0,0, 10,10)
         pop()
+
+        // fill(255,0,0)
+        // ellipse(this.collisionCircle.position.x + this.position.x, this.collisionCircle.position.y + this.position.y,
+        //         this.collisionCircle.radius * 2, this.collisionCircle.radius * 2)
  
     }
 
@@ -57,6 +61,14 @@ class Obstacle {
             game.obstacles.shift()
         }
     }
+
+    public getCollisionCircle(){
+        let circle = new Circle(createVector(this.collisionCircle.position.x + this.position.x, this.collisionCircle.position.y + this.position.y),
+                                this.collisionCircle.radius)
+                                
+        return circle
+    }
+
     private obstaclePosition(){}
     private obstacleType(){}
     
