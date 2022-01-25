@@ -10,8 +10,12 @@ html, body, canvas {
 
 }
 
-h1, h2, ol {
+h1, ol {
     color: black;
+    font-size: 50px;
+}
+
+h2 {
     font-size: 50px;
 }
 
@@ -21,19 +25,23 @@ li {
 }
 
 p {
-    color: black;
+    color: white;
 }
 
 button {
    opacity: 1;
+    border-radius: 5px;
+}
 
+button:hover {
+    background: black;
+    color: white;
 }
 
 .gameKeys {
     border: solid 2px black;
     padding: 15px 20px 15px 20px;
-    background: white;
-    color: black;
+    background: black;
     border-radius: 10px;
 
 }

@@ -6,10 +6,16 @@ class Menu {
         this.clickStartGame = clickStartGame
     }
 
+    /**
+     * Removes the div and all it's children
+     */
     public clearMenuContainer() {
         this.menuContainer?.remove()
     }
 
+    /**
+     * Creates a div
+     */
     public static createMenuContainer(): p5.Element {
         return createDiv()
             .position(350, 50)
@@ -18,6 +24,9 @@ class Menu {
             .parent(document.querySelector('main') as Element)
     }
 
+    /**
+     * Creates all the elements on the menu
+     */
     public setup() {
         this.clearMenuContainer()
         this.menuContainer = Menu.createMenuContainer()
@@ -45,18 +54,17 @@ class Menu {
             .parent(this.menuContainer)
     }
 
+    /**
+     * When the game starts it clears the menu div
+     */
     public startGame() {
         this.clearMenuContainer()
         this.clickStartGame()
     }
 
-    public draw() {
-    }
-
-    public update() {
-
-    }
-
+    /**
+     * Creates the elements under Controls
+     */
     public checkControls() {
         this.clearMenuContainer()
 
@@ -64,6 +72,7 @@ class Menu {
 
         createElement('h2', 'Game Controls')
             .position(40, 5)
+            .style('color', 'white')
             .parent(this.menuContainer)
 
         createElement('p', 'Fly')
@@ -115,6 +124,9 @@ class Menu {
             .parent(this.menuContainer)
     }
 
+    /**
+     * Creates the elements in High Score
+     */
     public checkHighScore() {
         this.clearMenuContainer()
 

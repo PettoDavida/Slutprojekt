@@ -1,13 +1,13 @@
 class GameOverMenu {
     public menu: Menu
-    private background: string;
-    private text: string;
-    private size: p5.Vector;
 
     constructor(startMenu: Menu) {
         this.menu = startMenu
     }
 
+    /**
+     * Creates the elements in the game over menu
+     */
     public draw() {
         this.menu.clearMenuContainer()
         this.menu.menuContainer = Menu.createMenuContainer()
@@ -17,29 +17,35 @@ class GameOverMenu {
             .position(40, 5)
             .parent(this.menu.menuContainer)
 
+        createElement('p', "Score:")
+            .position(40, 100)
+            .parent(this.menu.menuContainer)
+
         createButton('Restart')
-            .position(200, 450)
+            .position(300, 350)
             .mousePressed(this.restartGame.bind(this))
+            .size(100, 60)
             .parent(this.menu.menuContainer)
 
         createButton('Menu')
-            .position(200, 350)
+            .position(100, 350)
             .mousePressed(this.backToMenu.bind(this))
+            .size(100, 60)
             .parent(this.menu.menuContainer)
     }
 
+    /**
+     * Returns the elements in menu setup
+     */
     public backToMenu() {
         this.menu.setup()
     }
 
+    /**
+     * Makes the game start over
+     */
     public restartGame() {
         this.menu.startGame()
-    }
-
-    public update() {
-    }
-
-    private newGame() {
     }
 
     private checkHighScore() {
