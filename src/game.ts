@@ -7,7 +7,7 @@ class Game {
     public gameovermenu: GameOverMenu
     public background: Background
     public highscore: Highscore
-    public scores: Score[]
+   public scores: Score[]
     public gameState: GameState = GameState.start
     private spawnTime: number;
     private horizontalGameSpeed: number;
@@ -28,12 +28,14 @@ class Game {
         this.spawnTime = 0;
         this.horizontalGameSpeed = 100;
         this.highscore = new Highscore()
-        this.scores = []
+        this.scores =  [];
     }
 
     public draw() {
+        
         clear()
         this.background.draw()
+
 
         if (this.gameState === GameState.running) {
             for (const obstacle of this.obstacles) {
@@ -44,6 +46,7 @@ class Game {
             this.spaceship.draw()
             this.highscore.draw()
             return
+
         }
     }
 
@@ -63,7 +66,7 @@ class Game {
                 break
             case GameState.over:
                 this.highscore.update();
-                // stoppa score-counter
+                  // stoppa score-counter
                 // spara floored score till en array
                 break
         }
