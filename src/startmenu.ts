@@ -130,6 +130,8 @@ class Menu {
     public checkHighScore() {
         this.clearMenuContainer()
 
+
+        
         this.menuContainer = Menu.createMenuContainer()
 
         const ol = createElement('ol', 'Highscore')

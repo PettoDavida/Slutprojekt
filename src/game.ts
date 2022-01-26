@@ -6,8 +6,8 @@ class Game {
     public menu: Menu
     public gameovermenu: GameOverMenu
     public background: Background
-    public highscore: Highscore
-    public scores: Score[]
+   0
+   // public scores: number[]
     public gameState: GameState = GameState.start
     private spawnTime: number;
     private horizontalGameSpeed: number;
@@ -28,15 +28,17 @@ class Game {
         this.spawnTime = 0;
         this.horizontalGameSpeed = 100;
         this.highscore = new Highscore()
-        this.scores = []
+        //this.scores =  [];
     }
 
     public draw() {
+        
         clear()
         this.background.draw()
 
         switch (this.gameState) {
             case GameState.start:
+                
                 break
             case GameState.running:
                 for (const obstacle of this.obstacles) {
@@ -49,7 +51,7 @@ class Game {
 
                 break
             case GameState.over:
-                // Game over menu
+                
                 break
         }
     }
@@ -72,6 +74,7 @@ class Game {
                 break
             case GameState.over:
                 this.highscore.update();
+                
                 // stoppa score-counter 
                 // spara floored score till en array
                 break
