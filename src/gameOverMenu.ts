@@ -14,11 +14,11 @@ class GameOverMenu {
 
         createElement("h2", "Game Over")
             .style("color", "white")
-            .position(40, 5)
+            .position(90, 5)
             .parent(this.menu.menuContainer)
 
         createElement('p', "Score:")
-            .position(40, 100)
+            .position(90, 100)
             .parent(this.menu.menuContainer)
 
         createButton('Restart')
