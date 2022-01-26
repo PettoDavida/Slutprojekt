@@ -1,8 +1,8 @@
 class Menu {
     public menuContainer?: p5.Element
-    public readonly clickStartGame: () => any
+    private readonly clickStartGame: () => void
 
-    constructor(clickStartGame: () => any) {
+    constructor(clickStartGame: () => void) {
         this.clickStartGame = clickStartGame
     }
 
@@ -32,7 +32,7 @@ class Menu {
         this.menuContainer = Menu.createMenuContainer()
 
         createElement('h1', 'Space Jam 3.0')
-            .position(40, 5)
+            .position(50, 5)
             .parent(this.menuContainer)
 
         createButton('Start Game')
@@ -65,7 +65,7 @@ class Menu {
     /**
      * Creates the elements under Controls
      */
-    public checkControls() {
+    private checkControls() {
         this.clearMenuContainer()
 
         this.menuContainer = Menu.createMenuContainer()
@@ -127,7 +127,7 @@ class Menu {
     /**
      * Creates the elements in High Score
      */
-    public checkHighScore() {
+    private checkHighScore() {
         this.clearMenuContainer()
 
 
