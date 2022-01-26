@@ -6,8 +6,8 @@ class Game {
     public menu: Menu
     public gameovermenu: GameOverMenu
     public background: Background
-    public highscore: Highscore
-    public scores: number[]
+   0
+   // public scores: number[]
     public gameState: GameState = GameState.start
     private spawnTime: number;
     private horizontalGameSpeed: number;
@@ -28,7 +28,7 @@ class Game {
         this.spawnTime = 0;
         this.horizontalGameSpeed = 100;
         this.highscore = new Highscore()
-        this.scores = JSON.parse(localStorage.getItem("scores")) ?? [];
+        //this.scores =  [];
     }
 
     public draw() {
