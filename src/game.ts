@@ -49,9 +49,7 @@ class Game {
 
     public update() {
         switch (this.gameState) {
-            case GameState.start:
-                break
-            // Menu stuff
+
             case GameState.running:
                 this.spawnObstacle();
                 this.highscore.update();
@@ -65,7 +63,7 @@ class Game {
                 break
             case GameState.over:
                 this.highscore.update();
-                // stoppa score-counter 
+                // stoppa score-counter
                 // spara floored score till en array
                 break
         }
