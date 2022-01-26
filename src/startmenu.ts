@@ -130,29 +130,31 @@ class Menu {
     public checkHighScore() {
         this.clearMenuContainer()
 
+        
+
         this.menuContainer = Menu.createMenuContainer()
 
         const ol = createElement('ol', 'Highscore')
             .position(40, 5)
             .parent(this.menuContainer)
 
-        createElement('li', 'Anna')
+        createElement('li', `${game.scores[0]}`)
             .position(100, 70)
             .parent(ol)
 
-        createElement('li', 'Ella')
+        createElement('li', `${game.scores[1]}`)
             .position(100, 110)
             .parent(ol)
 
-        createElement('li', 'Maximilian')
+        createElement('li', `${game.scores[2]}`)
             .position(100, 150)
             .parent(ol)
 
-        createElement('li', 'Linnea')
+        createElement('li', `${game.scores[3]}`)
             .position(100, 190)
             .parent(ol)
 
-        createElement('li', 'Erik')
+        createElement('li', `${game.scores[4]}`)
             .position(100, 240)
             .parent(ol)
 
