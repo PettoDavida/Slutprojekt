@@ -35,10 +35,8 @@ class Game {
         clear()
         this.background.draw()
 
-        switch (this.gameState) {
-            case GameState.start:
-                break
-            case GameState.running:
+        if (this.gameState === GameState.running) {
+
                 for (const obstacle of this.obstacles) {
                     obstacle.draw()
                 }
@@ -46,11 +44,9 @@ class Game {
                 this.lowerWall.draw()
                 this.spaceship.draw()
                 this.highscore.draw()
+                return
 
-                break
-            case GameState.over:
-                // Game over menu
-                break
+
         }
     }
 
