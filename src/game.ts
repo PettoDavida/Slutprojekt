@@ -36,17 +36,14 @@ class Game {
         this.background.draw()
 
         if (this.gameState === GameState.running) {
-
-                for (const obstacle of this.obstacles) {
-                    obstacle.draw()
-                }
-                this.upperWall.draw()
-                this.lowerWall.draw()
-                this.spaceship.draw()
-                this.highscore.draw()
-                return
-
-
+            for (const obstacle of this.obstacles) {
+                obstacle.draw()
+            }
+            this.upperWall.draw()
+            this.lowerWall.draw()
+            this.spaceship.draw()
+            this.highscore.draw()
+            return
         }
     }
 
