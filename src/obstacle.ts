@@ -51,8 +51,8 @@ class Obstacle {
     * Removes obstacles from its array when out of screen
     */
     private removesObstaclesFromArray(){
-        if (game.obstacles[0].position.x < 0 - game.obstacles[0].size.x) {
-            game.obstacles.shift()
+        if (preGame.obstacles[0].position.x < 0 - preGame.obstacles[0].size.x) {
+            preGame.obstacles.shift()
         }
     }
     private obstaclePosition(){}

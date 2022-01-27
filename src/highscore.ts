@@ -7,23 +7,18 @@ class Highscore {
     constructor() {
         this.score = 0
         this.flooredScore = 0
-        this.scoreBoard = JSON.parse(localStorage.getItem("scores")) ?? []
-        
+        this.scoreBoard = JSON.parse(localStorage.getItem("scores") ?? "[]")
     }
     
     public update() { 
        //this.getScoresFromLS();
-       
         this.flooredScore = floor(this.score)
         this.score += (deltaTime / 1000) // +1 km for each second 
-        
-         if (game.gameState === GameState.over) {
-            this.scoreBoard.push(this.flooredScore);
-            this.sortHighScore();
-            noLoop()
-        } 
-        return
-       
+    }
+    
+    public save() {
+        this.scoreBoard.push(this.flooredScore);
+        this.sortHighScore();
     }
     
     public draw() {

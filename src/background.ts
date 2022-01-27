@@ -7,7 +7,7 @@ class Background {
     }
 
     public update() {
-        if (game.highscore.flooredScore === 10 || game.highscore.flooredScore === 20 || game.highscore.flooredScore === 30) {
+        if (preGame.highscore.flooredScore === 10 || preGame.highscore.flooredScore === 20 || preGame.highscore.flooredScore === 30) {
             this.changeImages();
         }
 
@@ -22,12 +22,12 @@ class Background {
 
     private changeImages() {
         
-        switch (game.highscore.flooredScore) {
+        switch (preGame.highscore.flooredScore) {
             case 10:
                 if (this.state === 10) {
                     return
                 }
-                game.background = new Background(backgroundImg2)
+                preGame.background = new Background(backgroundImg2)
                 obstacleImg = obstacleImg2
                 break
             case 10:
@@ -37,7 +37,7 @@ class Background {
                 // ändra bakgrundsbild
                 break
         }
-        this.state = game.highscore.flooredScore
+        this.state = preGame.highscore.flooredScore
     }
 }
 
