@@ -6,8 +6,10 @@ class Game {
     public menu: Menu
     public gameovermenu: GameOverMenu
     public background: Background
+
     private highscore: Highscore
    // public scores: number[]
+
     public gameState: GameState = GameState.start
     private spawnTime: number;
     private horizontalGameSpeed: number;
@@ -28,7 +30,7 @@ class Game {
         this.spawnTime = 0;
         this.horizontalGameSpeed = 100;
         this.highscore = new Highscore()
-        //this.scores =  [];
+        this.scores =  [];
     }
 
     public draw() {
@@ -36,31 +38,23 @@ class Game {
         clear()
         this.background.draw()
 
-        switch (this.gameState) {
-            case GameState.start:
-                
-                break
-            case GameState.running:
-                for (const obstacle of this.obstacles) {
-                    obstacle.draw()
-                }
-                this.upperWall.draw()
-                this.lowerWall.draw()
-                this.spaceship.draw()
-                this.highscore.draw()
 
-                break
-            case GameState.over:
-                
-                break
+        if (this.gameState === GameState.running) {
+            for (const obstacle of this.obstacles) {
+                obstacle.draw()
+            }
+            this.upperWall.draw()
+            this.lowerWall.draw()
+            this.spaceship.draw()
+            this.highscore.draw()
+            return
+
         }
     }
 
     public update() {
         switch (this.gameState) {
-            case GameState.start:
-                break
-            // Menu stuff
+
             case GameState.running:
                 this.spawnObstacle();
                 this.highscore.update();
@@ -74,8 +68,7 @@ class Game {
                 break
             case GameState.over:
                 this.highscore.update();
-                
-                // stoppa score-counter 
+                  // stoppa score-counter
                 // spara floored score till en array
                 break
         }
@@ -88,7 +81,7 @@ class Game {
     /**
      * Changes the gamestate to running and changes the position of the spaceship
      */
-    public startGame() {
+    private startGame() {
         this.spaceship.position.y = 300
         this.gameState = GameState.running
     }
@@ -116,7 +109,7 @@ class Game {
     private checkCollision() {
         for (const obstacle of this.obstacles) {
             if (obstacle.collisionCircle.collide(this.spaceship.position, this.spaceship.size)) {
-                this.gameovermenu.draw()
+                this.gameovermenu.setup()
                 this.gameState = GameState.over
                 return
             }// vad som ska hända när spaceship nuddar ett hinder
@@ -124,7 +117,7 @@ class Game {
         }
         if (this.upperWall.collisionBox.collide(this.spaceship.position, this.spaceship.size) ||
             this.lowerWall.collisionBox.collide(this.spaceship.position, this.spaceship.size)) {
-            this.gameovermenu.draw()
+            this.gameovermenu.setup()
             this.gameState = GameState.over
             return
         } // vad som ska hända när spaceship nuddar en kant

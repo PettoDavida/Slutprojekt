@@ -1,5 +1,5 @@
 class GameOverMenu {
-    public menu: Menu
+    private menu: Menu
 
     constructor(startMenu: Menu) {
         this.menu = startMenu
@@ -8,17 +8,19 @@ class GameOverMenu {
     /**
      * Creates the elements in the game over menu
      */
-    public draw() {
+    public setup() {
         this.menu.clearMenuContainer()
         this.menu.menuContainer = Menu.createMenuContainer()
 
         createElement("h2", "Game Over")
             .style("color", "white")
-            .position(40, 5)
+            .position(90, 5)
             .parent(this.menu.menuContainer)
+
 
        const scoreList = createElement('p', "Score:")
             .position(40, 100)
+
             .parent(this.menu.menuContainer)
             .id("score-list")
             .addClass("score-list")
@@ -49,14 +51,14 @@ class GameOverMenu {
     /**
      * Returns the elements in menu setup
      */
-    public backToMenu() {
+    private backToMenu() {
         this.menu.setup()
     }
 
     /**
      * Makes the game start over
      */
-    public restartGame() {
+    private restartGame() {
         this.menu.startGame()
     }
 
