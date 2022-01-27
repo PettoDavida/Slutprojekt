@@ -1,30 +1,26 @@
 class Highscore {
     private score: number
     public flooredScore: number
-    private scoreBoard: number[]
+    public scoreBoardArray: number[]
     
 
     constructor() {
         this.score = 0
         this.flooredScore = 0
-        this.scoreBoard =  [];
+        this.scoreBoardArray =  JSON.parse(localStorage.getItem('scores')) ?? [];
         
     }
     
     public update() { 
        //this.getScoresFromLS();
-       
+       console.log(this.scoreBoardArray)
         this.flooredScore = floor(this.score)
         this.score += (deltaTime / 1000) // +1 km for each second 
         
         if (game.gameState === GameState.over) {
-            this.scoreBoard.push(JSON.parse(localStorage.getItem('scores')) ?? [])
-            this.scoreBoard.push(this.flooredScore);
-            this.sortHighScore();
-
-            //pusha LS till array
-            //Jämför seanste score med array 
-            //sortera senaste score
+            console.log(this.scoreBoardArray)
+            this.scoreBoardArray.push(this.flooredScore);
+            this.sortScoreBoard();
             noLoop()
         } 
     
@@ -43,27 +39,33 @@ class Highscore {
 //         game.scores.push() ?? [];
 //         console.log(game.scores);
 //     }
-    private sortHighScore() {
-            this.scoreBoard.sort(function(a, b){
-                return b-a
-            })
+    private sortScoreBoard() {
+            this.scoreBoardArray.sort(function(a, b){
+               return b-a
+           })
 
-        console.log(this.scoreBoard);
+        this.scoreBoardArray.splice(5);
         this.saveToLS();
-       
-            //console.log(this.scoreBoard);
+        this.drawOnBoard()
+        console.log(this.drawOnBoard)
         
      }
 
-    private pushScoreToArray() {
-       this.sortHighScore();
-       this.saveToLS();
-        
-    };
-    
-
     private saveToLS() {
-        localStorage.setItem('scores', JSON.stringify(this.scoreBoard));
+        localStorage.setItem('scores', JSON.stringify(this.scoreBoardArray));
         
+    }
+    private drawOnBoard() {
+        for(let i = 0; i < 5; i ++) {
+                let highscoreListItems = createElement('ol', `${this.scoreBoardArray[i]}`)
+                .parent('#score-list')
+                .style('font-size', '17px') 
+                .style('color', 'white')
+                .addClass('highscoreListItems')
+
+
+            
+        }
+        noLoop()
     }
 }

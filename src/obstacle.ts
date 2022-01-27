@@ -43,6 +43,7 @@ class Obstacle {
        //För att se vart centrumpunkten befinner sig
         fill(255)
         ellipse(0,0, 10,10)
+        
         pop()
  
     }
