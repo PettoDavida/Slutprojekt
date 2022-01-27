@@ -6,8 +6,10 @@ class Game {
     public menu: Menu
     public gameovermenu: GameOverMenu
     public background: Background
-    public highscore: Highscore
-   public scores: Score[]
+
+    private highscore: Highscore
+   // public scores: number[]
+
     public gameState: GameState = GameState.start
     private spawnTime: number;
     private horizontalGameSpeed: number;
