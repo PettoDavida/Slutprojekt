@@ -7,7 +7,7 @@ class Highscore {
     constructor() {
         this.score = 0
         this.flooredScore = 0
-        this.scoreBoard = JSON.parse(localStorage.getItem("scores")) ?? []
+        this.scoreBoard =  [];
         
     }
     
@@ -17,11 +17,17 @@ class Highscore {
         this.flooredScore = floor(this.score)
         this.score += (deltaTime / 1000) // +1 km for each second 
         
-         if (game.gameState === GameState.over) {
+        if (game.gameState === GameState.over) {
+            this.scoreBoard.push(JSON.parse(localStorage.getItem('scores')) ?? [])
             this.scoreBoard.push(this.flooredScore);
             this.sortHighScore();
+
+            //pusha LS till array
+            //Jämför seanste score med array 
+            //sortera senaste score
             noLoop()
         } 
+    
         return
        
     }
@@ -38,12 +44,13 @@ class Highscore {
 //         console.log(game.scores);
 //     }
     private sortHighScore() {
-            
+            this.scoreBoard.sort(function(a, b){
+                return b-a
+            })
+
         console.log(this.scoreBoard);
         this.saveToLS();
-        // this.scoreBoard.sort(function(a, b){
-        //         return b-a
-        //     })
+       
             //console.log(this.scoreBoard);
         
      }
@@ -56,7 +63,7 @@ class Highscore {
     
 
     private saveToLS() {
-        localStorage.setItem("scores", JSON.stringify(this.scoreBoard));
+        localStorage.setItem('scores', JSON.stringify(this.scoreBoard));
         
     }
 }
