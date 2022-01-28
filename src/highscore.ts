@@ -1,24 +1,25 @@
 class Highscore {
     private score: number
     public flooredScore: number
-    private scoreBoard: number[]
-    
+    private scoreBoardArray: number[]
 
     constructor() {
         this.score = 0
         this.flooredScore = 0
-        this.scoreBoard = JSON.parse(localStorage.getItem("scores") ?? "[]")
+        this.scoreBoardArray = JSON.parse(localStorage.getItem("scores") ?? "[]")
     }
     
     public update() { 
        //this.getScoresFromLS();
         this.flooredScore = floor(this.score)
         this.score += (deltaTime / 1000) // +1 km for each second 
+        
     }
     
     public save() {
-        this.scoreBoard.push(this.flooredScore);
+        this.scoreBoardArray.push(this.flooredScore);
         this.sortHighScore();
+      //  this.drawOnScoreBoard()
     }
     
     public draw() {
@@ -34,12 +35,11 @@ class Highscore {
 //     }
     private sortHighScore() {
             
-        console.log(this.scoreBoard);
         this.saveToLS();
-        // this.scoreBoard.sort(function(a, b){
-        //         return b-a
-        //     })
-            //console.log(this.scoreBoard);
+        this.scoreBoardArray.sort(function(a, b){
+                return b-a
+            })
+            console.log(this.scoreBoardArray);
         
      }
 
@@ -51,7 +51,20 @@ class Highscore {
     
 
     private saveToLS() {
-        localStorage.setItem("scores", JSON.stringify(this.scoreBoard));
+        localStorage.setItem("scores", JSON.stringify(this.scoreBoardArray));
         
     }
+    // private drawOnScoreBoard() {
+        
+    //     for(let i = 0; i < 5; i ++) {
+                
+    //             createElement('ol', `${this.scoreBoardArray[i]}`)
+    //             .parent('#score-list')
+    //             .style('font-size', '17px') 
+    //             .style('color', 'white')
+    //             .addClass('highscoreListItems')
+            
+    //     }
+        
+    // }
 }

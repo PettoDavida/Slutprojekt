@@ -1,15 +1,18 @@
 class Background {
     private state = 0
     private image: p5.Image
+    private highscore: Highscore
+    
 
     constructor(image: p5.Image) {
         this.image = image
+        this.highscore = new Highscore()
     }
 
     public update() {
-        if (preGame.highscore.flooredScore === 10 || preGame.highscore.flooredScore === 20 || preGame.highscore.flooredScore === 30) {
-            this.changeImages();
-        }
+        // if (Highscore.flooredScore == 10 || Game.highscore.flooredScore === 20 || Game.highscore.flooredScore === 30) {
+        this.changeImages();
+        // }
 
     }
 
@@ -22,7 +25,7 @@ class Background {
 
     private changeImages() {
         
-        switch (preGame.highscore.flooredScore) {
+      switch (this.highscore.flooredScore) {
             case 10:
                 if (this.state === 10) {
                     return
@@ -37,7 +40,8 @@ class Background {
                 // ändra bakgrundsbild
                 break
         }
-        this.state = preGame.highscore.flooredScore
+        this.state = this.highscore.flooredScore
+        
     }
 }
 

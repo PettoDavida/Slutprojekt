@@ -3,6 +3,9 @@ class PreGame {
     private menu: Menu
     private gameovermenu: GameOverMenu
     public gameState: GameState = GameState.start // gör private
+    //public highscore: Highscore;
+    public background: Background;
+    highscore: any;
     
 
     constructor() {
@@ -10,7 +13,8 @@ class PreGame {
         this.gameovermenu = new GameOverMenu(this.menu)
         this.menu.setup()
         this.game = new Game(this.gameOver.bind(this));
-        
+        this.background = new Background(backgroundImg)
+       // this.highscore = new Highscore()
     }
 
     /**
@@ -24,6 +28,7 @@ class PreGame {
     private gameOver = () => {
         this.gameovermenu.setup()
         this.gameState = GameState.over
+        this.game.removeObstaclesFromArray()   
     }
 
     public update() {

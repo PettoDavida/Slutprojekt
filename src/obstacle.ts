@@ -26,7 +26,10 @@ class Obstacle {
         this.collisionCircle.position.x -= horizontalGameSpeed * (deltaTime / 1000)
 
         this.rotationSpeed++;
-        this.removesObstaclesFromArray();
+       // this.removesObstaclesFromArray();
+
+        // let func = this.removesObstaclesFromArray.bind(Game)
+        // func();
        
 
     }
@@ -50,11 +53,13 @@ class Obstacle {
     /** 
     * Removes obstacles from its array when out of screen
     */
-    private removesObstaclesFromArray(){
-        if (preGame.obstacles[0].position.x < 0 - preGame.obstacles[0].size.x) {
-            preGame.obstacles.shift()
-        }
-    }
+    // public removesObstaclesFromArray(){
+
+    //     console.log()
+    //     if (Game.obstacles[0].position.x < 0 - Game.obstacles[0].size.x) {
+    //         Game.obstacles.shift()
+    //     }
+    // }
     private obstaclePosition(){}
     private obstacleType(){}
     

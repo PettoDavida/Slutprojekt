@@ -20,6 +20,7 @@ class GameOverMenu {
         createElement('p', "Score:")
             .position(90, 100)
             .parent(this.menu.menuContainer)
+            .id('score-list')
 
         createButton('Restart')
             .position(300, 350)

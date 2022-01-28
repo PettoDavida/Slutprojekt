@@ -1,6 +1,6 @@
 class Game {
     private onGameOver: () => void;
-    private obstacles: Obstacle[]
+    public obstacles: Obstacle[]
     private spaceship: Spaceship
     private upperWall: Wall
     private lowerWall: Wall
@@ -8,7 +8,9 @@ class Game {
    // public scores: Score[]
     private spawnTime: number;
     private horizontalGameSpeed: number;
-    private highscore: Highscore
+    public highscore: Highscore
+    
+    
 
     constructor(onGameOver: () => void) {
         this.onGameOver = onGameOver;
@@ -28,26 +30,39 @@ class Game {
 
     public draw() {
         this.background.draw()
+        
         for (const obstacle of this.obstacles) {
             obstacle.draw()
         }
+        
         this.upperWall.draw()
         this.lowerWall.draw()
         this.spaceship.draw()
+        this.highscore.draw()
     }
 
     public update() {
         this.spawnObstacle()
+        
         this.background.update()
         for (const obstacle of this.obstacles) {
             obstacle.update(this.horizontalGameSpeed)
+            
+            
+        }
+        if (this.highscore.flooredScore === 10 || this.highscore.flooredScore === 20 || this.highscore.flooredScore === 30) {
+            this.background.update()
         }
         this.checkCollision()
         this.spaceship.update()
         this.updateWorldSpeed()
         this.upperWall.update()
         this.lowerWall.update()
+        this.highscore.update()
+
+        
     }
+
 
     private updateWorldSpeed() {
         this.horizontalGameSpeed += 0.1
@@ -71,6 +86,11 @@ class Game {
             this.spawnTime = 0;
             console.log(rotationSpeed)
         }
+    }
+
+    public removeObstaclesFromArray(){
+        this.obstacles = [];
+        console.log(this.obstacles)
     }
 
     private checkCollision() {
