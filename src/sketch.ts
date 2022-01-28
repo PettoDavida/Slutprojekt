@@ -1,5 +1,5 @@
 //---- GLOBAL VARIABLES ----//
-let game: Game;
+let preGame: PreGame;
 // let sound: p5.SoundFile
 let spaceShipImg: p5.Image
 let betterSpaceShipImg: p5.Image
@@ -42,7 +42,7 @@ function setup() {
     frameRate(60);
     //noCursor();
 
-    game = new Game();
+    preGame = new PreGame();
 }
 
 /**
@@ -56,8 +56,8 @@ function draw() {
     // image(obstacleImg, 400, 700, 100, 100);
     // image(spaceShipImg, 50, 400, 130, 100);
 
-    game.update();
-    game.draw();
+    preGame.update();
+    preGame.draw();
 }
 
 

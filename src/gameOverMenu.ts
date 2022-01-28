@@ -22,18 +22,9 @@ class GameOverMenu {
             .position(40, 100)
 
             .parent(this.menu.menuContainer)
-            .id("score-list")
-            .addClass("score-list")
 
-        
+            .id('score-list')
 
-            // for(let i = 0; i < 5; i ++) {
-            //     for(const score of Highscore.scoreBoard) {
-            //         createElement('span', `${Highscore.scoreBoard[i]}`)
-            //         .parent(men)
-            //     }
-            // }
-        
 
         createButton('Restart')
             .position(300, 350)

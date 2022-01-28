@@ -2,8 +2,8 @@
  * @enum {number}
  */
 enum GameState {
-    start,
-    running,
-    over,
+    start, // 0
+    running, // 1
+    over, // 2
 }
 
