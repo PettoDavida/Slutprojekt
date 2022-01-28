@@ -17,10 +17,14 @@ class GameOverMenu {
             .position(90, 5)
             .parent(this.menu.menuContainer)
 
-        createElement('p', "Score:")
-            .position(90, 100)
+
+       const scoreList = createElement('p', "Score:")
+            .position(40, 100)
+
             .parent(this.menu.menuContainer)
+
             .id('score-list')
+
 
         createButton('Restart')
             .position(300, 350)

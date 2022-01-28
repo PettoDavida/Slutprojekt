@@ -134,29 +134,32 @@ class Menu {
         
         this.menuContainer = Menu.createMenuContainer()
 
-        const ol = createElement('ol', 'Highscore')
+        createElement('ol', 'Highscore')
             .position(40, 5)
             .parent(this.menuContainer)
+            
+        
 
-        createElement('li', 'Anna')
-            .position(100, 70)
-            .parent(ol)
 
-        createElement('li', 'Ella')
-            .position(100, 110)
-            .parent(ol)
+        // createElement('li', 'Anna')
+        //     .position(100, 70)
+        //     .parent(ol)
 
-        createElement('li', 'Maximilian')
-            .position(100, 150)
-            .parent(ol)
+        // createElement('li', 'Ella')
+        //     .position(100, 110)
+        //     .parent(ol)
 
-        createElement('li', 'Linnea')
-            .position(100, 190)
-            .parent(ol)
+        // createElement('li', 'Maximilian')
+        //     .position(100, 150)
+        //     .parent(ol)
 
-        createElement('li', 'Erik')
-            .position(100, 240)
-            .parent(ol)
+        // createElement('li', 'Linnea')
+        //     .position(100, 190)
+        //     .parent(ol)
+
+        // createElement('li', 'Erik')
+        //     .position(100, 240)
+        //     .parent(ol)
 
         createButton('Back')
             .position(200, 450)

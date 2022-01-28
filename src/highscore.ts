@@ -3,10 +3,13 @@ class Highscore {
     public flooredScore: number
     private scoreBoardArray: number[]
 
+
     constructor() {
         this.score = 0
         this.flooredScore = 0
+
         this.scoreBoardArray = JSON.parse(localStorage.getItem("scores") ?? "[]")
+
     }
     
     public update() { 
@@ -20,6 +23,7 @@ class Highscore {
         this.scoreBoardArray.push(this.flooredScore);
         this.sortHighScore();
       //  this.drawOnScoreBoard()
+
     }
     
     public draw() {
@@ -33,6 +37,7 @@ class Highscore {
 //         game.scores.push() ?? [];
 //         console.log(game.scores);
 //     }
+
     private sortHighScore() {
             
         this.saveToLS();
@@ -40,17 +45,12 @@ class Highscore {
                 return b-a
             })
             console.log(this.scoreBoardArray);
+
         
      }
 
-    private pushScoreToArray() {
-       this.sortHighScore();
-       this.saveToLS();
-        
-    };
-    
-
     private saveToLS() {
+
         localStorage.setItem("scores", JSON.stringify(this.scoreBoardArray));
         
     }
@@ -67,4 +67,5 @@ class Highscore {
     //     }
         
     // }
+
 }
