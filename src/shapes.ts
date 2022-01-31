@@ -50,13 +50,3 @@ class Circle {
         return (cornerDistanceSq <= (Math.pow(this.radius, 2)));
     }
 }
-
-class Triangle {
-    public position: p5.Vector
-    public size: p5.Vector
-
-    constructor(position: p5.Vector, size: p5.Vector) {
-        this.position = position
-        this.size = size
-    }
-}

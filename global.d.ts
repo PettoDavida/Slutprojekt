@@ -17,6 +17,9 @@ declare global {
         errorCallback?: (err: unknown) => void,
         loadingCallback?: (percectangeLoaded: number) => void,
     ): p5.SoundFile;
+
+    function outputVolume(volume: number, rampTime?: number, timeFromNow?: number): void;
+    function getOutputVolume(): number;
 }
 
 

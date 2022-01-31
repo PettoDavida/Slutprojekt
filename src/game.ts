@@ -5,11 +5,11 @@ class Game {
     private upperWall: Wall
     private lowerWall: Wall
     private background: Background
+
+
     private spawnTime: number;
     private horizontalGameSpeed: number;
     public highscore: Highscore
-    
-    
 
     constructor(onGameOver: () => void) {
         this.onGameOver = onGameOver;
@@ -21,18 +21,17 @@ class Game {
         this.lowerWall = new Wall(createVector(0, height - 50))
         this.background = new Background(backgroundImg)
         this.highscore = new Highscore()
-
         this.spawnTime = 0;
         this.horizontalGameSpeed = 100;
+
     }
 
     public draw() {
         this.background.draw()
-        
         for (const obstacle of this.obstacles) {
             obstacle.draw()
         }
-        
+
         this.upperWall.draw()
         this.lowerWall.draw()
         this.spaceship.draw()
@@ -41,10 +40,10 @@ class Game {
 
     public update() {
         this.spawnObstacle()
-        
         this.background.update()
         for (const obstacle of this.obstacles) {
             obstacle.update(this.horizontalGameSpeed)
+
         }
 
        // console.log(this.highscore.flooredScore)
@@ -59,10 +58,7 @@ class Game {
         this.upperWall.update()
         this.lowerWall.update()
         this.highscore.update()
-
-        
     }
-
 
     private updateWorldSpeed() {
         this.horizontalGameSpeed += 0.1
@@ -88,29 +84,37 @@ class Game {
         }
     }
 
-    public removeObstaclesFromArray(){
+    public removeObstaclesFromArray() {
         this.obstacles = [];
-        console.log(this.obstacles)
     }
 
     private checkCollision() {
         for (const obstacle of this.obstacles) {
+
             if (obstacle.collisionCircle.collide(this.spaceship.position, this.spaceship.size)) {
                
                 this.highscore.save();
+
+
                 this.onGameOver();
+                collisionSound.play()
+
                 return
             }// vad som ska hända när spaceship nuddar ett hinder
 
         }
+
         if (
             this.upperWall.collisionBox.collide(this.spaceship.position, this.spaceship.size) ||
             this.lowerWall.collisionBox.collide(this.spaceship.position, this.spaceship.size)
         ) {
             this.highscore.save();
             this.onGameOver();
+            collisionSound.play()
+
             return
         } // vad som ska hända när spaceship nuddar en kant
     }
 
 }
+
