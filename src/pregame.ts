@@ -10,7 +10,6 @@ class PreGame {
     constructor() {
         this.menu = new Menu(this.startGame.bind(this))
         this.gameovermenu = new GameOverMenu(this.menu)
-        this.menu.setup()
         this.game = new Game(this.gameOver.bind(this));
         this.background = new Background(backgroundImg)
         // this.highscore = new Highscore()
@@ -44,7 +43,6 @@ class PreGame {
     public update() {
         if (this.gameState === GameState.running) {
             this.game.update();
-
         }
 
     }

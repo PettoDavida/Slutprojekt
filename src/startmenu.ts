@@ -1,13 +1,13 @@
 class Menu {
     private readonly clickStartGame: () => void
     private highscore: Highscore
-
+    private isContolsMenuOpen: boolean;
 
     constructor(clickStartGame: () => void) {
         this.clickStartGame = clickStartGame
         this.highscore = new Highscore()
-        
-
+        this.isContolsMenuOpen = false;
+        this.setup();
     }
 
     /**
@@ -21,8 +21,13 @@ class Menu {
      * Draws up the square around the menu
      */
     public draw() {
-        square(350, 50, 500)
+        push()
         fill(255, 250, 250, 100)
+        square(350, 50, 500)
+        pop()
+        if (this.isContolsMenuOpen) {
+            this.drawRectanglesForControls();
+        }
     }
 
     /**
@@ -62,7 +67,7 @@ class Menu {
         this.clickStartGame()
     }
 
-    public rectanglesForControls() {
+    public drawRectanglesForControls() {
         fill(0, 0, 0)
         rect(380, 200, 150, 50)
         fill(255, 255, 255)
@@ -151,7 +156,7 @@ class Menu {
             .style('font-size', '50px')
 
         createButton('Back')
-            .position(550, 500)
+     //       .position(550, 500)
 
         let scoreElement = this.menuContainer = Menu.createMenuContainer()
         
