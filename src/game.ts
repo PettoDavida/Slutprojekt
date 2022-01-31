@@ -10,7 +10,6 @@ class Game {
     private horizontalGameSpeed: number;
     public highscore: Highscore
 
-
     constructor(onGameOver: () => void) {
         this.onGameOver = onGameOver;
         const position = createVector(50, 300)
@@ -44,7 +43,6 @@ class Game {
         for (const obstacle of this.obstacles) {
             obstacle.update(this.horizontalGameSpeed)
 
-
         }
         if (this.highscore.flooredScore === 10 || this.highscore.flooredScore === 20 || this.highscore.flooredScore === 30) {
             this.background.update()
@@ -56,7 +54,6 @@ class Game {
         this.lowerWall.update()
         this.highscore.update()
     }
-
 
     private updateWorldSpeed() {
         this.horizontalGameSpeed += 0.1
@@ -84,19 +81,20 @@ class Game {
 
     public removeObstaclesFromArray() {
         this.obstacles = [];
-        console.log(this.obstacles)
     }
 
     private checkCollision() {
         for (const obstacle of this.obstacles) {
-            if (obstacle.collisionCircle.collide(this.spaceship.position, this.spaceship.size)) {
-                this.highscore.save();
+            if (this.spaceship.collideCircle(obstacle.getCollisionCircle())) {
+                this.gameovermenu.draw()
                 this.onGameOver();
                 collisionSound.play()
+
                 return
             }// vad som ska hända när spaceship nuddar ett hinder
 
         }
+
         if (
             this.upperWall.collisionBox.collide(this.spaceship.position, this.spaceship.size) ||
             this.lowerWall.collisionBox.collide(this.spaceship.position, this.spaceship.size)
@@ -104,6 +102,7 @@ class Game {
             this.highscore.save();
             this.onGameOver();
             collisionSound.play()
+
             return
         } // vad som ska hända när spaceship nuddar en kant
     }
