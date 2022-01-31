@@ -6,8 +6,6 @@ class PreGame {
     //public highscore: Highscore;
     public background: Background;
 
-    // highscore: any;
-
 
     constructor() {
         this.menu = new Menu(this.startGame.bind(this))
@@ -37,6 +35,10 @@ class PreGame {
             this.gameovermenu.setup()
             return
         }
+
+        this.game.removeObstaclesFromArray()   
+        this.game.highscore.sortHighScore()
+
     }
 
     public update() {

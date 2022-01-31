@@ -1,8 +1,13 @@
 class Menu {
     private readonly clickStartGame: () => void
+    private highscore: Highscore
+
 
     constructor(clickStartGame: () => void) {
         this.clickStartGame = clickStartGame
+        this.highscore = new Highscore()
+        
+
     }
 
     /**
@@ -30,6 +35,8 @@ class Menu {
             .position(400, 50)
             .style('color', 'black')
             .style('font-size', '50px')
+            .addClass('menu-headline')
+
 
         createButton('Start Game')
             .position(500, 200)
@@ -137,6 +144,7 @@ class Menu {
     private checkHighScore() {
         this.clearMenuContainer()
 
+
         createElement('h2', 'HighScore')
             .position(400, 50)
             .style('color', 'black')
@@ -144,6 +152,20 @@ class Menu {
 
         createButton('Back')
             .position(550, 500)
+
+        let scoreElement = this.menuContainer = Menu.createMenuContainer()
+        
+        createElement('ol', 'Highscore')
+            //.position(40, 5)
+            .parent(this.menuContainer)
+            .id('score-list')
+            .addClass('menu-headline')
+        
+        this.highscore.drawOnScoreBoard(scoreElement);
+        
+        createButton('Back')
+            //.position(200, 450)
+
             .size(80, 30)
             .mousePressed(this.setup.bind(this))
     }

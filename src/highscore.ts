@@ -11,9 +11,10 @@ class Highscore {
         this.scoreBoardArray = JSON.parse(localStorage.getItem("scores") ?? "[]")
 
     }
-    
+    /**
+     * Saves 
+     */
     public update() { 
-       //this.getScoresFromLS();
         this.flooredScore = floor(this.score)
         this.score += (deltaTime / 1000) // +1 km for each second 
         
@@ -38,34 +39,35 @@ class Highscore {
 //         console.log(game.scores);
 //     }
 
-    private sortHighScore() {
-            
+    public sortHighScore() {
         this.saveToLS();
+
         this.scoreBoardArray.sort(function(a, b){
                 return b-a
-            })
-            console.log(this.scoreBoardArray);
-
-        
-     }
-
-    private saveToLS() {
-
-        localStorage.setItem("scores", JSON.stringify(this.scoreBoardArray));
+        })
         
     }
-    // private drawOnScoreBoard() {
+
+    private saveToLS() {
+        localStorage.setItem("scores", JSON.stringify(this.scoreBoardArray));
+    }
+
+    public drawOnScoreBoard(parent) {
+        this.sortHighScore()
+        this.scoreBoardArray.splice(5);
+        console.log(this.scoreBoardArray)
         
-    //     for(let i = 0; i < 5; i ++) {
+        let place = [1,2,3,4,5]
+        for(let i = 0; i < 5; i ++) {
                 
-    //             createElement('ol', `${this.scoreBoardArray[i]}`)
-    //             .parent('#score-list')
-    //             .style('font-size', '17px') 
-    //             .style('color', 'white')
-    //             .addClass('highscoreListItems')
-            
-    //     }
+                createElement('p', `${place[i]}.   ${this.scoreBoardArray[i]}`)
+                .style('font-size', '25px') 
+                .style('color', 'white')
+                .addClass('highscore-list-items')
+                .parent(parent)
+                
+        }
         
-    // }
+    }
 
 }

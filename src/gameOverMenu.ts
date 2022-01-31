@@ -1,8 +1,10 @@
 class GameOverMenu {
     private menu: Menu
+    private highscore: Highscore
 
     constructor(startMenu: Menu) {
         this.menu = startMenu
+        this.highscore = new Highscore()
     }
 
 
@@ -23,6 +25,19 @@ class GameOverMenu {
             .style('color', 'black')
             .id('score-list')
 
+            .style("color", "black")
+            //.position(90, 5)
+            .parent(this.menu.menuContainer)
+            .addClass('menu-headline')
+
+
+        let scoreElement = createElement('p', "Score:")
+            //.position(40, 100)
+            .parent(this.menu.menuContainer)
+           // .id('score-list')
+            this.highscore.drawOnScoreBoard(scoreElement)
+           
+
         createButton('Restart')
             .mousePressed(this.restartGame.bind(this))
             .size(100, 60)
@@ -32,6 +47,7 @@ class GameOverMenu {
             .position(650, 300)
             .mousePressed(this.backToMenu.bind(this))
             .size(100, 60)
+
     }
 
     /**
