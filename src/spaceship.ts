@@ -4,7 +4,7 @@ class Spaceship {
     private image: p5.Image
     private spaceShipSpeedUp: number;
     private spaceShipSpeedDown: number;
-    private collisionShape: Triangle
+    private collisionShape: Box[]
     private angle: number
 
 
@@ -14,7 +14,9 @@ class Spaceship {
         this.position = position
         this.spaceShipSpeedUp = 3.5
         this.spaceShipSpeedDown = 4.5
-        this.collisionShape = new Triangle(createVector(this.position.x, this.position.y), createVector(this.size.x, this.size.y))
+        this.collisionShape = []
+        this.collisionShape.push(new Box(createVector(0,this.size.y/2 - 12), createVector(this.size.x, this.size.y/4)))
+        this.collisionShape.push(new Box(createVector(this.size.x/4,0), createVector(this.size.x/4, this.size.y)))
         this.angle = 0
     }
 
@@ -30,11 +32,12 @@ class Spaceship {
         // rect(0, 0, 10, 10)
         // pop()
 
-        // fill(255, 0, 0)
-        // triangle(
-        //     this.position.x, this.position.y,
-        //     this.position.x + this.size.x, this.position.y + (this.size.y * .5), 
-        //     this.position.x, this.position.y + this.size.y)
+        fill(255, 0, 0)
+        for (let index = 0; index < this.collisionShape.length; index++) {
+            const element = this.collisionShape[index];
+            rect(element.position.x + this.position.x, element.position.y + this.position.y, element.size.x, element.size.y)
+        }
+       
             
     }
 
@@ -72,6 +75,30 @@ class Spaceship {
                 this.position.y += 0
             }
         }
+    }
+
+    public collideBox(box:Box){
+        for (let index = 0; index < this.collisionShape.length; index++) {
+            const element = this.collisionShape[index];
+            let wooh = new Box(createVector(element.position.x + this.position.x, element.position.y + this.position.y), element.size)
+            if (wooh.collide(box.position, box.size)) {
+                return true
+            }
+            
+        }
+        return false
+    }
+
+    public collideCircle(circle:Circle){
+        for (let index = 0; index < this.collisionShape.length; index++) {
+            const element = this.collisionShape[index];
+            let wooh = new Box(createVector(element.position.x + this.position.x, element.position.y + this.position.y), element.size)
+            if (circle.collide(wooh.position, wooh.size)) {
+                return true
+            }
+            
+        }
+        return false
     }
 
     // private changeAngle() {

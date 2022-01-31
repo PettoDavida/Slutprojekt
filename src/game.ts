@@ -87,19 +87,19 @@ class Game {
 
     private checkCollision() {
         for (const obstacle of this.obstacles) {
-            if (obstacle.collisionCircle.collide(this.spaceship.position, this.spaceship.size)) {
-                this.highscore.save();
+            if (this.spaceship.collideCircle(obstacle.getCollisionCircle())) {
+                this.gameovermenu.draw()
                 this.onGameOver();
+              
                 return
             }// vad som ska hända när spaceship nuddar ett hinder
 
         }
-        if (
-            this.upperWall.collisionBox.collide(this.spaceship.position, this.spaceship.size) ||
-            this.lowerWall.collisionBox.collide(this.spaceship.position, this.spaceship.size)
-        ) {
-            this.highscore.save();
-            this.onGameOver();
+
+        if (this.spaceship.collideBox(this.upperWall.collisionBox) ||
+            this.spaceship.collideBox(this.lowerWall.collisionBox)) {
+            this.gameovermenu.draw()
+
             return
         } // vad som ska hända när spaceship nuddar en kant
     }
