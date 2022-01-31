@@ -7,14 +7,24 @@ class GameOverMenu {
         this.highscore = new Highscore()
     }
 
+
+
     /**
-     * Creates the elements in the game over menu
+     * Creates the elements in the gameOverMenu
      */
     public setup() {
         this.menu.clearMenuContainer()
-        this.menu.menuContainer = Menu.createMenuContainer()
 
         createElement("h2", "Game Over")
+            .style('color', 'black')
+            .position(430, 50)
+            .style('font-size', '50px')
+
+        createElement('p', "Score:")
+            .position(400, 150)
+            .style('color', 'black')
+            .id('score-list')
+
             .style("color", "black")
             //.position(90, 5)
             .parent(this.menu.menuContainer)
@@ -26,33 +36,29 @@ class GameOverMenu {
             .parent(this.menu.menuContainer)
            // .id('score-list')
             this.highscore.drawOnScoreBoard(scoreElement)
-            
-            
-        
+           
 
         createButton('Restart')
-            .position(300, 350)
             .mousePressed(this.restartGame.bind(this))
             .size(100, 60)
-            .parent(this.menu.menuContainer)
+            .position(430, 300)
 
         createButton('Menu')
-            .position(100, 350)
+            .position(650, 300)
             .mousePressed(this.backToMenu.bind(this))
             .size(100, 60)
-            .parent(this.menu.menuContainer)
-            
+
     }
 
     /**
-     * Returns the elements in menu setup
+     * Returns to the startMenu
      */
     private backToMenu() {
         this.menu.setup()
     }
 
     /**
-     * Makes the game start over
+     * Restarts the game
      */
     private restartGame() {
         this.menu.startGame()
