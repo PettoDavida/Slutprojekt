@@ -27,13 +27,13 @@ class GameOverMenu {
 
             .style("color", "black")
             //.position(90, 5)
-            .parent(this.menu.menuContainer)
+         //   .parent(this.menu.menuContainer)
             .addClass('menu-headline')
 
 
         let scoreElement = createElement('p', "Score:")
             //.position(40, 100)
-            .parent(this.menu.menuContainer)
+        //    .parent(this.menu.menuContainer)
            // .id('score-list')
             this.highscore.drawOnScoreBoard(scoreElement)
            
