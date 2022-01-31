@@ -12,8 +12,8 @@ class Spaceship {
         this.size = size
         this.image = image
         this.position = position
-        this.spaceShipSpeedUp = 3.5
-        this.spaceShipSpeedDown = 4.5
+        this.spaceShipSpeedUp = 3
+        this.spaceShipSpeedDown = 4
         this.collisionShape = new Triangle(createVector(this.position.x, this.position.y), createVector(this.size.x, this.size.y))
         this.angle = 0
     }
@@ -40,8 +40,8 @@ class Spaceship {
 
     public update() {
         this.fly()
-        this.spaceShipSpeedUp *= 1.0005;
-        this.spaceShipSpeedDown *= 1.00005;
+        this.spaceShipSpeedUp *= 1.00005;
+        this.spaceShipSpeedDown *= 1.000005;
     }
 
     private fly() {
