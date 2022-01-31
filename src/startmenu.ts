@@ -1,9 +1,14 @@
 class Menu {
     public menuContainer?: p5.Element
     private readonly clickStartGame: () => void
+    private highscore: Highscore
+
 
     constructor(clickStartGame: () => void) {
         this.clickStartGame = clickStartGame
+        this.highscore = new Highscore()
+        
+
     }
 
     /**
@@ -32,8 +37,9 @@ class Menu {
         this.menuContainer = Menu.createMenuContainer()
 
         createElement('h1', 'Space Jam 3.0')
-            .position(50, 5)
+            //.position(50, 5)
             .parent(this.menuContainer)
+            .addClass('menu-headline')
 
         createButton('Start Game')
             .position(150, 140)
@@ -129,40 +135,18 @@ class Menu {
      */
     private checkHighScore() {
         this.clearMenuContainer()
-
-
+        let scoreElement = this.menuContainer = Menu.createMenuContainer()
         
-        this.menuContainer = Menu.createMenuContainer()
-
         createElement('ol', 'Highscore')
-            .position(40, 5)
+            //.position(40, 5)
             .parent(this.menuContainer)
-            
+            .id('score-list')
+            .addClass('menu-headline')
         
-
-
-        // createElement('li', 'Anna')
-        //     .position(100, 70)
-        //     .parent(ol)
-
-        // createElement('li', 'Ella')
-        //     .position(100, 110)
-        //     .parent(ol)
-
-        // createElement('li', 'Maximilian')
-        //     .position(100, 150)
-        //     .parent(ol)
-
-        // createElement('li', 'Linnea')
-        //     .position(100, 190)
-        //     .parent(ol)
-
-        // createElement('li', 'Erik')
-        //     .position(100, 240)
-        //     .parent(ol)
-
+        this.highscore.drawOnScoreBoard(scoreElement);
+        
         createButton('Back')
-            .position(200, 450)
+            //.position(200, 450)
             .size(80, 30)
             .mousePressed(this.setup.bind(this))
             .parent(this.menuContainer)

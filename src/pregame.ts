@@ -5,7 +5,7 @@ class PreGame {
     public gameState: GameState = GameState.start // gör private
     //public highscore: Highscore;
     public background: Background;
-    highscore: any;
+    
     
 
     constructor() {
@@ -29,6 +29,7 @@ class PreGame {
         this.gameovermenu.setup()
         this.gameState = GameState.over
         this.game.removeObstaclesFromArray()   
+        this.game.highscore.sortHighScore()
     }
 
     public update() {
