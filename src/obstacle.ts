@@ -2,7 +2,7 @@ class Obstacle {
     private size: p5.Vector
     private position: p5.Vector
     private image: p5.Image
-    private collisionCircle: Circle
+    public collisionCircle: Circle
     //public collisionEllipse: Ellipse
     private rotationSpeed: number
     //private rotationDegree: number
@@ -44,8 +44,8 @@ class Obstacle {
        rotate(- this.rotationSpeed)
        image(this.image, 0,0, this.size.x, this.size.y);
        //För att se vart centrumpunkten befinner sig
-        fill(255)
-        ellipse(0,0, 10,10)
+        // fill(255)
+        // ellipse(0,0, 10,10)
         
         pop()
 
@@ -53,15 +53,6 @@ class Obstacle {
         // ellipse(this.collisionCircle.position.x + this.position.x, this.collisionCircle.position.y + this.position.y,
         //         this.collisionCircle.radius * 2, this.collisionCircle.radius * 2)
  
-    }
-
-    /** 
-    * Removes obstacles from its array when out of screen
-    */
-    private removesObstaclesFromArray(){
-        if (game.obstacles[0].position.x < 0 - game.obstacles[0].size.x) {
-            game.obstacles.shift()
-        }
     }
 
     public getCollisionCircle(){

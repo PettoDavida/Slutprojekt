@@ -158,11 +158,10 @@ class Menu {
         createButton('Back')
      //       .position(550, 500)
 
-        let scoreElement = this.menuContainer = Menu.createMenuContainer()
+         //this.menuContainer = Menu.createMenuContainer()
         
-        createElement('ol', 'Highscore')
+      let scoreElement = createElement('ol', 'Highscore')
             //.position(40, 5)
-            .parent(this.menuContainer)
             .id('score-list')
             .addClass('menu-headline')
         

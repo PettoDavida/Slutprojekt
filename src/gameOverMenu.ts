@@ -16,38 +16,26 @@ class GameOverMenu {
         this.menu.clearMenuContainer()
 
         createElement("h2", "Game Over")
+            .addClass('menu-headline')
             .style('color', 'black')
             .position(430, 50)
-            .style('font-size', '50px')
-
-        createElement('p', "Score:")
+            
+            let scoreElement = createElement('p', "Score:")
             .position(400, 150)
-            .style('color', 'black')
-            .id('score-list')
-
-            .style("color", "black")
-            //.position(90, 5)
-         //   .parent(this.menu.menuContainer)
-            .addClass('menu-headline')
-
-
-        let scoreElement = createElement('p', "Score:")
-            //.position(40, 100)
-        //    .parent(this.menu.menuContainer)
-           // .id('score-list')
+            .addClass('menu-subline')
             this.highscore.drawOnScoreBoard(scoreElement)
            
 
         createButton('Restart')
             .mousePressed(this.restartGame.bind(this))
             .size(100, 60)
-            .position(430, 300)
+            .position(430, 480)
 
         createButton('Menu')
-            .position(650, 300)
             .mousePressed(this.backToMenu.bind(this))
             .size(100, 60)
-
+            .position(650, 480)
+8
     }
 
     /**

@@ -16,8 +16,6 @@ class Background {
                 console.log('score är 5')
                 obstacleImg = obstacleImg2
                 preGame.background = new Background(backgroundImg2)
-                
-
         }
 
     }
