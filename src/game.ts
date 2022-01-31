@@ -96,6 +96,7 @@ class Game {
     private checkCollision() {
         for (const obstacle of this.obstacles) {
             if (obstacle.collisionCircle.collide(this.spaceship.position, this.spaceship.size)) {
+               
                 this.highscore.save();
                 this.onGameOver();
                 return
