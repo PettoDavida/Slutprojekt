@@ -8,15 +8,13 @@ class Highscore {
         this.score = 0
         this.flooredScore = 0
         this.scoreBoardArray = JSON.parse(localStorage.getItem("scores") ?? "[]")
-        console.log(this.scoreBoardArray)
+        
     }
-    /**
-     * Saves 
-     */
+   
     public update() { 
         this.flooredScore = floor(this.score)
         this.score += (deltaTime / 1000) // +1 km for each second 
-        //console.log(this.score)      
+             
       
     }
     
@@ -24,7 +22,7 @@ class Highscore {
         console.log('save')
         this.scoreBoardArray.push(this.flooredScore);
         this.sortHighScore();
-     // console.log(this.scoreBoardArray)
+     
 
     }
     
