@@ -5,6 +5,8 @@ class PreGame {
     private gameState: GameState = GameState.start
     //public highscore: Highscore;
     public background: Background;
+    highscore: any;
+    private isMuteKeyDown: boolean
 
 
     constructor() {
@@ -12,7 +14,9 @@ class PreGame {
         this.gameovermenu = new GameOverMenu(this.menu)
         this.game = new Game(this.gameOver.bind(this));
         this.background = new Background(backgroundImg)
-        // this.highscore = new Highscore()
+
+        this.isMuteKeyDown = false;
+       // this.highscore = new Highscore()
     }
 
     /**
@@ -21,6 +25,7 @@ class PreGame {
     private startGame() {
         this.gameState = GameState.running
         this.game = new Game(this.gameOver.bind(this));
+        gameMusic.play()
     }
 
     /**
@@ -36,6 +41,7 @@ class PreGame {
         }
 
         this.game.removeObstaclesFromArray()   
+        gameMusic.stop()
         this.game.highscore.sortHighScore()
 
     }
@@ -44,6 +50,22 @@ class PreGame {
         if (this.gameState === GameState.running) {
             this.game.update();
         }
+
+        
+        // const muteKeyPressed = !this.isMuteKeyDown && keyIsDown(77);
+        const muteKeyReleased = this.isMuteKeyDown && !keyIsDown(77);
+
+        if (muteKeyReleased) {
+            if (getOutputVolume()) {
+                outputVolume(0);
+            } else {
+                outputVolume(1);
+            }
+        }
+        
+        // Save current frame's value so we can
+        // check against it in the next frame
+        this.isMuteKeyDown = keyIsDown(77);
 
     }
 

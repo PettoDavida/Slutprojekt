@@ -43,8 +43,8 @@ class Spaceship {
 
     public update() {
         this.fly()
-        this.spaceShipSpeedUp *= 1.0005;
-        this.spaceShipSpeedDown *= 1.00005;
+        this.spaceShipSpeedUp *= 1.00005;
+        this.spaceShipSpeedDown *= 1.000005;
     }
 
     private fly() {

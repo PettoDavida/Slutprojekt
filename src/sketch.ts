@@ -1,6 +1,5 @@
 //---- GLOBAL VARIABLES ----//
 let preGame: PreGame;
-// let sound: p5.SoundFile
 let spaceShipImg: p5.Image
 let betterSpaceShipImg: p5.Image
 let obstacleImg: p5.Image
@@ -8,6 +7,8 @@ let obstacleImg2: p5.Image
 let backgroundImg: p5.Image
 let backgroundImg2: p5.Image
 let spaceRockImg: p5.Image
+let collisionSound: p5.SoundFile
+let gameMusic: p5.SoundFile
 
 
 /**
@@ -16,7 +17,11 @@ let spaceRockImg: p5.Image
  * sound files, images etc...
  */
 function preload() {
-    // sound: p5.SoundFile = loadSound('../assets/mySound.wav');
+    // Sounds
+    collisionSound = loadSound('../assets/sounds/crash.wav');
+    gameMusic = loadSound('../assets/sounds/music.mp3');
+
+    // Images
     betterSpaceShipImg = loadImage('./assets/images/betterspaceship.png')
     spaceShipImg = loadImage('./documents/assets/spaceship.png');
 
@@ -26,7 +31,6 @@ function preload() {
     backgroundImg = loadImage('./documents/assets/background.png')
     backgroundImg2 = loadImage('./assets/images/backgroundImg2.jpg')
 
-   
     spaceRockImg = loadImage('./assets/images/spacerock.png')
 
 }
@@ -41,7 +45,8 @@ function setup() {
     createCanvas(1200, 600)
     frameRate(60);
     //noCursor();
-
+    collisionSound.setVolume(0.1)
+    gameMusic.setVolume(0.1)
     preGame = new PreGame();
 }
 
@@ -55,7 +60,6 @@ function draw() {
     // image(obstacleImg, 600, 400, 200, 200);
     // image(obstacleImg, 400, 700, 100, 100);
     // image(spaceShipImg, 50, 400, 130, 100);
-
     preGame.update();
     preGame.draw();
 }
