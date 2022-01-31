@@ -1,6 +1,6 @@
 class Obstacle {
-    public size: p5.Vector
-    public position: p5.Vector
+    private size: p5.Vector
+    private position: p5.Vector
     private image: p5.Image
     private collisionCircle: Circle
     //public collisionEllipse: Ellipse
@@ -26,11 +26,14 @@ class Obstacle {
         
 
         this.rotationSpeed++;
-        this.removesObstaclesFromArray();
+       // this.removesObstaclesFromArray();
+
+        // let func = this.removesObstaclesFromArray.bind(Game)
+        // func();
        
 
     }
-
+ 
     public draw(){
         
        push()      
@@ -39,12 +42,11 @@ class Obstacle {
         ellipseMode(CENTER)
         translate(this.position.x + (this.size.x * .5), this.position.y + (this.size.y * .5))
        rotate(- this.rotationSpeed)
-       
        image(this.image, 0,0, this.size.x, this.size.y);
        //För att se vart centrumpunkten befinner sig
-        
         fill(255)
         ellipse(0,0, 10,10)
+        
         pop()
 
         // fill(255,0,0)

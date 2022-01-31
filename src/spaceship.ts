@@ -53,9 +53,9 @@ class Spaceship {
             || keyIsDown(87)
             || keyIsDown(32)) {
             
-                if(this.angle >= -20) {
+            if(this.angle >= -20) {
                     this.angle -= 2;
-                }
+             }
                 
             if (this.position.y >= 0) {
                 this.position.y -= this.spaceShipSpeedUp;

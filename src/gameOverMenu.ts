@@ -1,45 +1,67 @@
 class GameOverMenu {
-    public menu: Menu
-    private background: string;
-    private text: string;
-    private size: p5.Vector;
+    private menu: Menu
+    private highscore: Highscore
 
     constructor(startMenu: Menu) {
         this.menu = startMenu
+        this.highscore = new Highscore()
     }
 
-    public draw() {
+
+
+    /**
+     * Creates the elements in the gameOverMenu
+     */
+    public setup() {
         this.menu.clearMenuContainer()
-        this.menu.menuContainer = Menu.createMenuContainer()
 
         createElement("h2", "Game Over")
-            .style("color", "white")
-            .position(40, 5)
+            .style('color', 'black')
+            .position(430, 50)
+            .style('font-size', '50px')
+
+        createElement('p', "Score:")
+            .position(400, 150)
+            .style('color', 'black')
+            .id('score-list')
+
+            .style("color", "black")
+            //.position(90, 5)
             .parent(this.menu.menuContainer)
+            .addClass('menu-headline')
+
+
+        let scoreElement = createElement('p', "Score:")
+            //.position(40, 100)
+            .parent(this.menu.menuContainer)
+           // .id('score-list')
+            this.highscore.drawOnScoreBoard(scoreElement)
+           
 
         createButton('Restart')
-            .position(200, 450)
             .mousePressed(this.restartGame.bind(this))
-            .parent(this.menu.menuContainer)
+            .size(100, 60)
+            .position(430, 300)
 
         createButton('Menu')
-            .position(200, 350)
+            .position(650, 300)
             .mousePressed(this.backToMenu.bind(this))
-            .parent(this.menu.menuContainer)
+            .size(100, 60)
+
     }
 
-    public backToMenu() {
+    /**
+     * Returns to the startMenu
+     */
+    private backToMenu() {
         this.menu.setup()
     }
 
-    public restartGame() {
+    /**
+     * Restarts the game
+     */
+    private restartGame() {
         this.menu.startGame()
-    }
-
-    public update() {
-    }
-
-    private newGame() {
     }
 
     private checkHighScore() {

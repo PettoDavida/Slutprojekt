@@ -1,9 +1,10 @@
 //---- GLOBAL VARIABLES ----//
-let game: Game;
+let preGame: PreGame;
 // let sound: p5.SoundFile
 let spaceShipImg: p5.Image
 let betterSpaceShipImg: p5.Image
 let obstacleImg: p5.Image
+let obstacleImg2: p5.Image
 let backgroundImg: p5.Image
 let backgroundImg2: p5.Image
 let spaceRockImg: p5.Image
@@ -18,9 +19,14 @@ function preload() {
     // sound: p5.SoundFile = loadSound('../assets/mySound.wav');
     betterSpaceShipImg = loadImage('./assets/images/betterspaceship.png')
     spaceShipImg = loadImage('./documents/assets/spaceship.png');
+
     obstacleImg = loadImage('./documents/assets/obstacle.png')
+    obstacleImg2 = loadImage('./assets/images/obstacle2.png')
+
     backgroundImg = loadImage('./documents/assets/background.png')
     backgroundImg2 = loadImage('./assets/images/backgroundImg2.jpg')
+
+   
     spaceRockImg = loadImage('./assets/images/spacerock.png')
 
 }
@@ -36,7 +42,7 @@ function setup() {
     frameRate(60);
     //noCursor();
 
-    game = new Game();
+    preGame = new PreGame();
 }
 
 /**
@@ -50,8 +56,8 @@ function draw() {
     // image(obstacleImg, 400, 700, 100, 100);
     // image(spaceShipImg, 50, 400, 130, 100);
 
-    game.update();
-    game.draw();
+    preGame.update();
+    preGame.draw();
 }
 
 
