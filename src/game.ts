@@ -5,7 +5,8 @@ class Game {
     private upperWall: Wall
     private lowerWall: Wall
     private background: Background
-    // public scores: Score[]
+
+
     private spawnTime: number;
     private horizontalGameSpeed: number;
     public highscore: Highscore
@@ -22,7 +23,7 @@ class Game {
         this.highscore = new Highscore()
         this.spawnTime = 0;
         this.horizontalGameSpeed = 100;
-        // this.scores =  [];
+
     }
 
     public draw() {
@@ -44,9 +45,13 @@ class Game {
             obstacle.update(this.horizontalGameSpeed)
 
         }
-        if (this.highscore.flooredScore === 10 || this.highscore.flooredScore === 20 || this.highscore.flooredScore === 30) {
-            this.background.update()
+
+       // console.log(this.highscore.flooredScore)
+        if (this.highscore.flooredScore == 5 || this.highscore.flooredScore == 10 || this.highscore.flooredScore == 15) {
+           //console.log('här')
+            this.background.update(this.highscore.flooredScore)
         }
+
         this.checkCollision()
         this.spaceship.update()
         this.updateWorldSpeed()
@@ -85,8 +90,12 @@ class Game {
 
     private checkCollision() {
         for (const obstacle of this.obstacles) {
-            if (this.spaceship.collideCircle(obstacle.getCollisionCircle())) {
-                this.gameovermenu.draw()
+
+            if (obstacle.collisionCircle.collide(this.spaceship.position, this.spaceship.size)) {
+               
+                this.highscore.save();
+
+
                 this.onGameOver();
                 collisionSound.play()
 

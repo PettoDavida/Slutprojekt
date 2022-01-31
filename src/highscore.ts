@@ -1,5 +1,5 @@
 class Highscore {
-    private score: number
+    public score: number
     public flooredScore: number
     private scoreBoardArray: number[]
 
@@ -7,7 +7,6 @@ class Highscore {
     constructor() {
         this.score = 0
         this.flooredScore = 0
-
         this.scoreBoardArray = JSON.parse(localStorage.getItem("scores") ?? "[]")
 
     }
@@ -17,6 +16,9 @@ class Highscore {
     public update() { 
         this.flooredScore = floor(this.score)
         this.score += (deltaTime / 1000) // +1 km for each second 
+        //console.log(this.score)
+
+        
         
     }
     
