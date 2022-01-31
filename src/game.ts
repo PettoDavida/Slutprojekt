@@ -9,8 +9,6 @@ class Game {
     private spawnTime: number;
     private horizontalGameSpeed: number;
     public highscore: Highscore
-    
-    
 
     constructor(onGameOver: () => void) {
         this.onGameOver = onGameOver;
@@ -30,7 +28,7 @@ class Game {
 
     public draw() {
         this.background.draw()
-        
+
         for (const obstacle of this.obstacles) {
             obstacle.draw()
         }
@@ -47,8 +45,6 @@ class Game {
         this.background.update()
         for (const obstacle of this.obstacles) {
             obstacle.update(this.horizontalGameSpeed)
-            
-            
         }
         if (this.highscore.flooredScore === 10 || this.highscore.flooredScore === 20 || this.highscore.flooredScore === 30) {
             this.background.update()
@@ -59,10 +55,7 @@ class Game {
         this.upperWall.update()
         this.lowerWall.update()
         this.highscore.update()
-
-        
     }
-
 
     private updateWorldSpeed() {
         this.horizontalGameSpeed += 0.1
@@ -90,7 +83,6 @@ class Game {
 
     public removeObstaclesFromArray(){
         this.obstacles = [];
-        console.log(this.obstacles)
     }
 
     private checkCollision() {

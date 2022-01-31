@@ -1,5 +1,4 @@
 class Menu {
-    public menuContainer?: p5.Element
     private readonly clickStartGame: () => void
 
     constructor(clickStartGame: () => void) {
@@ -7,121 +6,129 @@ class Menu {
     }
 
     /**
-     * Removes the div and all it's children
+     * Removes all the elements
      */
     public clearMenuContainer() {
-        this.menuContainer?.remove()
+        removeElements()
     }
 
     /**
-     * Creates a div
+     * Draws up the square around the menu
      */
-    public static createMenuContainer(): p5.Element {
-        return createDiv()
-            .position(350, 50)
-            .size(500, 500)
-            .addClass('startContainer')
-            .parent(document.querySelector('main') as Element)
+    public draw() {
+        square(350, 50, 500)
+        fill(255, 250, 250, 100)
     }
 
     /**
-     * Creates all the elements on the menu
+     * Creates all the elements on the startMenu
      */
     public setup() {
         this.clearMenuContainer()
-        this.menuContainer = Menu.createMenuContainer()
 
         createElement('h1', 'Space Jam 3.0')
-            .position(50, 5)
-            .parent(this.menuContainer)
+            .position(400, 50)
+            .style('color', 'black')
+            .style('font-size', '50px')
 
         createButton('Start Game')
-            .position(150, 140)
+            .position(500, 200)
             .size(200, 60)
             .mousePressed(this.startGame.bind(this))
-            .parent(this.menuContainer)
 
         createButton('Controls')
-            .position(0, 240)
+            .position(360, 300)
             .size(200, 60)
             .mousePressed(this.checkControls.bind(this))
-            .parent(this.menuContainer)
 
         createButton('HighScore')
-            .position(300, 240)
+            .position(640, 300)
             .size(200, 60)
             .mousePressed(this.checkHighScore.bind(this))
-            .parent(this.menuContainer)
     }
 
     /**
-     * When the game starts it clears the menu div
+     * When the game starts it clears the menu
      */
     public startGame() {
         this.clearMenuContainer()
         this.clickStartGame()
     }
 
+    public rectanglesForControls() {
+        fill(0, 0, 0)
+        rect(380, 200, 150, 50)
+        fill(255, 255, 255)
+        text('Left Mouse Button', 400, 230)
+
+        fill(0, 0,0)
+        rect(410, 270, 100, 50)
+        fill(255, 255, 255)
+        text('Space', 440, 300)
+
+        fill(0, 0, 0)
+        square(430, 330, 50)
+        fill(255, 255, 255)
+        text('W', 447, 360)
+
+        fill(0, 0, 0)
+        square(430, 390, 50)
+        fill(255, 255, 255)
+        text('\u02C4', 449, 420)
+
+        fill(0, 0, 0)
+        square(650, 200, 50)
+        fill(255, 255, 255)
+        text('M', 668, 230)
+
+
+    }
+
     /**
      * Creates the elements under Controls
      */
-    private checkControls() {
+    public checkControls() {
         this.clearMenuContainer()
 
-        this.menuContainer = Menu.createMenuContainer()
-
         createElement('h2', 'Game Controls')
-            .position(40, 5)
-            .style('color', 'white')
-            .parent(this.menuContainer)
+            .position(400, 50)
+            .style('color', 'black')
+            .style('font-size', '50px')
 
         createElement('p', 'Fly')
-            .position(80, 100)
-            .parent(this.menuContainer)
+            .position(440, 150)
+            .style('color', 'black')
+            .style('font-size', '20px')
+        //
+        // createElement('p', 'Left Mouse Button')
+        //     .position(360, 200)
+        //     .addClass('gameKeys')
 
-        createElement('p', 'Left Mouse Button')
-            .position(0, 150)
-            .addClass('gameKeys')
-            .parent(this.menuContainer)
-
-        createElement('p', 'Space')
-            .position(40, 220)
-            .addClass('gameKeys')
-            .parent(this.menuContainer)
-
-        createElement('p', 'W')
-            .position(60, 290)
-            .addClass('gameKeys')
-            .parent(this.menuContainer)
-
-        createElement('p', '\u02C4')
-            .position(60, 360)
-            .addClass('gameKeys')
-            .parent(this.menuContainer)
-
-        createElement('p', 'Pause')
-            .position(430, 170)
-            .parent(this.menuContainer)
-
-        createElement('p', 'P')
-            .position(350, 150)
-            .addClass('gameKeys')
-            .parent(this.menuContainer)
+        // createElement('p', 'Space')
+        //     .position(410, 270)
+        //     .addClass('gameKeys')
+        //
+        // createElement('p', 'W')
+        //     .position(420, 330)
+        //     .addClass('gameKeys')
+        //
+        // createElement('p', '\u02C4')
+        //     .position(425, 390)
+        //     .addClass('gameKeys')
 
         createElement('p', 'Mute')
-            .position(430, 240)
-            .parent(this.menuContainer)
+            .position(730, 190)
+            .style('color', 'black')
+            .style('font-size', '20px')
 
-        createElement('p', 'M')
-            .position(350, 220)
-            .addClass('gameKeys')
-            .parent(this.menuContainer)
+        // createElement('p', 'M')
+        //     .position(650, 200)
+        //     .addClass('gameKeys')
 
         createButton('Back')
-            .position(200, 450)
+            .position(550, 500)
             .size(80, 30)
             .mousePressed(this.setup.bind(this))
-            .parent(this.menuContainer)
     }
 
     /**
@@ -130,42 +137,15 @@ class Menu {
     private checkHighScore() {
         this.clearMenuContainer()
 
-
-        
-        this.menuContainer = Menu.createMenuContainer()
-
-        createElement('ol', 'Highscore')
-            .position(40, 5)
-            .parent(this.menuContainer)
-            
-        
-
-
-        // createElement('li', 'Anna')
-        //     .position(100, 70)
-        //     .parent(ol)
-
-        // createElement('li', 'Ella')
-        //     .position(100, 110)
-        //     .parent(ol)
-
-        // createElement('li', 'Maximilian')
-        //     .position(100, 150)
-        //     .parent(ol)
-
-        // createElement('li', 'Linnea')
-        //     .position(100, 190)
-        //     .parent(ol)
-
-        // createElement('li', 'Erik')
-        //     .position(100, 240)
-        //     .parent(ol)
+        createElement('h2', 'HighScore')
+            .position(400, 50)
+            .style('color', 'black')
+            .style('font-size', '50px')
 
         createButton('Back')
-            .position(200, 450)
+            .position(550, 500)
             .size(80, 30)
             .mousePressed(this.setup.bind(this))
-            .parent(this.menuContainer)
     }
 }
 
