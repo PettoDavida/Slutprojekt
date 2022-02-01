@@ -10,8 +10,8 @@ class Obstacle {
     constructor(image: p5.Image, position:p5.Vector, size:p5.Vector, rotationSpeed:number) {
         this.size = size
         this.position = position
-        this.image = obstacleImg  
-        this.collisionCircle = new Circle(createVector(0 + size.x/2, 0 + size.y/2), size.y/2)
+        this.image = image  
+        this.collisionCircle = new Circle(createVector(size.x/2, size.y/2), size.y/2)
         //this.rotationDegree = 1
         this.rotationSpeed = rotationSpeed
    
@@ -50,8 +50,8 @@ class Obstacle {
         pop()
 
         // fill(255,0,0)
-        // ellipse(this.collisionCircle.position.x + this.position.x, this.collisionCircle.position.y + this.position.y,
-        //         this.collisionCircle.radius * 2, this.collisionCircle.radius * 2)
+        ellipse(this.collisionCircle.position.x + this.position.x, this.collisionCircle.position.y + this.position.y,
+                this.collisionCircle.radius * 2, this.collisionCircle.radius * 2)
  
     }
 
