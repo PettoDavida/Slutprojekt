@@ -6,6 +6,7 @@ class Spaceship {
     private spaceShipSpeedDown: number;
     private collisionShape: Box[]
     private angle: number
+    private clicked: boolean
 
 
     constructor(size: p5.Vector, position: p5.Vector, image: p5.Image) {
@@ -18,6 +19,7 @@ class Spaceship {
         this.collisionShape.push(new Box(createVector(0,this.size.y/2 - 12), createVector(this.size.x, this.size.y/4)))
         this.collisionShape.push(new Box(createVector(this.size.x/4,0), createVector(this.size.x/4, this.size.y)))
         this.angle = 0
+        this.clicked = false
     }
 
     public draw() {
@@ -40,11 +42,17 @@ class Spaceship {
     }
 
     private fly() {
+        
+        if (!this.clicked) {
+            this.position.y = height * .5
+        }
+        
         if (mouseIsPressed
             || keyIsDown(38)
             || keyIsDown(87)
             || keyIsDown(32)) {
             
+            this.clicked = true
             if(this.angle >= -20) {
                     this.angle -= 2;
              }

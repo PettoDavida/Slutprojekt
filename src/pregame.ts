@@ -4,8 +4,8 @@ class PreGame {
     private gameovermenu: GameOverMenu
     private gameState: GameState = GameState.start
     //public highscore: Highscore;
-    //public background: Background;
-    highscore: any;
+     public background: Background;
+    //highscore: any;
     private isMuteKeyDown: boolean
 
 
@@ -13,7 +13,7 @@ class PreGame {
         this.menu = new Menu(this.startGame.bind(this))
         this.gameovermenu = new GameOverMenu(this.menu)
         this.game = new Game(this.gameOver.bind(this));
-       // this.background = new Background(backgroundImg)
+        this.background = new Background(backgroundImg)
 
         this.isMuteKeyDown = false;
        // this.highscore = new Highscore()
