@@ -1,18 +1,20 @@
 class Background {
-   
     private image: p5.Image
-    private highscore: Highscore
+   // private highscore: Highscore
     
 
     constructor(image: p5.Image) {
         this.image = image
-        this.highscore = new Highscore()
+        
+       // this.highscore = new Highscore()
     }
 
     public update(highscore?) {
+
         switch (highscore) {
-            case 15:
-                preGame.background = new Background(backgroundImg2)
+            case 5:
+                
+                
                 break
             case 20:
                 //Ny bild
