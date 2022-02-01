@@ -2,11 +2,17 @@
 let preGame: PreGame;
 let spaceShipImg: p5.Image
 let betterSpaceShipImg: p5.Image
+
 let obstacleImg: p5.Image
+let obstacleImg1: p5.Image
 let obstacleImg2: p5.Image
+let obstacleImg3: p5.Image
+
 let backgroundImg: p5.Image
 let backgroundImg2: p5.Image
+
 let spaceRockImg: p5.Image
+
 let collisionSound: p5.SoundFile
 let gameMusic: p5.SoundFile
 
@@ -26,7 +32,9 @@ function preload() {
     spaceShipImg = loadImage('./documents/assets/spaceship.png');
 
     obstacleImg = loadImage('./documents/assets/obstacle.png')
+    obstacleImg1 = loadImage('./documents/assets/obstacle.png')
     obstacleImg2 = loadImage('./assets/images/obstacle2.png')
+    obstacleImg3 = loadImage('./assets/images/obstacle3.png')
 
     backgroundImg = loadImage('./documents/assets/background.png')
     backgroundImg2 = loadImage('./assets/images/backgroundImg2.jpg')

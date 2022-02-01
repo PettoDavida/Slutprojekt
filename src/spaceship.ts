@@ -22,19 +22,11 @@ class Spaceship {
 
     public draw() {
     
-        // push()
-        // translate(this.position.x + 50, this.position.y)
-        // rotate(this.angle)
-        // angleMode(DEGREES)
-        // imageMode(CENTER)
-        // rectMode(CENTER)
         image(this.image, this.position.x, this.position.y, this.size.x, this.size.y);
-        // rect(0, 0, 10, 10)
-        // pop()
-
-        fill(255, 0, 0)
+     
         for (let index = 0; index < this.collisionShape.length; index++) {
             const element = this.collisionShape[index];
+            fill(255,0,0,1)
             rect(element.position.x + this.position.x, element.position.y + this.position.y, element.size.x, element.size.y)
         }
        
@@ -101,8 +93,5 @@ class Spaceship {
         return false
     }
 
-    // private changeAngle() {
-    //     if 
-    // }
 
 }
