@@ -90,8 +90,8 @@ class Game {
     private checkCollision() {
         for (const obstacle of this.obstacles) {
 
-            if (obstacle.collisionCircle.collide(this.spaceship.position, this.spaceship.size)) {
-                
+            if (this.spaceship.collideCircle(obstacle.getCollisionCircle())) {
+                console.log("Hinder")
                 this.onGameOver();
                 collisionSound.play()
 
@@ -101,10 +101,11 @@ class Game {
         }
 
         if (
-            this.upperWall.collisionBox.collide(this.spaceship.position, this.spaceship.size) ||
-            this.lowerWall.collisionBox.collide(this.spaceship.position, this.spaceship.size)
-        ) {
+            this.spaceship.collideBox(this.upperWall.collisionBox) ||
+            this.spaceship.collideBox(this.lowerWall.collisionBox)
+            ) {
            // this.highscore.save();
+           console.log("Wall")
            
             this.onGameOver();
             collisionSound.play()
