@@ -14,7 +14,7 @@ class GameOverMenu {
         createElement("h2", "Game Over")
             .addClass('menu-headline')
             .style('color', 'black')
-            .position(430, 50)
+            
             
         createButton('Restart')
             .mousePressed(this.restartGame.bind(this))

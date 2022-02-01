@@ -5,8 +5,6 @@ class Game {
     private upperWall: Wall
     private lowerWall: Wall
     private background: Background
-
-
     private spawnTime: number;
     private horizontalGameSpeed: number;
     public highscore: Highscore
@@ -77,16 +75,17 @@ class Game {
         if (this.spawnTime > spawnDelay) {
             const diameter = random(70, 200)
             const size = createVector(diameter, diameter)
-            const position = createVector(1200, random(height - size.y))
-            const rotationSpeed = random(0, 50)
+            const position = createVector(1500, random(height - size.y))
+            const rotationSpeed = random(0, 100)
             const newObstacle = new Obstacle(obstacleImg, position, size, rotationSpeed)
             this.obstacles.push(newObstacle)
             this.spawnTime = 0;
         }
     }
 
-    public removeObstaclesFromArray() {
-        this.obstacles = [];
+    public resetObstaclesAndSpaceship() {
+        this.obstacles = []
+        this.spaceship.updateClickedBoolean()
         console.log(this.obstacles)
     }
 

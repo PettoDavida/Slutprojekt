@@ -1,17 +1,34 @@
-html, body, canvas {
+html, body {
     height: 100%;
     width: 100%;
     margin: 0;
     background: black;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+canvas {
+    position: relative;
 }
 
 p {
     color: white;
 }
 
+.startmenu-div {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    height: 25%;
+    
+}
+
 button {
-   opacity: 1;
+    opacity: 1;
     border-radius: 20px;
+    width: 2rem;
     margin: auto;
     margin-bottom: 1rem;
 }

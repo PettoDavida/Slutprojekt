@@ -40,6 +40,10 @@ class Spaceship {
         this.spaceShipSpeedUp *= 1.00005;
         this.spaceShipSpeedDown *= 1.000005;
     }
+    public updateClickedBoolean() {
+        this.clicked = false
+        console.log(this.clicked)
+    }
 
     private fly() {
         
@@ -53,6 +57,7 @@ class Spaceship {
             || keyIsDown(32)) {
             
             this.clicked = true
+
             if(this.angle >= -20) {
                     this.angle -= 2;
              }

@@ -22,7 +22,8 @@ class Menu {
     public draw() {
         push()
         fill(255, 250, 250, 100)
-        square(350, 50, 500)
+        rectMode(CENTER)
+        rect(1500/2, 800/2, 500,500)
         pop()
     }
 
@@ -32,26 +33,29 @@ class Menu {
     public setup() {
         this.clearMenuContainer()
 
+        let div = createElement('div')
+                .addClass('startmenu-div')
+
         createElement('h1', 'Space Jam 3.0')
-            .position(400, 50)
-            .style('color', 'black')
+            .style('color', 'white')
             .style('font-size', '50px')
             .addClass('menu-headline')
-
+            .parent(div)
+            
         createButton('Start Game')
-            .position(500, 200)
             .size(200, 60)
             .mousePressed(this.startGame.bind(this))
+            .parent(div)
 
         createButton('Controls')
-            .position(360, 300)
             .size(200, 60)
             .mousePressed(this.checkControls.bind(this))
+            .parent(div)
 
         createButton('HighScore')
-            .position(640, 300)
             .size(200, 60)
             .mousePressed(this.checkHighScore.bind(this))
+            .parent(div)
     }
 
     /**
