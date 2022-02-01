@@ -40,18 +40,17 @@ class Game {
 
     public update() {
         this.spawnObstacle()
-        this.background.update()
+        this.background.update(this.highscore.flooredScore)
+
         for (const obstacle of this.obstacles) {
             obstacle.update(this.horizontalGameSpeed)
-
         }
 
-        if (this.highscore.flooredScore == 15 || this.highscore.flooredScore == 20 || this.highscore.flooredScore == 30) {
+        if (this.highscore.flooredScore == 5 || this.highscore.flooredScore == 20 || this.highscore.flooredScore == 30) {
             this.background.update(this.highscore.flooredScore)
             for (const obstacle of this.obstacles) {
                 obstacle.updateImage(this.highscore.flooredScore)
             }
-
 
         }
        
