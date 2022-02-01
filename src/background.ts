@@ -9,27 +9,19 @@ class Background {
         this.highscore = new Highscore()
     }
 
-    public update(highscore) {
-        //console.log(highscore)
+    public update(highscore?) {
         switch (highscore) {
-            case 5:
-                console.log('score är 5')
-                obstacleImg = obstacleImg2
+            case 15:
                 preGame.background = new Background(backgroundImg2)
+                break
+            case 20:
+                //Ny bild
+                break
         }
-
     }
 
     public draw() {
         image(this.image, 0, 0)
-    }
-
-    private mute() {
-    }
-
-    private changeImages() {
-
-        
     }
 }
 

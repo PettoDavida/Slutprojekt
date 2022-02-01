@@ -34,9 +34,8 @@ class Wall {
                 image(element.image, positionX, this.position.y + element.offset.y -30, 100, 100)
             }
         }   
-        fill(255)
-        rect(this.position.x, this.position.y, width, 50)
+
     }
 
-    private changeImage(){}
+
 }

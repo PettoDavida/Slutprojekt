@@ -46,12 +46,15 @@ class Game {
 
         }
 
-       // console.log(this.highscore.flooredScore)
-        if (this.highscore.flooredScore == 5 || this.highscore.flooredScore == 10 || this.highscore.flooredScore == 15) {
-           //console.log('här')
+        if (this.highscore.flooredScore == 15 || this.highscore.flooredScore == 20 || this.highscore.flooredScore == 30) {
             this.background.update(this.highscore.flooredScore)
-        }
+            for (const obstacle of this.obstacles) {
+                obstacle.updateImage(this.highscore.flooredScore)
+            }
 
+
+        }
+       
         this.checkCollision()
         this.spaceship.update()
         this.updateWorldSpeed()

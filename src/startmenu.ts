@@ -60,6 +60,7 @@ class Menu {
     public startGame() {
         this.clearMenuContainer()
         this.clickStartGame()
+        
     }
 
     /**
@@ -114,6 +115,7 @@ class Menu {
      */
     private checkHighScore() {
         this.clearMenuContainer()
+        this.highscore.drawOnScoreBoard()
 
         createElement('h2', 'HighScore')
             .position(400, 50)
@@ -124,13 +126,6 @@ class Menu {
             .size(80, 30)
             .mousePressed(this.setup.bind(this))
             .position(550, 500)
-
-        let scoreElement = createElement('ol', 'Highscore')
-            //.position(40, 5)
-            .id('score-list')
-            .addClass('menu-headline')
-
-        this.highscore.drawOnScoreBoard(scoreElement);
     }
 }
 

@@ -1,13 +1,9 @@
 class GameOverMenu {
     private menu: Menu
-    private highscore: Highscore
 
     constructor(startMenu: Menu) {
         this.menu = startMenu
-        this.highscore = new Highscore()
     }
-
-
 
     /**
      * Creates the elements in the gameOverMenu
@@ -20,8 +16,6 @@ class GameOverMenu {
             .style('color', 'black')
             .position(430, 50)
             
-       
-        
         createButton('Restart')
             .mousePressed(this.restartGame.bind(this))
             .size(100, 60)
@@ -46,9 +40,8 @@ class GameOverMenu {
      */
     private restartGame() {
         this.menu.startGame()
-    }
+        
 
-    private checkHighScore() {
     }
 }
 

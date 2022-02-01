@@ -23,15 +23,20 @@ class Obstacle {
     public update(horizontalGameSpeed: number) {
         // fart i px per sekund
         this.position.x -= horizontalGameSpeed * (deltaTime / 1000)
-        
-
         this.rotationSpeed++;
-       // this.removesObstaclesFromArray();
+        
+    }
 
-        // let func = this.removesObstaclesFromArray.bind(Game)
-        // func();
-       
-
+    public updateImage(highscore) {
+        obstacleImg = obstacleImg1
+        switch (highscore) {
+            case 15: 
+                obstacleImg = obstacleImg2
+                break
+            case 20: 
+               obstacleImg = obstacleImg3
+               break
+        }
     }
  
     public draw(){
@@ -39,17 +44,13 @@ class Obstacle {
        push()      
        angleMode(DEGREES) 
        imageMode(CENTER)
-        ellipseMode(CENTER)
-        translate(this.position.x + (this.size.x * .5), this.position.y + (this.size.y * .5))
+       ellipseMode(CENTER)
+       translate(this.position.x + (this.size.x * .5), this.position.y + (this.size.y * .5))
        rotate(- this.rotationSpeed)
        image(this.image, 0,0, this.size.x, this.size.y);
-       //För att se vart centrumpunkten befinner sig
-        // fill(255)
-        // ellipse(0,0, 10,10)
-        
-        pop()
+       pop()
 
-        // fill(255,0,0)
+        fill(255,0,0,1)
         ellipse(this.collisionCircle.position.x + this.position.x, this.collisionCircle.position.y + this.position.y,
                 this.collisionCircle.radius * 2, this.collisionCircle.radius * 2)
  
@@ -61,12 +62,5 @@ class Obstacle {
                                 
         return circle
     }
-
-    private obstaclePosition(){}
-    private obstacleType(){}
     
 }
-
-
-// alla hinder snurrar olika mycket fps
-// nummer mellan 0 - 4
