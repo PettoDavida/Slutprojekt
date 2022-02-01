@@ -148,7 +148,7 @@ class Menu {
      */
     private checkHighScore() {
         this.clearMenuContainer()
-
+        this.highscore.drawOnScoreBoard()
 
         createElement('h2', 'HighScore')
             .position(400, 50)
@@ -160,10 +160,10 @@ class Menu {
 
          //this.menuContainer = Menu.createMenuContainer()
         
-      let scoreElement = createElement('ol', 'Highscore')
-            //.position(40, 5)
-            .id('score-list')
-            .addClass('menu-headline')
+            // createElement('ol', 'Highscore')
+            // //.position(40, 5)
+            // .id('score-list')
+            // .addClass('menu-headline')
         
       //this.highscore.drawOnScoreBoard(scoreElement);
         

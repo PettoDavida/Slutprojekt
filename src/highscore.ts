@@ -55,7 +55,7 @@ class Highscore {
         this.scoreBoardArray.splice(5);
         console.log(this.scoreBoardArray)
        
-        let score = createElement('ol', "Score:")
+        let score = createElement('ol', "Highscore:")
                     .position(400, 150)
                     .addClass('menu-subline')
                     .id('score-list')
