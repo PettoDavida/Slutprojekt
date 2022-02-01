@@ -165,7 +165,7 @@ class Menu {
             .id('score-list')
             .addClass('menu-headline')
         
-        this.highscore.drawOnScoreBoard(scoreElement);
+      //this.highscore.drawOnScoreBoard(scoreElement);
         
         createButton('Back')
             //.position(200, 450)

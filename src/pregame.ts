@@ -34,13 +34,14 @@ class PreGame {
     private gameOver = () => {
         this.gameState = GameState.over
         gameMusic.stop()
-        this.game.highscore.save()
-        
-        if (this.gameState === GameState.over) {
-            this.gameovermenu.setup()
-            return
-        }
-       // 
+         this.gameovermenu.setup()
+
+        // if (this.gameState === GameState.over) {
+           
+            
+        // }
+
+        this.game.highscore.drawOnScoreBoard()
         this.game.removeObstaclesFromArray()   
        // this.game.highscore.sortHighScore()
 

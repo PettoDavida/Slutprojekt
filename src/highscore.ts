@@ -17,16 +17,7 @@ class Highscore {
              
       
     }
-    
-    public save() {
-        console.log('save')
-        this.scoreBoardArray.push(this.flooredScore);
-        this.sortHighScore();
-     
-
-    }
-    
-    public draw() {
+       public draw() {
         fill('white')
         textSize(25)
         textFont('Monospace');
@@ -34,33 +25,49 @@ class Highscore {
         
     }
 
+    public save() {
+        this.scoreBoardArray.push(this.flooredScore);
+        console.log('save')
+        
+    }
+    
     public sortHighScore() {
+        console.log('sorthighscore') 
         this.scoreBoardArray.sort(function(a, b){
                 return b-a
         })
-        this.saveToLS();
-        console.log(this.scoreBoardArray)  
+        
+         
     }
   
     private saveToLS() {
         localStorage.setItem("scores", JSON.stringify(this.scoreBoardArray));
+        console.log('savetols')
+        //this.drawOnScoreBoard()
     }
 
-    public drawOnScoreBoard(parent) {
-        this.sortHighScore()
-       // this.scoreBoardArray.splice(5);
+    public drawOnScoreBoard() {
+      console.log('drawonscoreboard')
+       this.save();
+       this.sortHighScore();
+       this.saveToLS();
+
+        this.scoreBoardArray.splice(5);
         console.log(this.scoreBoardArray)
-        
+       
+        let score = createElement('ol', "Score:")
+                    .position(400, 150)
+                    .addClass('menu-subline')
+                    .id('score-list')
+
         let place = [1,2,3,4,5]
-        for(let i = 0; i < 5; i ++) {
-                
+        for(let i = 0; i < this.scoreBoardArray.length; i++) { 
                 createElement('p', `${place[i]}.   ${this.scoreBoardArray[i]}`)
-                .style('font-size', '25px') 
-                .style('color', 'white')
-                .addClass('highscore-list-items')
-                .parent(parent)
-                
-        }
+                    .style('font-size', '25px') 
+                    .style('color', 'white')
+                    .addClass('highscore-list-items')
+                    .parent(score)
+            }
         
     }
 

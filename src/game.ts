@@ -85,6 +85,7 @@ class Game {
 
     public removeObstaclesFromArray() {
         this.obstacles = [];
+        console.log(this.obstacles)
     }
 
     private checkCollision() {
