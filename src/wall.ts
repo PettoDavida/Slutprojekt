@@ -6,7 +6,7 @@ class Wall {
     constructor(position: p5.Vector){
         this.position = position
         this.wall = []
-        this.collisionBox = new Box(position, createVector(width, 75))
+        this.collisionBox = new Box(position, createVector(width, 50))
         for (let i = 0; i < 36; i++) {
             this.wall.push({image:spaceRockImg, offset: createVector(i*50, random(0,30))})
         }
@@ -34,6 +34,8 @@ class Wall {
                 image(element.image, positionX, this.position.y + element.offset.y -30, 100, 100)
             }
         }   
+        fill(255)
+        rect(this.position.x, this.position.y, width, 50)
     }
 
     private changeImage(){}
