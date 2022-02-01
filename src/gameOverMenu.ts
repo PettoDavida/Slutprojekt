@@ -20,12 +20,8 @@ class GameOverMenu {
             .style('color', 'black')
             .position(430, 50)
             
-            let scoreElement = createElement('p', "Score:")
-            .position(400, 150)
-            .addClass('menu-subline')
-            this.highscore.drawOnScoreBoard(scoreElement)
-           
-
+       
+        
         createButton('Restart')
             .mousePressed(this.restartGame.bind(this))
             .size(100, 60)
@@ -35,7 +31,7 @@ class GameOverMenu {
             .mousePressed(this.backToMenu.bind(this))
             .size(100, 60)
             .position(650, 480)
-8
+
     }
 
     /**
