@@ -56,9 +56,9 @@ class Highscore {
         console.log(this.scoreBoardArray)
        
         let score = createElement('ol', "Score:")
-                    .position(400, 150)
-                    .addClass('menu-subline')
+                    .addClass('score-element')
                     .id('score-list')
+                    
 
         let place = [1,2,3,4,5]
         for(let i = 0; i < this.scoreBoardArray.length; i++) { 

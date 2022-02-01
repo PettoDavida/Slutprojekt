@@ -17,12 +17,17 @@ p {
     color: white;
 }
 
-.startmenu-div {
+.startmenu-div, .gameovermenu-div {
     display: flex;
-    flex-direction: column;
     position: absolute;
+}
+
+.startmenu-div {
     height: 25%;
-    
+    flex-direction: column;
+}
+.gameovermenu-div {
+    flex-direction: row;
 }
 
 button {
@@ -53,7 +58,7 @@ button:hover {
     padding: 0;
     margin: 1rem
 }
-.menu-subline {
+.score-element {
     font-size: 20px;
     color: black
 
