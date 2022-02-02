@@ -17,6 +17,31 @@ p {
     color: white;
 }
 
+.controls-title {
+    margin: 0;
+}
+
+.highscore-title {
+    display: flex;
+    margin-top: 0;
+    text-align: center;
+}
+
+.controls-div {
+    display: flex;
+    position: absolute;
+    text-align: center;
+    flex-direction: column;
+    height: 500px;
+    width: 500px;
+}
+
+.highscore-div {
+    display: flex;
+    position: absolute;
+    height: 40%;
+    flex-direction: column;
+}
 
 .startmenu-div {
     display: flex;
@@ -52,6 +77,9 @@ button {
     margin: auto;
     margin-bottom: 1rem;
 }
+.backbutton {
+    margin-top: 1rem;
+}
 
 button:hover {
     background: black;
@@ -61,10 +89,12 @@ button:hover {
 
 .gameKeys {
     border: solid 2px black;
-    padding: 15px 20px 15px 20px;
+    padding: 15px 20px 8px 20px;
     background: black;
     border-radius: 10px;
-
+    width: 100px;
+    margin: 2px;
+    align-self: center;
 }
 
 .menu-headline {
