@@ -22,7 +22,6 @@ p {
 }
 
 .highscore-title {
-    display: flex;
     margin-top: 0;
     text-align: center;
 }
@@ -39,8 +38,9 @@ p {
 .highscore-div {
     display: flex;
     position: absolute;
-    height: 40%;
     flex-direction: column;
+    height: 500px;
+    width: 500px;
 }
 
 .startmenu-div {
