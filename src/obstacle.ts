@@ -46,7 +46,7 @@ class Obstacle {
        imageMode(CENTER)
        ellipseMode(CENTER)
        translate(this.position.x + (this.size.x * .5), this.position.y + (this.size.y * .5))
-      
+       noStroke()
        rotate(this.rotationSpeed)
        image(this.image, 0,0, this.size.x, this.size.y);
        pop()
