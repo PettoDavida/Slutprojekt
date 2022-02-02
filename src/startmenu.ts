@@ -36,7 +36,7 @@ class Menu {
         let div = createElement('div')
                 .addClass('startmenu-div')
 
-        createElement('h1', 'Space Jam 3.0')
+        createElement('h1', 'Space Race')
             .style('color', 'white')
             .style('font-size', '50px')
             .addClass('menu-headline')
