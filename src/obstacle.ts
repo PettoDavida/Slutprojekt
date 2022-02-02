@@ -24,18 +24,14 @@ class Obstacle {
         // fart i px per sekund
         this.position.x -= horizontalGameSpeed * (deltaTime / 1000)
         this.rotationSpeed++;
+
+
         
     }
 
     public updateImage(highscore: number) {
-        obstacleImg = obstacleImg1
-        switch (highscore) {
-            case 15: 
-                obstacleImg = obstacleImg2
-                break
-            case 20: 
-               obstacleImg = obstacleImg3
-               break
+        if(highscore > 30){
+            this.image = obstacleImg2
         }
     }
  
@@ -51,7 +47,7 @@ class Obstacle {
        image(this.image, 0,0, this.size.x, this.size.y);
        pop()
         // för att kunna se collision circle för obstacle
-        fill(255,0,0)
+        fill(255,0,0,1)
         ellipse(this.collisionCircle.position.x + this.position.x, this.collisionCircle.position.y + this.position.y,
                 this.collisionCircle.radius * 2, this.collisionCircle.radius * 2)
  

@@ -34,7 +34,7 @@ class Wall {
                 image(element.image, positionX, this.position.y + element.offset.y -30, 100, 100)
             }
         }   
-        fill(255)
+        fill(255,0,0,1)
         rect(this.position.x, this.position.y, width, 50)
     }
 
