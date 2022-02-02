@@ -29,6 +29,7 @@ class Spaceship {
         for (let index = 0; index < this.collisionShape.length; index++) {
             const element = this.collisionShape[index];
             fill(255,0,0,1)
+            noStroke()
             rect(element.position.x + this.position.x, element.position.y + this.position.y, element.size.x, element.size.y)
         }
        
