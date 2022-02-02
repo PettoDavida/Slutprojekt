@@ -73,7 +73,30 @@ class Game {
             const size = createVector(diameter, diameter)
             const position = createVector(1500, random(height - size.y))
             const rotationSpeed = random(0, 100)
-            const newObstacle = new Obstacle(obstacleImg, position, size, rotationSpeed)
+            let randomObstaclePicture = obstacleImg
+
+            if (this.highscore.flooredScore > 20) {
+                
+                const picNumber = random(1, 100)
+                console.log(picNumber)
+
+                if (picNumber < 15) {
+                    randomObstaclePicture = obstacleImg1
+                } else if (picNumber > 15 && picNumber < 30) {
+                    randomObstaclePicture = obstacleImg2
+                } else if(picNumber > 30 &&  picNumber < 45) {
+                    randomObstaclePicture = obstacleImg3
+                } else if(picNumber > 45 && picNumber < 65) {
+                    randomObstaclePicture = obstacleImg4
+                } else if(picNumber > 65 && picNumber < 75) {
+                    randomObstaclePicture = obstacleImg5
+                } else if (picNumber > 75) {
+                    randomObstaclePicture = obstacleImg6
+                }
+            }
+          
+
+            const newObstacle = new Obstacle(randomObstaclePicture, position, size, rotationSpeed)
             this.obstacles.push(newObstacle)
             this.spawnTime = 0;
         }

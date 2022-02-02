@@ -7,6 +7,9 @@ let obstacleImg: p5.Image
 let obstacleImg1: p5.Image
 let obstacleImg2: p5.Image
 let obstacleImg3: p5.Image
+let obstacleImg4: p5.Image
+let obstacleImg5: p5.Image
+let obstacleImg6: p5.Image
 
 let backgroundImg: p5.Image
 let backgroundImg2: p5.Image
@@ -35,6 +38,9 @@ function preload() {
     obstacleImg1 = loadImage('./documents/assets/obstacle.png')
     obstacleImg2 = loadImage('./assets/images/obstacle2.png')
     obstacleImg3 = loadImage('./assets/images/obstacle3.png')
+    obstacleImg4 = loadImage('./assets/images/obstacle4.png')
+    obstacleImg5 = loadImage('./assets/images/obstacle5.png')
+    obstacleImg6 = loadImage('./assets/images/obstacle6.png')
 
     backgroundImg = loadImage('./documents/assets/background.png')
     backgroundImg2 = loadImage('./assets/images/backgroundImg2.jpg')

@@ -31,7 +31,7 @@ class Obstacle {
 
     public updateImage(highscore: number) {
         if(highscore > 30){
-            this.image = obstacleImg2
+           // this.image = obstacleImg2
         }
     }
  
