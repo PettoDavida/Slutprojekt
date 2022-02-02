@@ -119,17 +119,24 @@ class Menu {
      */
     private checkHighScore() {
         this.clearMenuContainer()
-        this.highscore.drawOnScoreBoard()
+       
+        let div = createElement('div')
+            .addClass('highscoretmenu-div')
 
-        createElement('h2', 'HighScore')
-            .position(400, 50)
-            .style('color', 'black')
+        createElement('h2', 'Highscore')
+             .style('color', 'white')
             .style('font-size', '50px')
+            .addClass('menu-headline')
+            .parent(div)
 
         createButton('Back')
             .size(80, 30)
             .mousePressed(this.setup.bind(this))
-            .position(550, 500)
+            .parent(div)
+            .addClass('back-button')
+
+            
+            this.highscore.drawOnScoreBoard(div)
     }
 }
 

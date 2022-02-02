@@ -34,7 +34,7 @@ class PreGame {
         this.gameState = GameState.over
         gameMusic.stop()
         this.gameovermenu.setup()
-        this.game.highscore.drawOnScoreBoard()
+       // this.game.highscore.drawOnScoreBoard()
         this.game.resetObstaclesAndSpaceship() 
 
     }

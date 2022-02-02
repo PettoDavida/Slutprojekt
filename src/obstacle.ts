@@ -24,7 +24,6 @@ class Obstacle {
         // fart i px per sekund
         this.position.x -= horizontalGameSpeed * (deltaTime / 1000)
         this.rotationSpeed++;
-        
     }
 
     public updateImage(highscore) {

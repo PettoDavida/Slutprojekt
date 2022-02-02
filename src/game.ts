@@ -95,6 +95,8 @@ class Game {
             if (this.spaceship.collideCircle(obstacle.getCollisionCircle())) {
                 console.log("Hinder")
                 this.onGameOver();
+               // this.highscore.save();
+
                 collisionSound.play()
 
                 return
@@ -106,7 +108,7 @@ class Game {
             this.spaceship.collideBox(this.upperWall.collisionBox) ||
             this.spaceship.collideBox(this.lowerWall.collisionBox)
             ) {
-           // this.highscore.save();
+          //this.highscore.save();
            console.log("Wall")
            
             this.onGameOver();

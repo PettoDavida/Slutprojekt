@@ -1,8 +1,10 @@
 class GameOverMenu {
     private menu: Menu
+    private highscore: Highscore
 
     constructor(startMenu: Menu) {
         this.menu = startMenu
+        this.highscore = new Highscore()
     }
 
     /**
@@ -15,6 +17,8 @@ class GameOverMenu {
             .addClass('gameovermenu-div')
             .id('score')
 
+        this.highscore.drawOnScoreBoard(div);
+        
         createElement("h2", "Game Over")
             .addClass('menu-headline')
             .style('color', 'white')
@@ -22,16 +26,18 @@ class GameOverMenu {
             
         createButton('Restart')
             .mousePressed(this.restartGame.bind(this))
+            .addClass('button-menu')
             .size(100, 60)
             .parent(div)
            
-
         createButton('Menu')
             .mousePressed(this.backToMenu.bind(this))
+            .addClass('button-restart')
             .size(100, 60)
             .parent(div)
-            
 
+
+        
     }
 
     /**
