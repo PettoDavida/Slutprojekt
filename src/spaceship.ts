@@ -28,8 +28,10 @@ class Spaceship {
      
         for (let index = 0; index < this.collisionShape.length; index++) {
             const element = this.collisionShape[index];
+
             fill(255,0,0,1)
             noStroke()
+
             rect(element.position.x + this.position.x, element.position.y + this.position.y, element.size.x, element.size.y)
         }
        
@@ -86,8 +88,8 @@ class Spaceship {
     public collideBox(box:Box){
         for (let index = 0; index < this.collisionShape.length; index++) {
             const element = this.collisionShape[index];
-            let wooh = new Box(createVector(element.position.x + this.position.x, element.position.y + this.position.y), element.size)
-            if (wooh.collide(box.position, box.size)) {
+            let ship = new Box(createVector(element.position.x + this.position.x, element.position.y + this.position.y), element.size)
+            if (ship.collide(box.position, box.size)) {
                 return true
             }
             
@@ -98,8 +100,8 @@ class Spaceship {
     public collideCircle(circle:Circle){
         for (let index = 0; index < this.collisionShape.length; index++) {
             const element = this.collisionShape[index];
-            let wooh = new Box(createVector(element.position.x + this.position.x, element.position.y + this.position.y), element.size)
-            if (circle.collide(wooh.position, wooh.size)) {
+            let ship = new Box(createVector(element.position.x + this.position.x, element.position.y + this.position.y), element.size)
+            if (circle.collide(ship.position, ship.size)) {
                 return true
             }
             

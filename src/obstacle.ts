@@ -50,16 +50,17 @@ class Obstacle {
        rotate(this.rotationSpeed)
        image(this.image, 0,0, this.size.x, this.size.y);
        pop()
-
-        fill(255,0,0,1)
+        // för att kunna se collision circle för obstacle
+        fill(255,0,0)
         ellipse(this.collisionCircle.position.x + this.position.x, this.collisionCircle.position.y + this.position.y,
                 this.collisionCircle.radius * 2, this.collisionCircle.radius * 2)
  
     }
 
     public getCollisionCircle(){
-        let circle = new Circle(createVector(this.collisionCircle.position.x + this.position.x, this.collisionCircle.position.y + this.position.y),
-                                this.collisionCircle.radius)
+        let circle = new Circle(createVector(this.collisionCircle.position.x + this.position.x, 
+                                             this.collisionCircle.position.y + this.position.y),
+                                             this.collisionCircle.radius)
                                 
         return circle
     }
