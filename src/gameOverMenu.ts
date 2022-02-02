@@ -1,8 +1,10 @@
 class GameOverMenu {
     private menu: Menu
+    private highscore: Highscore
 
     constructor(startMenu: Menu) {
         this.menu = startMenu
+        this.highscore = new Highscore()
     }
 
     /**
@@ -10,10 +12,14 @@ class GameOverMenu {
      */
     public setup() {
         this.menu.clearMenuContainer()
+        //drawonscoreboard
+       
 
         let div = createElement('div')
             .addClass('gameovermenu-div')
             .id('score')
+            
+             this.highscore.drawOnScoreBoard(div)
 
         createElement("h2", "Game Over")
             .addClass('menu-headline')

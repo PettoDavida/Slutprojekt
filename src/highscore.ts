@@ -3,12 +3,10 @@ class Highscore {
     public flooredScore: number
     private scoreBoardArray: number[]
 
-
     constructor() {
         this.score = 0
         this.flooredScore = 0
         this.scoreBoardArray = JSON.parse(localStorage.getItem("scores") ?? "[]")
-        
     }
    
     public update() { 
@@ -46,7 +44,7 @@ class Highscore {
         //this.drawOnScoreBoard()
     }
 
-    public drawOnScoreBoard() {
+    public drawOnScoreBoard(parentElement: p5.Element) {
       console.log('drawonscoreboard')
        this.save();
        this.sortHighScore();
@@ -58,6 +56,7 @@ class Highscore {
         let score = createElement('ol', "Score:")
                     .addClass('score-element')
                     .id('score-list')
+                    .parent(parentElement)
                     
 
         let place = [1,2,3,4,5]

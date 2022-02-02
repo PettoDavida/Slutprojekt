@@ -65,6 +65,7 @@ class Menu {
         this.clearMenuContainer()
         this.clickStartGame()
         
+        
     }
 
     /**
@@ -119,17 +120,24 @@ class Menu {
      */
     private checkHighScore() {
         this.clearMenuContainer()
-        this.highscore.drawOnScoreBoard()
+        
+
+        let div = createElement('div')
+                .addClass('startmenu-div')
+                .addClass('startmenu-highscore')
+
+        this.highscore.drawOnScoreBoard(div)
 
         createElement('h2', 'HighScore')
-            .position(400, 50)
             .style('color', 'black')
             .style('font-size', '50px')
+            .parent(div)
 
         createButton('Back')
             .size(80, 30)
             .mousePressed(this.setup.bind(this))
-            .position(550, 500)
+            .parent(div)
+            
     }
 }
 

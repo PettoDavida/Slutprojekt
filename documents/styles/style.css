@@ -27,7 +27,9 @@ p {
     flex-direction: column;
 }
 .gameovermenu-div {
-    flex-direction: row;
+    border: 1px solid green;
+    height: 800px;
+    width: 1200px;
 }
 
 button {
@@ -60,7 +62,7 @@ button:hover {
 }
 .score-element {
     font-size: 20px;
-    color: black
+    color: white;
 
 }
 
