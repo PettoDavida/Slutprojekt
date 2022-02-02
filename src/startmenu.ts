@@ -119,7 +119,7 @@ class Menu {
      */
     private checkHighScore() {
         this.clearMenuContainer()
-        this.highscore.drawOnScoreBoard()
+       // this.highscore.drawOnScoreBoard()
 
         createElement('h2', 'HighScore')
             .position(400, 50)

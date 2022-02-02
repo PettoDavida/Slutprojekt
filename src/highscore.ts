@@ -43,7 +43,7 @@ class Highscore {
     private saveToLS() {
         localStorage.setItem("scores", JSON.stringify(this.scoreBoardArray));
         console.log('savetols')
-        //this.drawOnScoreBoard()
+       
     }
 
     public drawOnScoreBoard() {

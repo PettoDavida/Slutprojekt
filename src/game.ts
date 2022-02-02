@@ -86,7 +86,7 @@ class Game {
     public resetObstaclesAndSpaceship() {
         this.obstacles = []
         this.spaceship.updateClickedBoolean()
-        console.log(this.obstacles)
+        
     }
 
     private checkCollision() {
