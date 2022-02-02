@@ -11,9 +11,10 @@ class Background {
 
 
     public update(highscore: number) {
-if(highscore === 50){
-    this.image = backgroundImg2
-}
+        if(highscore === 30){
+            this.image = backgroundImg2
+        }
+    }
    
     public draw() {
         image(this.image, 0, 0)
