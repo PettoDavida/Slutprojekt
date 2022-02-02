@@ -73,45 +73,50 @@ class Menu {
     public checkControls() {
         this.clearMenuContainer()
 
+        let div = createElement('div')
+            .addClass('controls-div')
+
         createElement('h2', 'Game Controls')
-            .position(400, 50)
-            .style('color', 'black')
+            .style('color', 'white')
             .style('font-size', '50px')
+            .addClass('controls-title')
+            .parent(div)
 
         createElement('p', 'Fly')
-            .position(440, 150)
             .style('color', 'black')
             .style('font-size', '20px')
+            .parent(div)
 
         createElement('p', 'Left Mouse Button')
-            .position(360, 200)
             .addClass('gameKeys')
+            .parent(div)
 
         createElement('p', 'Space')
-            .position(410, 270)
             .addClass('gameKeys')
+            .parent(div)
 
         createElement('p', 'W')
-            .position(420, 330)
             .addClass('gameKeys')
+            .parent(div)
 
         createElement('p', '\u02C4')
-            .position(425, 390)
             .addClass('gameKeys')
+            .parent(div)
 
         createElement('p', 'Mute')
-            .position(730, 190)
             .style('color', 'black')
             .style('font-size', '20px')
+            .parent(div)
 
         createElement('p', 'M')
-            .position(650, 200)
             .addClass('gameKeys')
+            .parent(div)
 
         createButton('Back')
-            .position(550, 500)
             .size(80, 30)
             .mousePressed(this.setup.bind(this))
+            .addClass('backbutton')
+            .parent(div)
     }
 
     /**
@@ -121,15 +126,19 @@ class Menu {
         this.clearMenuContainer()
         this.highscore.drawOnScoreBoard()
 
+        let div = createElement('div')
+            .addClass('highscore-div')
+
         createElement('h2', 'HighScore')
-            .position(400, 50)
+            .addClass('highscore-title')
             .style('color', 'black')
             .style('font-size', '50px')
+            .parent(div)
 
         createButton('Back')
             .size(80, 30)
             .mousePressed(this.setup.bind(this))
-            .position(550, 500)
+            .parent(div)
     }
 }
 
