@@ -9,17 +9,10 @@ class Background {
        // this.highscore = new Highscore()
     }
 
-    public update(highscore?) {
-
-        switch (highscore) {
-            case 5:
-                
-                
-                break
-            case 20:
-                //Ny bild
-                break
-        }
+    public update(highscore: number) {
+if(highscore === 50){
+    this.image = backgroundImg2
+}
     }
 
     public draw() {
