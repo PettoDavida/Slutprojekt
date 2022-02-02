@@ -1,17 +1,39 @@
-html, body, canvas {
+html, body {
     height: 100%;
     width: 100%;
     margin: 0;
     background: black;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+canvas {
+    position: relative;
 }
 
 p {
     color: white;
 }
 
+.startmenu-div, .gameovermenu-div {
+    display: flex;
+    position: absolute;
+}
+
+.startmenu-div {
+    height: 25%;
+    flex-direction: column;
+}
+.gameovermenu-div {
+    flex-direction: row;
+}
+
 button {
-   opacity: 1;
+    opacity: 1;
     border-radius: 20px;
+    width: 2rem;
     margin: auto;
     margin-bottom: 1rem;
 }
@@ -36,7 +58,7 @@ button:hover {
     padding: 0;
     margin: 1rem
 }
-.menu-subline {
+.score-element {
     font-size: 20px;
     color: black
 

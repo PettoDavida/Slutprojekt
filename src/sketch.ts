@@ -50,7 +50,7 @@ function preload() {
  * in the draw function below
  */
 function setup() {
-    createCanvas(1200, 600)
+    createCanvas(1500, 800)
     frameRate(60);
     //noCursor();
     collisionSound.setVolume(0.1)

@@ -14,7 +14,6 @@ class PreGame {
         this.gameovermenu = new GameOverMenu(this.menu)
         this.game = new Game(this.gameOver.bind(this));
         this.background = new Background(backgroundImg)
-
         this.isMuteKeyDown = false;
        // this.highscore = new Highscore()
     }
@@ -36,7 +35,7 @@ class PreGame {
         gameMusic.stop()
         this.gameovermenu.setup()
         this.game.highscore.drawOnScoreBoard()
-        this.game.removeObstaclesFromArray()   
+        this.game.resetObstaclesAndSpaceship() 
 
     }
 

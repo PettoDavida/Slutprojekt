@@ -11,20 +11,26 @@ class GameOverMenu {
     public setup() {
         this.menu.clearMenuContainer()
 
+        let div = createElement('div')
+            .addClass('gameovermenu-div')
+            .id('score')
+
         createElement("h2", "Game Over")
             .addClass('menu-headline')
-            .style('color', 'black')
-            .position(430, 50)
+            .style('color', 'white')
+            .parent(div)
             
         createButton('Restart')
             .mousePressed(this.restartGame.bind(this))
             .size(100, 60)
-            .position(430, 480)
+            .parent(div)
+           
 
         createButton('Menu')
             .mousePressed(this.backToMenu.bind(this))
             .size(100, 60)
-            .position(650, 480)
+            .parent(div)
+            
 
     }
 
