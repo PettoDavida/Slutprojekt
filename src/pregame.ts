@@ -25,6 +25,7 @@ class PreGame {
         this.gameState = GameState.running
         this.game = new Game(this.gameOver.bind(this));
         gameMusic.play()
+        noCursor()
     }
 
     /**
@@ -36,6 +37,7 @@ class PreGame {
         this.gameovermenu.setup()
         this.game.highscore.drawOnScoreBoard()
         this.game.resetObstaclesAndSpaceship() 
+        cursor(ARROW)
 
     }
 
