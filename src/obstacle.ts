@@ -27,7 +27,7 @@ class Obstacle {
         
     }
 
-    public updateImage(highscore: number) {
+    public updateImage(highscore) {
         obstacleImg = obstacleImg1
         switch (highscore) {
             case 15: 
@@ -52,7 +52,6 @@ class Obstacle {
        pop()
 
         fill(255,0,0,1)
-        noStroke()
         ellipse(this.collisionCircle.position.x + this.position.x, this.collisionCircle.position.y + this.position.y,
                 this.collisionCircle.radius * 2, this.collisionCircle.radius * 2)
  
