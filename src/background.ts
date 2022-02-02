@@ -9,7 +9,7 @@ class Background {
        // this.highscore = new Highscore()
     }
 
-    public update(highscore?) {
+    public update(highscore?: number) {
 
         switch (highscore) {
             case 5:
