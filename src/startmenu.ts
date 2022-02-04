@@ -80,7 +80,7 @@ class Menu {
             .addClass('controls-title text-center')
             .parent(div)
 
-        createElement('p', 'Fly')
+        createElement('p', 'Fly upwards')
             .style('color', 'black')
             .style('font-size', '20px')
             .parent(div)

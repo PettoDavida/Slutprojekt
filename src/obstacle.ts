@@ -32,11 +32,14 @@ class Obstacle {
        rotate(this.rotationSpeed)
        image(this.image, 0,0, this.size.x, this.size.y)
        pop()
-       fill(255,0,0,1)
-       ellipse(this.collisionCircle.position.x + this.position.x, this.collisionCircle.position.y + this.position.y,
-                this.collisionCircle.radius * 2, this.collisionCircle.radius * 2)
+
+        // Used to see collisionBox of circle
+    //    fill(255,0,0,1)
+    //    ellipse(this.collisionCircle.position.x + this.position.x, this.collisionCircle.position.y + this.position.y,
+    //             this.collisionCircle.radius * 2, this.collisionCircle.radius * 2)
     }
 
+    /** Creates circle in the middle of obstacle */
     public getCollisionCircle(){
         let circle = new Circle(createVector(this.collisionCircle.position.x + this.position.x, 
                                              this.collisionCircle.position.y + this.position.y),
