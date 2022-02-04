@@ -1,10 +1,9 @@
 class Background {
     private image: p5.Image
-   // private highscore: Highscore
-    
 
     constructor(image: p5.Image) {
         this.image = image
+<<<<<<< Updated upstream
         
        // this.highscore = new Highscore()
     }
@@ -13,6 +12,15 @@ class Background {
 if(highscore === 50){
     this.image = backgroundImg2
 }
+=======
+    }
+
+/** Changes background when reaching highscore 50 */
+    public update(highscore: number) {
+        if(highscore === 50){
+            this.image = backgroundImg2
+        }
+>>>>>>> Stashed changes
     }
 
     public draw() {

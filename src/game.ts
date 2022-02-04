@@ -77,7 +77,34 @@ class Game {
             const size = createVector(diameter, diameter)
             const position = createVector(1500, random(height - size.y))
             const rotationSpeed = random(0, 100)
+<<<<<<< Updated upstream
             const newObstacle = new Obstacle(obstacleImg, position, size, rotationSpeed)
+=======
+            let randomObstaclePicture = obstacleImg
+
+            /**
+             * Obstacles get different picture based on a random number
+             */
+            if (this.highscore.flooredScore > 20) {
+                const picNumber = random(1, 100)
+
+                if (picNumber < 15) {
+                    randomObstaclePicture = obstacleImg1
+                } else if (picNumber > 15 && picNumber < 30) {
+                    randomObstaclePicture = obstacleImg2
+                } else if(picNumber > 30 &&  picNumber < 45) {
+                    randomObstaclePicture = obstacleImg3
+                } else if(picNumber > 45 && picNumber < 65) {
+                    randomObstaclePicture = obstacleImg4
+                } else if(picNumber > 65 && picNumber < 75) {
+                    randomObstaclePicture = obstacleImg5
+                } else if (picNumber > 75) {
+                    randomObstaclePicture = obstacleImg6
+                }
+            }
+
+            const newObstacle = new Obstacle(randomObstaclePicture, position, size, rotationSpeed)
+>>>>>>> Stashed changes
             this.obstacles.push(newObstacle)
             this.spawnTime = 0;
         }
@@ -85,8 +112,11 @@ class Game {
 
     public resetObstaclesAndSpaceship() {
         this.obstacles = []
+<<<<<<< Updated upstream
         this.spaceship.updateClickedBoolean()
         console.log(this.obstacles)
+=======
+>>>>>>> Stashed changes
     }
 
     private checkCollision() {
@@ -99,6 +129,7 @@ class Game {
 
                 return
             }// vad som ska hända när spaceship nuddar ett hinder
+<<<<<<< Updated upstream
 
         }
 
@@ -110,11 +141,20 @@ class Game {
            console.log("Wall")
            
             this.onGameOver();
-            collisionSound.play()
+=======
+            }
 
+        if (this.spaceship.collideBox(this.upperWall.collisionBox) ||
+            this.spaceship.collideBox(this.lowerWall.collisionBox)) {
+            this.onGameOver()
+>>>>>>> Stashed changes
+            collisionSound.play()
             return
         } // vad som ska hända när spaceship nuddar en kant
+<<<<<<< Updated upstream
     }
 
+=======
+>>>>>>> Stashed changes
 }
-
+}
