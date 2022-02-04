@@ -33,12 +33,11 @@ class PreGame {
      */
     private gameOver = () => {
         this.gameState = GameState.over
+        this.game.resetObstaclesAndSpaceship() 
         gameMusic.stop()
         this.gameovermenu.setup()
         this.game.highscore.drawOnScoreBoard()
-        this.game.resetObstaclesAndSpaceship() 
         cursor(ARROW)
-
     }
 
     public update() {
@@ -46,8 +45,7 @@ class PreGame {
             this.game.update();
         }
 
-        
-        // const muteKeyPressed = !this.isMuteKeyDown && keyIsDown(77);
+  
         const muteKeyReleased = this.isMuteKeyDown && !keyIsDown(77);
 
         if (muteKeyReleased) {
@@ -61,14 +59,12 @@ class PreGame {
         // Save current frame's value so we can
         // check against it in the next frame
         this.isMuteKeyDown = keyIsDown(77);
-
     }
 
     public draw() {
         clear()
         switch (this.gameState) {
             case GameState.start:
-               // this.background.draw()
                 this.menu.draw()
                 break
 
@@ -81,7 +77,5 @@ class PreGame {
                 this.menu.draw()
                 break
         }
-
     }
-
 } 

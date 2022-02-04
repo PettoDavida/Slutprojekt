@@ -41,13 +41,13 @@ class Game {
         this.background.update(this.highscore.flooredScore)
         
 
+        /**
+         * For each obstacles update speed of obstacles
+         */
         for (const obstacle of this.obstacles) {
             obstacle.update(this.horizontalGameSpeed)
-            obstacle.updateImage(this.highscore.flooredScore)
         }
 
-
-       
         this.checkCollision()
         this.spaceship.update()
         this.updateWorldSpeed()
@@ -56,17 +56,25 @@ class Game {
         this.highscore.update()
     }
 
+    /**
+     * Updates game speed
+     */
     private updateWorldSpeed() {
-        this.horizontalGameSpeed += 0.1
+        this.horizontalGameSpeed += 0.25
     }
 
+    /**
+     * function for spawning obstacles based on horizontalGameSpeed
+     */
     private spawnObstacle() {
         this.spawnTime += deltaTime
+       
         /**
          * Calculated from horizontal game speed in order to have
          * the same space between obstacles when the game speeds up.
          */
         const spawnDelay = 800000 / this.horizontalGameSpeed;
+
 
         if (this.spawnTime > spawnDelay) {
             const diameter = random(70, 200)
@@ -75,8 +83,10 @@ class Game {
             const rotationSpeed = random(0, 100)
             let randomObstaclePicture = obstacleImg
 
+            /**
+             * Obstacles get different picture based on a random number
+             */
             if (this.highscore.flooredScore > 20) {
-                
                 const picNumber = random(1, 100)
                 console.log(picNumber)
 
@@ -94,19 +104,21 @@ class Game {
                     randomObstaclePicture = obstacleImg6
                 }
             }
-          
-
             const newObstacle = new Obstacle(randomObstaclePicture, position, size, rotationSpeed)
             this.obstacles.push(newObstacle)
             this.spawnTime = 0;
         }
     }
 
+    /**
+     * When game over function resets spaceships clicked boolean to false and empties obstacle array
+     */
     public resetObstaclesAndSpaceship() {
-        this.obstacles = []
         this.spaceship.updateClickedBoolean()
+        this.obstacles = []
         console.log(this.obstacles)
     }
+
 
     private checkCollision() {
         for (const obstacle of this.obstacles) {
@@ -114,9 +126,8 @@ class Game {
             if (this.spaceship.collideCircle(obstacle.getCollisionCircle())) {
                 this.onGameOver();
                 collisionSound.play()
-
                 return
-            }// vad som ska hända när spaceship nuddar ett hinder
+            }
 
         }
 
