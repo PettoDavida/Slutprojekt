@@ -58,7 +58,6 @@ function preload() {
 function setup() {
     createCanvas(1500, 800)
     frameRate(60);
-    //noCursor();
     collisionSound.setVolume(0.1)
     gameMusic.setVolume(0.1)
     preGame = new PreGame();
@@ -70,10 +69,6 @@ function setup() {
  * you created in the setup function above
  */
 function draw() {
-    // image(backgroundImg, 0, 0);
-    // image(obstacleImg, 600, 400, 200, 200);
-    // image(obstacleImg, 400, 700, 100, 100);
-    // image(spaceShipImg, 50, 400, 130, 100);
     preGame.update();
     preGame.draw();
 }

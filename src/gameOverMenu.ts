@@ -20,22 +20,17 @@ class GameOverMenu {
             .style('color', 'white')
             .parent(div)
             
-
-        
         createButton('Restart')
             .mousePressed(this.restartGame.bind(this))
             .size(100, 60)
             .parent(div)
             .addClass('button-restart')
            
-
         createButton('Menu')
             .mousePressed(this.backToMenu.bind(this))
             .size(100, 60)
             .parent(div)
             .addClass("button-menu")
-            
-
     }
 
     /**

@@ -28,28 +28,34 @@ class Spaceship {
      
         for (let index = 0; index < this.collisionShape.length; index++) {
             const element = this.collisionShape[index];
-
             fill(255,0,0,1)
             noStroke()
-
             rect(element.position.x + this.position.x, element.position.y + this.position.y, element.size.x, element.size.y)
         }
-       
-            
     }
 
+    /**
+     * Speeds up spaceships speed up and down
+     */
     public update() {
         this.fly()
-        this.spaceShipSpeedUp *= 1.00005;
-        this.spaceShipSpeedDown *= 1.000005;
+        this.spaceShipSpeedUp *= 1.0001;
+        this.spaceShipSpeedDown *= 1.0001;
     }
+
+    /**
+     * updates booolean if mouse is clicked
+     */
     public updateClickedBoolean() {
         this.clicked = false
-        console.log(this.clicked)
     }
+
 
     private fly() {
         
+        /**
+         * Makes spaceship start at a set position
+         */
         if (!this.clicked) {
             this.position.y = height * .5
         }
