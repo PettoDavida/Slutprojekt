@@ -19,7 +19,6 @@ let spaceRockImg: p5.Image
 let collisionSound: p5.SoundFile
 let gameMusic: p5.SoundFile
 
-
 /**
  * Built in preload function in P5
  * This is a good place to load assets such as
@@ -46,7 +45,6 @@ function preload() {
     backgroundImg2 = loadImage('./assets/images/backgroundImg2.jpg')
 
     spaceRockImg = loadImage('./assets/images/spacerock.png')
-
 }
 
 /**
@@ -72,7 +70,6 @@ function draw() {
     preGame.update();
     preGame.draw();
 }
-
 
 /**
  *  Built in windowResize listener function in P5

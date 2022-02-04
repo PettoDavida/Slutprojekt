@@ -2,12 +2,11 @@ class Spaceship {
     public size: p5.Vector
     public position: p5.Vector
     private image: p5.Image
-    private spaceShipSpeedUp: number;
-    private spaceShipSpeedDown: number;
+    private spaceShipSpeedUp: number
+    private spaceShipSpeedDown: number
     private collisionShape: Box[]
     private angle: number
     private clicked: boolean
-
 
     constructor(size: p5.Vector, position: p5.Vector, image: p5.Image) {
         this.size = size
@@ -24,10 +23,12 @@ class Spaceship {
 
     public draw() {
     
-        image(this.image, this.position.x, this.position.y, this.size.x, this.size.y);
+        image(this.image, this.position.x, this.position.y, this.size.x, this.size.y)
      
         for (let index = 0; index < this.collisionShape.length; index++) {
-            const element = this.collisionShape[index];
+
+            const element = this.collisionShape[index]
+
             fill(255,0,0,1)
             noStroke()
             rect(element.position.x + this.position.x, element.position.y + this.position.y, element.size.x, element.size.y)
@@ -39,17 +40,17 @@ class Spaceship {
      */
     public update() {
         this.fly()
+
         this.spaceShipSpeedUp *= 1.0001;
         this.spaceShipSpeedDown *= 1.0001;
     }
 
-    /**
-     * updates booolean if mouse is clicked
-     */
+      /**updates booolean if mouse is clicked
+      */
+
     public updateClickedBoolean() {
         this.clicked = false
     }
-
 
     private fly() {
         
@@ -68,21 +69,21 @@ class Spaceship {
             this.clicked = true
 
             if(this.angle >= -20) {
-                    this.angle -= 2;
+                    this.angle -= 2
              }
                 
             if (this.position.y >= 0) {
-                this.position.y -= this.spaceShipSpeedUp;
+                this.position.y -= this.spaceShipSpeedUp
             }
           
         } else {
             
             if(this.angle <= 0){
-                this.angle++;
+                this.angle++
             }
 
             if (this.position.y <= height - this.size.y) {
-                this.position.y += this.spaceShipSpeedDown;
+                this.position.y += this.spaceShipSpeedDown
             } else if (this.position.y < 0) {
                 this.position.y = 0
             } else {
@@ -93,27 +94,23 @@ class Spaceship {
 
     public collideBox(box:Box){
         for (let index = 0; index < this.collisionShape.length; index++) {
-            const element = this.collisionShape[index];
+            const element = this.collisionShape[index]
             let ship = new Box(createVector(element.position.x + this.position.x, element.position.y + this.position.y), element.size)
             if (ship.collide(box.position, box.size)) {
                 return true
             }
-            
         }
         return false
     }
 
     public collideCircle(circle:Circle){
         for (let index = 0; index < this.collisionShape.length; index++) {
-            const element = this.collisionShape[index];
+            const element = this.collisionShape[index]
             let ship = new Box(createVector(element.position.x + this.position.x, element.position.y + this.position.y), element.size)
             if (circle.collide(ship.position, ship.size)) {
                 return true
             }
-            
         }
         return false
     }
-
-
 }
