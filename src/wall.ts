@@ -10,7 +10,6 @@ class Wall {
         for (let i = 0; i < 36; i++) {
             this.wall.push({image:spaceRockImg, offset: createVector(i*50, random(0,30))})
         }
-        
     }
 
     public update() {
@@ -37,6 +36,4 @@ class Wall {
         fill(255,0,0,1)
         rect(this.position.x, this.position.y, width, 50)
     }
-
-
 }

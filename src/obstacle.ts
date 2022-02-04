@@ -14,19 +14,14 @@ class Obstacle {
         this.collisionCircle = new Circle(createVector(size.x/2, size.y/2), size.y/2)
         //this.rotationDegree = 1
         this.rotationSpeed = rotationSpeed
-   
 
         //his.collisionEllipse = new Ellipse(ellipse(obstacleMidPointX, obstacleMidPointY, obstacleWidth, obstacleHeight))
-
     }
 
     public update(horizontalGameSpeed: number) {
         // fart i px per sekund
         this.position.x -= horizontalGameSpeed * (deltaTime / 1000)
-        this.rotationSpeed++;
-
-
-        
+        this.rotationSpeed++
     }
 
     public updateImage(highscore: number) {
@@ -36,7 +31,6 @@ class Obstacle {
     }
  
     public draw(){
-        
        push()      
        angleMode(DEGREES) 
        imageMode(CENTER)
@@ -44,13 +38,12 @@ class Obstacle {
        translate(this.position.x + (this.size.x * .5), this.position.y + (this.size.y * .5))
        noStroke()
        rotate(this.rotationSpeed)
-       image(this.image, 0,0, this.size.x, this.size.y);
+       image(this.image, 0,0, this.size.x, this.size.y)
        pop()
         // för att kunna se collision circle för obstacle
         fill(255,0,0,1)
         ellipse(this.collisionCircle.position.x + this.position.x, this.collisionCircle.position.y + this.position.y,
                 this.collisionCircle.radius * 2, this.collisionCircle.radius * 2)
- 
     }
 
     public getCollisionCircle(){
@@ -60,5 +53,4 @@ class Obstacle {
                                 
         return circle
     }
-    
 }

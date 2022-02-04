@@ -1,20 +1,19 @@
 class PreGame {
-    private game: Game;
+    private game: Game
     private menu: Menu
     private gameovermenu: GameOverMenu
     private gameState: GameState = GameState.start
     //public highscore: Highscore;
-     public background: Background;
+     public background: Background
     //highscore: any;
     private isMuteKeyDown: boolean
-
 
     constructor() {
         this.menu = new Menu(this.startGame.bind(this))
         this.gameovermenu = new GameOverMenu(this.menu)
-        this.game = new Game(this.gameOver.bind(this));
+        this.game = new Game(this.gameOver.bind(this))
         this.background = new Background(backgroundImg)
-        this.isMuteKeyDown = false;
+        this.isMuteKeyDown = false
        // this.highscore = new Highscore()
     }
 
@@ -23,7 +22,7 @@ class PreGame {
      */
     private startGame() {
         this.gameState = GameState.running
-        this.game = new Game(this.gameOver.bind(this));
+        this.game = new Game(this.gameOver.bind(this))
         gameMusic.play()
         noCursor()
     }
@@ -38,32 +37,37 @@ class PreGame {
         this.game.highscore.drawOnScoreBoard()
         this.game.resetObstaclesAndSpaceship() 
         cursor(ARROW)
-
     }
 
+    /**
+     * When the game is running it updates the walls, obstacles, highscore, spaceship and collision.
+     *
+     */
     public update() {
         if (this.gameState === GameState.running) {
-            this.game.update();
+            this.game.update()
         }
 
-        
         // const muteKeyPressed = !this.isMuteKeyDown && keyIsDown(77);
-        const muteKeyReleased = this.isMuteKeyDown && !keyIsDown(77);
+        const muteKeyReleased = this.isMuteKeyDown && !keyIsDown(77)
 
         if (muteKeyReleased) {
             if (getOutputVolume()) {
-                outputVolume(0);
+                outputVolume(0)
             } else {
-                outputVolume(1);
+                outputVolume(1)
             }
         }
         
         // Save current frame's value so we can
         // check against it in the next frame
-        this.isMuteKeyDown = keyIsDown(77);
-
+        this.isMuteKeyDown = keyIsDown(77)
     }
 
+    /**
+     * Draws out the rectangle around the menu on the startMenu and on the gameOverMenu.
+     * Draws out the spaceship, obstacles, walls, background and highscore when the game is running and over.
+     */
     public draw() {
         clear()
         switch (this.gameState) {
@@ -73,7 +77,7 @@ class PreGame {
                 break
 
             case GameState.running || this.gameState === GameState.over:
-                this.game.draw();
+                this.game.draw()
                 break
 
             case GameState.over:
@@ -81,7 +85,5 @@ class PreGame {
                 this.menu.draw()
                 break
         }
-
     }
-
 } 

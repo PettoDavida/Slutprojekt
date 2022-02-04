@@ -1,16 +1,16 @@
 class Game {
-    private onGameOver: () => void;
+    private onGameOver: () => void
     public obstacles: Obstacle[]
     private spaceship: Spaceship
     private upperWall: Wall
     private lowerWall: Wall
     private background: Background
-    private spawnTime: number;
-    private horizontalGameSpeed: number;
+    private spawnTime: number
+    private horizontalGameSpeed: number
     public highscore: Highscore
 
     constructor(onGameOver: () => void) {
-        this.onGameOver = onGameOver;
+        this.onGameOver = onGameOver
         const position = createVector(50, 300)
         const size = createVector(130, 100)
         this.obstacles = []
@@ -19,8 +19,8 @@ class Game {
         this.lowerWall = new Wall(createVector(0, height - 50))
         this.background = new Background(backgroundImg)
         this.highscore = new Highscore()
-        this.spawnTime = 0;
-        this.horizontalGameSpeed = 100;
+        this.spawnTime = 0
+        this.horizontalGameSpeed = 100
 
     }
 
@@ -46,8 +46,6 @@ class Game {
             obstacle.updateImage(this.highscore.flooredScore)
         }
 
-
-       
         this.checkCollision()
         this.spaceship.update()
         this.updateWorldSpeed()
@@ -66,7 +64,7 @@ class Game {
          * Calculated from horizontal game speed in order to have
          * the same space between obstacles when the game speeds up.
          */
-        const spawnDelay = 800000 / this.horizontalGameSpeed;
+        const spawnDelay = 800000 / this.horizontalGameSpeed
 
         if (this.spawnTime > spawnDelay) {
             const diameter = random(70, 200)
@@ -94,11 +92,10 @@ class Game {
                     randomObstaclePicture = obstacleImg6
                 }
             }
-          
 
             const newObstacle = new Obstacle(randomObstaclePicture, position, size, rotationSpeed)
             this.obstacles.push(newObstacle)
-            this.spawnTime = 0;
+            this.spawnTime = 0
         }
     }
 
@@ -112,19 +109,18 @@ class Game {
         for (const obstacle of this.obstacles) {
 
             if (this.spaceship.collideCircle(obstacle.getCollisionCircle())) {
-                this.onGameOver();
+                this.onGameOver()
                 collisionSound.play()
 
                 return
             }// vad som ska hända när spaceship nuddar ett hinder
-
         }
 
         if (
             this.spaceship.collideBox(this.upperWall.collisionBox) ||
             this.spaceship.collideBox(this.lowerWall.collisionBox)
             ) {
-            this.onGameOver();
+            this.onGameOver()
             collisionSound.play()
 
             return

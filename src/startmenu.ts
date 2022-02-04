@@ -2,7 +2,6 @@ class Menu {
     private readonly clickStartGame: () => void
     private highscore: Highscore
 
-
     constructor(clickStartGame: () => void) {
         this.clickStartGame = clickStartGame
         this.highscore = new Highscore()
@@ -17,7 +16,7 @@ class Menu {
     }
 
     /**
-     * Draws up the square around the menu
+     * Draws up the rectangle around the menu
      */
     public draw() {
         push()
@@ -34,12 +33,12 @@ class Menu {
         this.clearMenuContainer()
 
         let div = createElement('div')
-                .addClass('startmenu-div')
+                .addClass('startmenu-div flex absolute flex-column')
 
         createElement('h1', 'Space Race')
             .style('color', 'white')
             .style('font-size', '50px')
-            .addClass('menu-headline')
+            .addClass('menu-headline text-center')
             .parent(div)
             
         createButton('Start Game')
@@ -64,7 +63,6 @@ class Menu {
     public startGame() {
         this.clearMenuContainer()
         this.clickStartGame()
-        
     }
 
     /**
@@ -74,12 +72,12 @@ class Menu {
         this.clearMenuContainer()
 
         let div = createElement('div')
-            .addClass('controls-div')
+            .addClass('controls-div flex absolute flex-column text-center')
 
         createElement('h2', 'Game Controls')
             .style('color', 'white')
             .style('font-size', '50px')
-            .addClass('controls-title')
+            .addClass('controls-title text-center')
             .parent(div)
 
         createElement('p', 'Fly')
@@ -115,7 +113,7 @@ class Menu {
         createButton('Back')
             .size(80, 30)
             .mousePressed(this.setup.bind(this))
-            .addClass('backbutton')
+            .addClass('backButton')
             .parent(div)
     }
 
@@ -127,10 +125,10 @@ class Menu {
         this.highscore.drawOnScoreBoard()
 
         let div = createElement('div')
-            .addClass('highscore-div')
+            .addClass('highscore-div flex absolute flex-column')
 
         createElement('h2', 'HighScore')
-            .addClass('highscore-title')
+            .addClass('highscore-title text-center')
             .style('color', 'black')
             .style('font-size', '50px')
             .parent(div)
