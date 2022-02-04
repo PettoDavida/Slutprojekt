@@ -34,15 +34,15 @@ function preload() {
     // Images
     betterSpaceShipImg = loadImage('./assets/images/betterspaceship.png')
     
-    obstacleImg = loadImage('./documents/assets/obstacle.png')
-    obstacleImg1 = loadImage('./documents/assets/obstacle.png')
+    obstacleImg = loadImage('./assets/images/obstacle.png')
+    obstacleImg1 = loadImage('./assets/images/obstacle.png')
     obstacleImg2 = loadImage('./assets/images/obstacle2.png')
     obstacleImg3 = loadImage('./assets/images/obstacle3.png')
     obstacleImg4 = loadImage('./assets/images/obstacle4.png')
     obstacleImg5 = loadImage('./assets/images/obstacle5.png')
     obstacleImg6 = loadImage('./assets/images/obstacle6.png')
 
-    backgroundImg = loadImage('./documents/assets/background.png')
+    backgroundImg = loadImage('./assets/images/background.png')
     backgroundImg2 = loadImage('./assets/images/backgroundImg2.jpg')
 
     spaceRockImg = loadImage('./assets/images/spacerock.png')

@@ -32,8 +32,6 @@ class Spaceship {
         //     fill(255 , 255, 255)
         //     rect(element.position.x + this.position.x, element.position.y + this.position.y, element.size.x, element.size.y)
         // }
-       
-            
 
     }
 
