@@ -56,7 +56,6 @@ class Highscore {
        this.saveToLS()
 
         this.scoreBoardArray.splice(5)
-        console.log(this.scoreBoardArray)
        
         let score = createElement('ol', "Score:")
                     .addClass('score-element flex-column flex absolute text-center')

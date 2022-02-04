@@ -88,7 +88,6 @@ class Game {
              */
             if (this.highscore.flooredScore > 20) {
                 const picNumber = random(1, 100)
-                console.log(picNumber)
 
                 if (picNumber < 15) {
                     randomObstaclePicture = obstacleImg1
@@ -117,7 +116,6 @@ class Game {
     public resetObstaclesAndSpaceship() {
         this.spaceship.updateClickedBoolean()
         this.obstacles = []
-        console.log(this.obstacles)
     }
 
 
@@ -131,7 +129,6 @@ class Game {
 
             }// vad som ska hända när spaceship nuddar ett hinder
             }
-        }
 
         if (
             this.spaceship.collideBox(this.upperWall.collisionBox) ||

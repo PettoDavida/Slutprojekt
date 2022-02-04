@@ -1,8 +1,9 @@
 //---- GLOBAL VARIABLES ----//
 let preGame: PreGame;
-let spaceShipImg: p5.Image
+// Spaceship 
 let betterSpaceShipImg: p5.Image
 
+// Obstacles
 let obstacleImg: p5.Image
 let obstacleImg1: p5.Image
 let obstacleImg2: p5.Image
@@ -10,12 +11,13 @@ let obstacleImg3: p5.Image
 let obstacleImg4: p5.Image
 let obstacleImg5: p5.Image
 let obstacleImg6: p5.Image
+let spaceRockImg: p5.Image
 
+// Background
 let backgroundImg: p5.Image
 let backgroundImg2: p5.Image
 
-let spaceRockImg: p5.Image
-
+// Sounds
 let collisionSound: p5.SoundFile
 let gameMusic: p5.SoundFile
 
@@ -31,8 +33,7 @@ function preload() {
 
     // Images
     betterSpaceShipImg = loadImage('./assets/images/betterspaceship.png')
-    spaceShipImg = loadImage('./documents/assets/spaceship.png');
-
+    
     obstacleImg = loadImage('./documents/assets/obstacle.png')
     obstacleImg1 = loadImage('./documents/assets/obstacle.png')
     obstacleImg2 = loadImage('./assets/images/obstacle2.png')
