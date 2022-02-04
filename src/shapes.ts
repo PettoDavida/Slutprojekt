@@ -7,7 +7,13 @@ class Box {
         this.size = size
     }
 
-    public collide(pos: p5.Vector, size: p5.Vector) {
+    /**
+     * Checks to see if a rectangle has collided with another rectangle
+     * @param pos position of rectangle 
+     * @param size size of rectangle
+     * @returns true if collision false if no collision
+     */
+    public collide(pos: p5.Vector, size: p5.Vector) { 
         return this.position.x < pos.x + size.x && 
         this.position.x + this.size.x > pos.x &&
         this.position.y < pos.y + size.y && 
@@ -24,7 +30,14 @@ class Circle {
         this.radius = radius
     }
 
+    /**
+     * Checks to see if a rectangle has collided with a circle
+     * @param pos position of rectangle 
+     * @param size size of rectangle
+     * @returns true if collision false if no collision
+     */
     public collide(pos: p5.Vector, size: p5.Vector) {
+
         let rectangleCenter = createVector(pos.x + size.x / 2, pos.y + size.y / 2)
     
         let w = size.x / 2
@@ -46,5 +59,6 @@ class Circle {
         let cornerDistanceSq = Math.pow(circleDistance.x - w, 2) + Math.pow(circleDistance.y - h, 2)
     
         return (cornerDistanceSq <= (Math.pow(this.radius, 2)))
+
     }
 }

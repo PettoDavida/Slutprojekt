@@ -120,6 +120,7 @@ class Game {
 
 
     private checkCollision() {
+        // Checks if the spaceship touches an obstacle in the array
         for (const obstacle of this.obstacles) {
 
             if (this.spaceship.collideCircle(obstacle.getCollisionCircle())) {
@@ -127,8 +128,10 @@ class Game {
                 collisionSound.play()
                 return
 
-            }// vad som ska hända när spaceship nuddar ett hinder
             }
+
+        }
+        // Checks if the spaceship is touching the wall
 
         if (
             this.spaceship.collideBox(this.upperWall.collisionBox) ||
@@ -138,7 +141,7 @@ class Game {
             collisionSound.play()
 
             return
-        } // vad som ska hända när spaceship nuddar en kant
+        } 
     }
 }
 
