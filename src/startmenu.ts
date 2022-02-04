@@ -2,7 +2,6 @@ class Menu {
     private readonly clickStartGame: () => void
     private highscore: Highscore
 
-
     constructor(clickStartGame: () => void) {
         this.clickStartGame = clickStartGame
         this.highscore = new Highscore()
@@ -17,7 +16,7 @@ class Menu {
     }
 
     /**
-     * Draws up the square around the menu
+     * Draws up the rectangle around the menu
      */
     public draw() {
         push()
@@ -34,12 +33,12 @@ class Menu {
         this.clearMenuContainer()
 
         let div = createElement('div')
-                .addClass('startmenu-div')
+                .addClass('startmenu-div flex absolute flex-column')
 
-        createElement('h1', 'Space Jam 3.0')
+        createElement('h1', 'Space Race')
             .style('color', 'white')
             .style('font-size', '50px')
-            .addClass('menu-headline')
+            .addClass('menu-headline text-center')
             .parent(div)
             
         createButton('Start Game')
@@ -64,7 +63,6 @@ class Menu {
     public startGame() {
         this.clearMenuContainer()
         this.clickStartGame()
-        
     }
 
     /**
@@ -73,45 +71,50 @@ class Menu {
     public checkControls() {
         this.clearMenuContainer()
 
+        let div = createElement('div')
+            .addClass('controls-div flex absolute flex-column text-center')
+
         createElement('h2', 'Game Controls')
-            .position(400, 50)
-            .style('color', 'black')
+            .style('color', 'white')
             .style('font-size', '50px')
+            .addClass('controls-title text-center')
+            .parent(div)
 
         createElement('p', 'Fly')
-            .position(440, 150)
             .style('color', 'black')
             .style('font-size', '20px')
+            .parent(div)
 
         createElement('p', 'Left Mouse Button')
-            .position(360, 200)
             .addClass('gameKeys')
+            .parent(div)
 
         createElement('p', 'Space')
-            .position(410, 270)
             .addClass('gameKeys')
+            .parent(div)
 
         createElement('p', 'W')
-            .position(420, 330)
             .addClass('gameKeys')
+            .parent(div)
 
         createElement('p', '\u02C4')
-            .position(425, 390)
             .addClass('gameKeys')
+            .parent(div)
 
         createElement('p', 'Mute')
-            .position(730, 190)
             .style('color', 'black')
             .style('font-size', '20px')
+            .parent(div)
 
         createElement('p', 'M')
-            .position(650, 200)
             .addClass('gameKeys')
+            .parent(div)
 
         createButton('Back')
-            .position(550, 500)
             .size(80, 30)
             .mousePressed(this.setup.bind(this))
+            .addClass('backButton')
+            .parent(div)
     }
 
     /**
@@ -121,15 +124,19 @@ class Menu {
         this.clearMenuContainer()
         this.highscore.drawOnScoreBoard()
 
+        let div = createElement('div')
+            .addClass('highscore-div flex absolute flex-column')
+
         createElement('h2', 'HighScore')
-            .position(400, 50)
+            .addClass('highscore-title text-center')
             .style('color', 'black')
             .style('font-size', '50px')
+            .parent(div)
 
         createButton('Back')
             .size(80, 30)
             .mousePressed(this.setup.bind(this))
-            .position(550, 500)
+            .parent(div)
     }
 }
 

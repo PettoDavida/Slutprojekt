@@ -11,7 +11,6 @@ class Wall {
         for (let i = 0; i < 36; i++) { // creates enough asteroids so that the whole screen has a wall of asteroids
             this.wall.push({image:spaceRockImg, offset: createVector(i*50, random(0,30))})
         }
-        
     }
 
     public update() {
@@ -38,10 +37,10 @@ class Wall {
                 // checks so that the distance between asteroids is enough so that they dont spawn ontop of each other
             }
         }   
+
         // Used to see collisionBox of wall
         //fill(255)
         //rect(this.position.x, this.position.y, width, 50)
+
     }
-
-
 }
