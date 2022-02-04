@@ -15,9 +15,9 @@ class Spaceship {
         this.position = position
         this.spaceShipSpeedUp = 3.5
         this.spaceShipSpeedDown = 4.5
-        this.collisionShape = []
-        this.collisionShape.push(new Box(createVector(0,this.size.y/2 - 12), createVector(this.size.x, this.size.y/4)))
-        this.collisionShape.push(new Box(createVector(this.size.x/4,0), createVector(this.size.x/4, this.size.y)))
+        this.collisionShape = [] // Array for collisionBoxes of ship
+        this.collisionShape.push(new Box(createVector(0,this.size.y/2 - 12), createVector(this.size.x, this.size.y/4))) // CollsionBox of wings
+        this.collisionShape.push(new Box(createVector(this.size.x/4,0), createVector(this.size.x/4, this.size.y))) // CollsionBox of body
         this.angle = 0
         this.clicked = false
     }
@@ -26,12 +26,13 @@ class Spaceship {
     
         image(this.image, this.position.x, this.position.y, this.size.x, this.size.y);
      
-        for (let index = 0; index < this.collisionShape.length; index++) {
-            const element = this.collisionShape[index];
-            // för att kunna se collision box för spaceship
-            fill(255 , 255, 255)
-            rect(element.position.x + this.position.x, element.position.y + this.position.y, element.size.x, element.size.y)
-        }
+        // Used to see collisionBoxes of spaceship
+        // for (let index = 0; index < this.collisionShape.length; index++) {
+        //     const element = this.collisionShape[index];
+        //     
+        //     fill(255 , 255, 255)
+        //     rect(element.position.x + this.position.x, element.position.y + this.position.y, element.size.x, element.size.y)
+        // }
        
             
     }
@@ -83,6 +84,11 @@ class Spaceship {
         }
     }
 
+    /**
+     * Checks collision between ship and a collisionBox
+     * @param box the box that the ship collides with
+     * @returns true if collision false if no collision
+     */
     public collideBox(box:Box){
         for (let index = 0; index < this.collisionShape.length; index++) {
             const element = this.collisionShape[index];
@@ -95,6 +101,11 @@ class Spaceship {
         return false
     }
 
+    /**
+     * Checks collision between ship and a collisionCricle
+     * @param Circle the circle that the ship collides with
+     * @returns true if collision false if no collision
+     */
     public collideCircle(circle:Circle){
         for (let index = 0; index < this.collisionShape.length; index++) {
             const element = this.collisionShape[index];
