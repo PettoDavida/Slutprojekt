@@ -68,7 +68,7 @@ class Menu {
     /**
      * Creates the elements under Controls
      */
-    public checkControls() {
+    private checkControls() {
         this.clearMenuContainer()
 
         let div = createElement('div')
