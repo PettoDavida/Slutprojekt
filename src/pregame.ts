@@ -32,10 +32,10 @@ class PreGame {
      */
     private gameOver = () => {
         this.gameState = GameState.over
+        this.game.resetObstaclesAndSpaceship() 
         gameMusic.stop()
         this.gameovermenu.setup()
         this.game.highscore.drawOnScoreBoard()
-        this.game.resetObstaclesAndSpaceship() 
         cursor(ARROW)
     }
 
@@ -72,7 +72,6 @@ class PreGame {
         clear()
         switch (this.gameState) {
             case GameState.start:
-               // this.background.draw()
                 this.menu.draw()
                 break
 

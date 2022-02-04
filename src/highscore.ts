@@ -9,6 +9,9 @@ class Highscore {
         this.scoreBoardArray = JSON.parse(localStorage.getItem("scores") ?? "[]")
     }
    
+    /**
+     * Counts score based on seconds and removes decimals
+     */
     public update() { 
         this.flooredScore = floor(this.score)
         this.score += (deltaTime / 1000) // +1 km for each second
@@ -21,26 +24,33 @@ class Highscore {
         text(`Distance from earth: ${floor(this.score)} km`, 10, height - 5)
     }
 
+    /**
+     * Saves recent score to array
+     */
     public save() {
         this.scoreBoardArray.push(this.flooredScore)
-        console.log('save')
     }
     
+    /**
+     * sorts highscore array
+     */
     public sortHighScore() {
-        console.log('sorthighscore') 
         this.scoreBoardArray.sort(function(a, b){
                 return b-a
         })
     }
   
+    /**
+     * saves sorted higgscore array in local storage
+     */
     private saveToLS() {
         localStorage.setItem("scores", JSON.stringify(this.scoreBoardArray))
-        console.log('savetols')
-        //this.drawOnScoreBoard()
     }
 
+    /**
+     * splices highscore array in 5 and draws out highscore on game over menu and start menu
+     */
     public drawOnScoreBoard() {
-      console.log('drawonscoreboard')
        this.save()
        this.sortHighScore()
        this.saveToLS()
@@ -61,5 +71,4 @@ class Highscore {
                     .parent(score)
             }
     }
-
 }

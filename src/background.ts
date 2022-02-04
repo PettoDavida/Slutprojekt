@@ -6,7 +6,7 @@ class Background {
     constructor(image: p5.Image) {
         this.image = image
         
-       // this.highscore = new Highscore()
+
     }
 
 
